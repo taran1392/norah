@@ -1,0 +1,87 @@
+body{
+	background-color: #412A58;
+}
+.filter span{
+	font: 18px/68px 'Questrial'
+}
+.leftSideBar{
+	background-color: #2F1D41;
+	padding-left: 0;
+	padding-right:  0;
+	padding-bottom: 103%;
+}
+.leftSideBar ul li{
+	background-color: #4E3F5D;
+}
+.leftSideBar ul li a{
+	border-radius: none;
+	color:#DCD7E0;
+}
+.search {
+	padding:  1%;
+}
+.search input , .btn{
+	border-radius: 24px;
+	background-color: #2F1D41;
+	color:#DCD7E0;
+	border: none;
+	outline: none;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+	background-color: #E36480;
+	border-radius: none;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+	background-color: #E36480;
+}
+
+.clust figure img {
+    width: 98%!important;
+    margin-top: -6%;
+    height: 283%!important;
+}
+.zodiac_box .box{
+	padding: 0;
+}
+.radioB{
+	padding: 1% 0;
+}
+.radioBox span{
+	font-size: 15px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	nav.tm_navbar li a {
+    	width: 127px;
+	}
+	.follow_icon {
+    	width: 30%;
+	}
+}
+@media (min-width: 560px) and (max-width: 626px){
+	.radioBox span{
+		font-size: 20px;
+	}
+}
+@media (min-width: 480px) and (max-width: 559px){
+	.radioBox span{
+		font-size: 17px;
+	}
+}
+@media (min-width: 423px) and (max-width: 479px){
+	.radioBox span{
+		font-size: 14px;
+	}
+}
+@media (min-width: 320px) and (max-width: 422px){
+	.radioBox span {
+	    font-size: 23px;
+	    text-align: justify;
+	    color: white;
+	    margin-left: 16%;
+	}
+	.radioB{
+		text-align: justify;
+	}
+}
+
+
