@@ -3,7 +3,6 @@ $('.follow_icon button').click(function(){
 });
 
 firebase.auth().onAuthStateChanged(function(user) {
-
 // DISPLAY USER MAIL INFO
   if(user){
     $('.user-mail').html(user.email);
