@@ -23,7 +23,12 @@
     <!-- Google font (If Use) -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
+	
+	<script src="Build/FileSave.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
+    </script>
         
     </head>
 
@@ -86,55 +91,56 @@
                     <div class="container">
                         <div class="col-md-4">
                             <h2>Animation name</h2>
-                           <a class="carousel-control left" href="#" data-slide="prev" style="left: -30px; top: 175px; height: 0px;">
+                           <a href="javascript:ApplyLeftAnim();" class="carousel-control left" style="left: -30px; top: 175px; height: 0px;">
                                 <span class="glyphicon glyphicon-chevron-left"></span></a>
 
                             
                             <div class="image">
                             <!--<img src="img/1.gif" alt="" class="img-responsive">-->
                             </div>
-                            <a class="carousel-control right" href="#" data-slide="next" style="left: 350px; height: 0px; top: 175px;">
+                            <a href="javascript:ApplyLeftAnim();" class="carousel-control right" style="left: 350px; height: 0px; top: 175px;">
                                            <span class="glyphicon glyphicon-chevron-right"></span></a>
                             <span>clip length : 2 secs</span>
-                            
+                            <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="http://35.197.25.101:8080/Angry.anim" class="in_bg">
                         </div>
                         <div class="col-md-4 output-window">
                             <h2>Output Window</h2>
-                            <div class="output-window-img"></div>
+                            <div id="gameContainer" style="height: 250px"></div>
                             <div class="enter-name">
-                                <input type="text" placeholder="enter name" class="in_bg">
+                                <input type="text" autocomplete="off" placeholder="enter name" class="in_bg">
                                 <div class="right-action-btn">
-                                    <a href="#"><i class="fa fa-download"></i></a>
+                                    <a href="javascript:downloadAnim();"><i class="fa fa-download"></i></a>
                                     <a href="#"><i class="fa fa-list"></i></a>
                                 </div>
                                 <div class="blending_options">
                                     <h3>Blending Options</h3>
                                     <div class="checkbox">
-                                      <label><input type="checkbox" value="">Time stretch</label>
+                                      <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="TimeStretch">Time stretch</label>
                                     </div>
                                     <div class="checkbox">
-                                      <label><input type="checkbox" value="">Loop</label>
+                                      <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="Loop">Loop</label>
                                     </div>
                                     <div class="range-slider">
                                     <label>Start offset</label>
-                                      <input class="range-slider__range" type="range" value="100" min="0" max="500">
+                                      <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="StartOffs">
                                     </div>
                                     <div class="checkbox">
-                                      <label><input type="checkbox" value="">Blend Root Motion</label>
+                                      <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="Blend Root Motion">Blend Root Motion</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h2>Animation name</h2>
-                            <a class="carousel-control left" href="#" data-slide="prev" style="left: -30px; top: 175px; height: 0px;">
+                            <a href="javascript:ApplyRightAnim();" class="carousel-control left" style="left: -30px; top: 175px; height: 0px;">
                                 <span class="glyphicon glyphicon-chevron-left"></span></a>
                             <div class="image">
                             <!--<img src="img/2.gif" alt="" class="img-responsive">-->
                             </div>
-                            <a class="carousel-control right" href="#" data-slide="next" style="left: 350px; height: 0px; top: 175px;">
+                            <a href="javascript:ApplyRightAnim();" class="carousel-control right" style="left: 350px; height: 0px; top: 175px;">
                                            <span class="glyphicon glyphicon-chevron-right"></span></a>
                             <span>clip length : 3:23 secs</span>
+							<input id="right_anim_name" autocomplete="on" type="text" placeholder="right animation name" value="http://35.197.25.101:8080/Aroused.anim" class="in_bg">
                         </div>
                     </div>
                 </div>
@@ -146,49 +152,49 @@
                             <div class="blending_control_block">
                                 <label>Head</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="700">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Head">
                                 </div>
                             </div>
 
                             <div class="blending_control_block">
                                 <label>Torso</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="150">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Trso">
                                 </div>
                             </div>
 
                             <div class="blending_control_block">
                                 <label>Left Arm</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="220">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="ArmL">
                                 </div>
                             </div>
 
                             <div class="blending_control_block">
                                 <label>Right Arm</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="2500">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="ArmR">
                                 </div>
                             </div>
 
                             <div class="blending_control_block">
                                 <label>Left Leg</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="110">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="LegL">
                                 </div>
                             </div>
 
                             <div class="blending_control_block">
                                 <label>Right Leg</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="170">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="LegR">
                                 </div>
                             </div>
 
                             <div class="blending_control_block">
                                 <label>Fingers</label>
                                 <div class="range-slider">
-                                   <input class="range-slider__range" type="range" value="100" min="0" max="500">
+                                   <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Fing">
                                 </div>
                             </div>
                         </div>
@@ -203,11 +209,47 @@
 <script src="js/jquery.min.js"></script>
 
 <script>
+// Engine loading is finished, we can call animations loading method...
+function UnityLoadFinished()
+{
+	var url1 = document.getElementById('left_anim_name').value;
+	var url2 = document.getElementById('right_anim_name').value;
+	gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', url1+"|"+url2);
+}
+
+function ApplyLeftAnim()
+{
+	var url = document.getElementById('left_anim_name').value;
+	gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url+"|"+"0");
+}
+
+function ApplyRightAnim()
+{
+	var url = document.getElementById('right_anim_name').value;
+	gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url+"|"+"1");
+}
+
+function downloadAnim()
+{
+	var txt = document.getElementById("animation_name");
+	var animName = txt.value;
+	gameInstance.SendMessage('ControllerHelper','ExportFromOutside',animName);
+}
+
+function handleClick(cb)
+{
+	var name = cb.getAttribute('name');
+	if(name == 'Loop')
+		gameInstance.SendMessage('ControllerHelper','SetLoop',cb.checked.toString());
+	if(name == 'TimeStretch')
+		gameInstance.SendMessage('ControllerHelper','SetTimeStretch',cb.checked.toString());
+}
+
     var rangeSlider = function(){
   var slider = $('.range-slider'),
       range = $('.range-slider__range'),
       value = $('.range-slider__value');
-    
+	
   slider.each(function(){
 
     value.each(function(){
@@ -216,6 +258,8 @@
     });
 
     range.on('input', function(){
+	var name = $(this).attr('name');
+	gameInstance.SendMessage('ControllerHelper','SetSliderValue',name +'|'+this.value);
       $(this).next(value).html(this.value);
     });
   });
