@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>index</title>
+<title>my_library</title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">
 <meta name="author" content="Your name">
 <meta name = "format-detection" content = "telephone=no" />
+<!-- FIREBASE -->
+<!-- <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>   -->
+<!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> -->
+
+
 <!-- firebase -->
 <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>  
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> 
@@ -18,13 +24,16 @@
 <script src="firebase/config.js"></script>
 <script src="firebase/providers.js"></script> 
 <!-- end firebase -->
-
 <!--CSS-->
 <link rel="stylesheet" href="css/bootstrap.css" >
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/repository.css">
 <link rel="stylesheet" href="css/reg_form.css">
+<link rel="stylesheet" href="css/styleClustering.css">
+<link rel="stylesheet" href="css/styleClustering2.css">
+<link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="fonts/font-awesome.css">
+<link rel="stylesheet" href="css/my_library.css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -32,17 +41,9 @@
 <script src="js/jquery.mobilemenu.js"></script>
 <script src="js/jquery.equalheights.js"></script> 
 <script src="js/sForm.js"></script>
-<script src="js/active.js"></script>
+
 <!--[if (gt IE 9)|!(IE)]><!-->
-<script src="js/wow/wow.js"></script>
-<script src="js/wow/device.min.js"></script>
-<script>
-    $(document).ready(function () {       
-      if ($('html').hasClass('desktop')) {
-        new WOW().init();
-      }   
-    });
-</script>
+
 <!--<![endif]-->
 
 <!--[if lt IE 9]>
@@ -57,6 +58,17 @@
   </div>
   <link rel="stylesheet" href="css/ie.css">
   <![endif]-->
+
+<!-- firebase -->
+
+ <!-- Initialize Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<!-- <script src="firebase/config.js"></script> -->
+<!-- <script src="firebase/providers.js"></script>  -->
+<!-- ИНИЦИАЛИЗАЦИЯ FIREBASE КОНЕЦ.-->
+<!--Код ниже инициализирует виджет для логина с помощью FirebaseUI  -->
+
+<!-- end firebase -->
 </head>
 <body>
 <div class="main">
@@ -68,45 +80,42 @@
 
                     <li class="sub-menu"><a href="index.html">home</a>
                         <ul class="homeSub">
-                            <li><a href="#" id="body">body</a>
-                                 <ul class="bodysub">
+                            <li><a href="home.html" id="body">body</a>
+                                <ul class="bodysub">
                                     <li><a href="#">columns 04</a></li>
                                     <li><a href="#">columns 05</a></li>
                                     <li><a href="#">columns 05</a></li>
                                     <li><a href="#">columns 05</a></li>
                                 </ul> 
                             </li>
-                            <li><a href="#">face</a></li>
-                            <li><a href="#">events</a></li>
-                            <li><a href="#">timeline</a></li>
+                            <li><a href="home.html">face</a></li>
+                            <li><a href="home.html">events</a></li>
+                            <li><a href="home.html">timeline</a></li>
                             
                         </ul>
                     </li>
 
-                    <li class="sub-menu"><a href="index-1.html">about</a><span class="fa fa-angle-down"></span>
-                        <!-- <ul class="submenu"> 
-            				<li><a href="#">columns 01</a></li>
+                    <li class="sub-menu"><a href="index-1.html">about</a>
+                        <ul class="submenu">
+                            <li><a href="#">columns 01</a></li>
                             <li><a href="#">columns 02</a></li>
-            				<li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
+                            <li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
                                 <ul class="submenu">
                                     <li><a href="#">columns 04</a></li>
                                     <li><a href="#">columns 05</a></li>
                                   </ul> 
-                            </li> 
-            			</ul>-->
+                            </li>
+                        </ul>
                     </li>
-
-                    <li> <a href="my_library.html">my library</a></li>
-                    <li><a href="index-4.html">contacts</a></li>
-
-                    
+                     <li> <a href="#">my library</a></li>
+                    <li><a href="index-2.html">contacts</a></li>
                 </ul>
-
             </nav>
             <ul class="follow_icon">
                 <li class="cosialIcon"><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
                 <li class="cosialIcon"><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
                 <li class="cosialIcon"><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
+                <li><a href="registration_form.html"></a></li>
                 <div class="log-Out">
                     <li class="logLi"><p id="logOutBtn" type="button">Log-Out</p></li>
                     <br>
@@ -116,160 +125,22 @@
                   <!-- Trigger the modal with a button -->
                   <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>                  
                 </li>
-            </ul>
 
+            </ul>
+            
+            
         </header>
-        <div class="logo_box">
-            <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/animake.png" alt="logo" class="img responsive"></a></h1>
-            <div class="row">
-                <div class="col-lg-6 col-md-8 col-sm-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
-                    <form id="search" class="search" action="search.php" method="GET" accept-charset="utf-8">
-                        <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}" placeholder="TAKE ME THROUGH THE TOUR">
-                        <a href="#" onClick="document.getElementById('search').submit()"> <img class="img responsive slaq" src="img/arrow.png" alt="" style="width: 50px; height: 37px; "> </a>
-                    </form>
-                    <time datetime="2014-01-01">Nov. 22, 2014</time>
-                </div>
-            </div>
-        </div>
+ 
     </div>
 </div>
-<div class="zodiac_box">     
-    <div class="container zodiacCont">
-        <div class="tp" data-page = "home">
-            <p><a href="#" class="t1" >BODY ANIMATION</a></p>
-            <p><a href="#" class="t2" >FACE ANIMATION</a></p>
-            <p><a href="#" class="t3" >EVENTSON</a></p>
-        </div>
-        
-        <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
-            <div><p></p>
-                <a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/repostory.png" alt=""></figure>
-            <strong>BODY ANIMATION REPOSITORY</strong>
-        </div>
-        <div class="box box2 wow fadeInUp" data-wow-delay="0.2s">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/body merge.png" alt=""></figure>
-            <strong>BODY ANIMATION <br> MERGER</strong>
-        </div>
-        <div class="box box3 wow fadeInUp" data-wow-delay="0.1s">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/body ani style transfer.png" alt=""></figure>
-            <strong>BODY ANIMATION STYLE TRANSFER</strong>
-        </div>
-        <div class="box box4 wow fadeInUp">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/showreel.png" alt=""></figure>
-            <strong>SHOWREEL</strong>
-        </div>
-        
-        <div class="box box5 wow fadeInUp" data-wow-delay="0.3s">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/repostory.png" alt=""></figure>
-            <strong>FACE ANIMATION REPOSITORY</strong>
-        </div>
-        <div class="box box6 wow fadeInUp" data-wow-delay="0.2s">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/face auto exp.png" alt=""></figure>
-            <strong>FACE 3D MODEL <br> AUTO RIGGER</strong>
-        </div>
-        <div class="box box7 wow fadeInUp" data-wow-delay="0.1s">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/face merge exp.png" alt=""></figure>
-            <strong>FACE EXPRESSION EMOTION MERGER</strong>
-        </div>
-        <div class="box box8 wow fadeInUp">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/showreel.png" alt=""></figure>
-            <strong>SHOWREEL</strong>
-        </div>
-        
-        <div class="box box9C wow fadeInUp" data-wow-delay="0.1s">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/create event.png" alt=""></figure>
-            <strong>EVENT CREATION</strong>
-       
-            
-        </div>
-        <div class="box box11C wow fadeInUp" ">
-            <div><p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p><a href="#" class="btn-default btn5">read more</a></div>
-            <figure><img src="img/timeline.png" alt=""></figure>
-            <strong>TIMELINE BASED EDITING</strong>
-        
-            
-        </div>
-
-    </div>
+<div class="zodiac_box"> 
+<div class="container library">
+    
+</div>
 </div>
 <!--content-->
 <div class="content"> 
-    <!-- <div class="thumb-box1">
-        <div class="container">          
-            <h2>Let the stars help you to discover your fate</h2>
-            <ul class="list1">
-                <li><a href="#">Horoscopes</a></li>
-                <li><a href="#">psychics</a></li>
-                <li><a href="#">tarot</a></li>
-                <li><a href="#">oracles</a></li>
-                <li><a href="#">numerology</a></li>
-                <li><a href="#">forecasts</a></li>
-                <li><a href="#">faraway fortunes</a></li>
-            </ul>
-            <strong>Today`s horoscope:</strong>
-            <div class="row">
-                <div class="col-lg-5 col-md-6 col-sm-6 col-lg-offset-1">
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                </div>
-                <div class="col-lg-5 col-md-6 col-sm-6">
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                </div>
-            </div>
-            <a href="#" class="btn-default btn1">all about your sign</a>
-            <a href="#" class="btn-default btn2">chinese portrait</a>
-        </div>
-    </div> -->
-<!--     <div class="thumb-box2">
-    <div class="container"> 
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <strong>Your biorhythms</strong>
-                <div class="thumb-pad1">
-                    <div class="thumbnail">
-                        <figure><img src="img/page1_pic1.jpg" alt=""></figure>
-                        <div class="caption">
-                            <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
-                            <a href="#" class="btn-default btn3">read more</a>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <strong>Love & romance</strong>
-                <div class="thumb-pad1">
-                    <div class="thumbnail">
-                        <figure><img src="img/page1_pic2.jpg" alt=""></figure>
-                        <div class="caption">
-                            <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
-                            <a href="#" class="btn-default btn3">read more</a>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <strong>Dreams</strong>
-                <div class="thumb-pad1">
-                    <div class="thumbnail">
-                        <figure <img src="img/page1_pic3.jpg" alt=""></figure>
-                        <div class="caption">
-                            <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
-                            <a href="#" class="btn-default btn3">read more</a>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+    
    
     <div class="thumb-box4">
         <div class="container"> 
@@ -371,8 +242,6 @@
     </div>
   
 </footer>
-
-
 <!-- Modal -->
                   <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
@@ -412,13 +281,29 @@
                       
                     </div>
                   </div>
+
+
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
 
 <script src="js/firebaseAuth.js"></script>
+<script src="firebase/firebase-listener.js"></script>
+<script src="js/active.js"></script>
+<script src="js/repository.js"></script>
+<script src="js/active.js"></script>
+<script src="js/wow/wow.js"></script>
+<script src="js/wow/device.min.js"></script>
+<script>
+    $(document).ready(function () {       
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+      }   
+    });
+</script>
 <script src="firebase/login.js"></script>
 <script src="firebase/register.js"></script>
-<script src="firebase/firebase-listener.js"></script>
+<script type="text/javascript" src="firebase/firebase-listener.js"></script>
+</script>
 </body>
 </html>
