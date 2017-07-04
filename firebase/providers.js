@@ -1,5 +1,8 @@
+
+
+
 var uiConfig = {  
-  /*signInSuccessUrl: 'home.html',  */
+  signInSuccessUrl: window.location.href,  
   signInOptions: [  
     // Указываем провайдеров для Firebase Аутентификации
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
