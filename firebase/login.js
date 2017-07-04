@@ -4,18 +4,6 @@ var btnLogIn  = document.getElementById("loginBtn");
 var btnLogOut = document.getElementById("logOutBtn");
 var signUpBtn = document.getElementById("signUpBtn");
 
-// Bootstrap Modal. It Use jQuery!
-var loginModalElement = $('#myModal')
-loginModalElement.on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  var modal = $(this)
-  console.log(modal)
-})
-function closeLoginModal() {
-    loginModalElement.modal('hide');
-}
-
 btnLogIn.addEventListener('click', function(e) {
     var email = textEmail.value;
     var pass = textPass.value;
@@ -42,8 +30,7 @@ btnLogOut.addEventListener('click', function(e) {
 
 firebase.auth().onAuthStateChanged(function(firebaseUser) {
 	if(firebaseUser){
-    
-        closeLoginModal();
+        /*window.location = "home.html";*/
     } else {
 		/*btnLogOut.classList.add("hide");*/
         textEmail.classList.remove("hide");

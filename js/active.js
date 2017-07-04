@@ -1,28 +1,7 @@
-/*-----------------------firebase storage--------------------------*/
+/*-----------------------firebase storage-----------------------*/
 function queryDatabase(token){
     firebase.database().ref().once('value').then(function(snapshot) {
         var postObject = snapshot.val();
-
-      /*  var currentRow;
-        currentRow = document.createElement("div");
-        $(currentRow).addClass('row');
-        $(".library").append(currentRow);
-        for (key in postObject){
-        var k=1;
-            if(typeof postObject[key] == 'object'){
-                continue;
-            }
-            var col = document.createElement("div");
-            $(col).addClass("col-lg-3");
-            var divGif = document.createElement("div");
-            $(currentRow).append(col);
-            $(col).append(divGif);
-            $(divGif).addClass("box box'+k+' wow fadeInUp")
-            var image = document.createElement("img");
-            image.src = postObject[key]; 
-            $(divGif).append(image);
-        }*/
-
 
         var lib = " ";
         for (key in postObject){
@@ -64,7 +43,7 @@ jQuery(document).ready(function(){
     })   
     
 
-    /*-------------------firebase storage-------------------------*/
+/*--------------------------firebase storage--------------------*/
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
@@ -73,9 +52,9 @@ jQuery(document).ready(function(){
         }
     });
 
-    /*-------------------firebase storage zodiacCont----------------------*/
+/*---------------firebase DB zodiacCont--------------------*/
+
     firebase.database().ref("/fire_pic/").once('value').then(function(snapshot) {
-        console.log("AAAAA");
         var fireObject = snapshot.val();
         var storageRef = firebase.storage().ref();
         var gsReference = firebase.storage().refFromURL('gs://animake-672fc.appspot.com');
@@ -86,7 +65,6 @@ jQuery(document).ready(function(){
             var obj = fireObject[key].split("-");
             var gif = 'gifsFires/'+obj[0];
             var anim = 'Animake/'+obj[1];
-            // console.log("anim = ", anim);
             var spaceRef = storageRef.child(gif);
             storageRef.child(gif).getDownloadURL().then(function(url) {
                 var num = url.match(/F\d+/);
@@ -100,7 +78,5 @@ jQuery(document).ready(function(){
                 sessionStorage.setItem('satorage_anims', JSON.stringify(anims));
             }).catch(function(error) {})
         }
-        console.log("satorage_gifs  = ", sessionStorage.getItem("satorage_gifs"));
-        console.log("satorage_anims  = ", sessionStorage.getItem("satorage_anims"));
     });
 })
