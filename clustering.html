@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>Clustering</title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -11,17 +11,10 @@
 <meta name="keywords" content="Your keywords">
 <meta name="author" content="Your name">
 <meta name = "format-detection" content = "telephone=no" />
-<!-- firebase -->
-<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>  
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> 
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<script src="firebase/config.js"></script>
-<script src="firebase/providers.js"></script> 
-<!-- end firebase -->
 <!--CSS-->
 <link rel="stylesheet" href="css/bootstrap.css" >
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/reg_form.css">
+<link rel="stylesheet" href="css/styleClustering.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="fonts/font-awesome.css">
 <!--JS-->
@@ -67,23 +60,23 @@
 
                     <li class="sub-menu"><a href="index.html">home</a>
                         <ul class="homeSub">
-                            <li><a href="#" id="body">body</a>
-                                 <ul class="bodysub">
+                            <li><a href="home.html" id="body">body</a>
+                                <ul class="bodysub">
                                     <li><a href="#">columns 04</a></li>
                                     <li><a href="#">columns 05</a></li>
                                     <li><a href="#">columns 05</a></li>
                                     <li><a href="#">columns 05</a></li>
                                 </ul> 
                             </li>
-                            <li><a href="#">face</a></li>
-                            <li><a href="#">events</a></li>
-                            <li><a href="#">timeline</a></li>
+                            <li><a href="home.html">face</a></li>
+                            <li><a href="home.html">events</a></li>
+                            <li><a href="home.html">timeline</a></li>
                             
                         </ul>
                     </li>
 
                     <li class="sub-menu"><a href="index-1.html">about</a><span class="fa fa-angle-down"></span>
-                        <!-- <ul class="submenu"> 
+                        <ul class="submenu">
             				<li><a href="#">columns 01</a></li>
                             <li><a href="#">columns 02</a></li>
             				<li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
@@ -91,40 +84,40 @@
                                     <li><a href="#">columns 04</a></li>
                                     <li><a href="#">columns 05</a></li>
                                   </ul> 
-                            </li> 
-            			</ul>-->
+                            </li>
+            			</ul>
                     </li>
                     <li><a href="index-2.html">contacts</a></li>
-
-                    
                 </ul>
-
             </nav>
             <ul class="follow_icon">
-                <li class="cosialIcon"><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
-                <li class="cosialIcon"><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
-                <li class="cosialIcon"><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
-                <li><a href="registration_form.html"></a></li>
-                <div class="log-Out">
-                    <li class="logLi"><p id="logOutBtn" type="button">Log-Out</p></li>
-                    <br>
-                    <div class="user-mail pull-right"></div>
-                </div>
-                <li class="sign-in">
-                  <!-- Trigger the modal with a button -->
-                  <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>                  
-                </li>
+                <li><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
+                <li><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
+                <li><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
+                <a href="#"><img class="img responsive " src="img/animakeFooter.png" style="width: 81px; height: 26px; margin-left: 7%; "></a>
             </ul>
+            
+            
         </header>
-        <div class="logo_box">
-            <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/animake.png" alt="logo" class="img responsive"></a></h1>
-            <div class="row">
-                <div class="col-lg-6 col-md-8 col-sm-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
-                    <form id="search" class="search" action="search.php" method="GET" accept-charset="utf-8">
-                        <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}" placeholder="TAKE ME THROUGH THE TOUR">
-                        <a href="#" onClick="document.getElementById('search').submit()"> <img class="img responsive slaq" src="img/arrow.png" alt="" style="width: 50px; height: 37px; "> </a>
-                    </form>
-                    <time datetime="2014-01-01">Nov. 22, 2014</time>
+        <div class="radioBox">
+            <div class="container">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 radioB">
+                    <div><p class="text-center">CLUSTERING</p></div> 
+                    
+                </div> 
+                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8 ">
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Event" > Event
+                    </label>
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Mood"> Mood
+                    </label>
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Location"> Location
+                    </label>
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Mental State"> Mental State
+                    </label>
                 </div>
             </div>
         </div>
@@ -132,66 +125,96 @@
 </div>
 <div class="zodiac_box">     
     <div class="container zodiacCont">
-        <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
+        
+        
+        <div class="box box1 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "clustering2">
+                <figure></figure>
+                <strong>CONSTRACTION</strong>
+        </div>
+        <div class="box box2 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "clustering2">
             
-                
-            <figure><a href="clustering.html"><img src="img/repostory.png" alt=""></a></figure>
-            <strong>BODY ANIMATION REPOSITORY</strong>
+            <figure></figure>
+            <strong>ROBBERY</strong>
         </div>
-        <div class="box box2 wow fadeInUp" data-wow-delay="0.2s">
-            <figure><a href="body_merger.html"><img src="img/body merge.png" alt=""></a></figure>
-            <strong>BODY ANIMATION <br> MERGER</strong>
-        </div>
-        <div class="box box3 wow fadeInUp" data-wow-delay="0.1s">
-            <figure> <a href="body_transfer.html"><img src="img/body ani style transfer.png" alt=""></a></figure>
-            <strong>BODY ANIMATION STYLE TRANSFER</strong>
-        </div>
-        <div class="box box4 wow fadeInUp">
+        <div class="box box3 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "clustering2">
             
-            <figure><img src="img/showreel.png" alt=""></figure>
-            <strong>SHOWREEL</strong>
+            <figure></figure>
+            <strong>DEATH</strong>
+        </div>
+        <div class="box box4 wow fadeInUp clust" data-page = "clustering2">
+            
+            <figure></figure>
+            <strong>MURDER</strong>
         </div>
         
-        <div class="box box5 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="box box5 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "clustering2">
             
-            <figure><img src="img/repostory.png" alt=""></figure>
-            <strong>FACE ANIMATION REPOSITORY</strong>
+            <figure></figure>
+            <strong>BLAST</strong>
         </div>
-        <div class="box box6 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="box box6 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "clustering2">
             
-            <figure><img src="img/face auto exp.png" alt=""></figure>
-            <strong>FACE 3D MODEL <br> AUTO RIGGER</strong>
+            <figure></figure>
+            <strong>FOOTBALL</strong>
         </div>
-        <div class="box box7 wow fadeInUp" data-wow-delay="0.1s">
-            
-            <figure><img src="img/face merge exp.png" alt=""></figure>
-            <strong>FACE EXPRESSION EMOTION MERGER</strong>
-        </div>
-        <div class="box box8 wow fadeInUp">
-            
-            <figure><img src="img/showreel.png" alt=""></figure>
-            <strong>SHOWREEL</strong>
-        </div>
-        
-        <div class="box box9C wow fadeInUp" data-wow-delay="0.1s">
-            
-            <figure><img src="img/create event.png" alt=""></figure>
-            <strong>EVENT CREATION</strong>
-       
-            
-        </div>
-        <div class="box box11C wow fadeInUp" ">
+        <div class="box box7 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "clustering2">
            
-            <figure><img src="img/timeline.png" alt=""></figure>
-            <strong>TIMELINE BASED EDITING</strong>
-        
+            <figure></figure>
+            <strong>WIN MOMENTS</strong>
+        </div>
+        <div class="box box8 wow fadeInUp clust" data-page = "clustering2">
             
+            <figure></figure>
+            <strong>DANCE</strong>
+        </div>
+        <div class="box box1 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "clustering2">
+            
+            <figure></figure>
+            <strong>CONSTRACTION</strong>
+        </div>
+        <div class="box box2 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "clustering2">
+            
+            <figure></figure>
+            <strong>ROBBERY</strong>
+        </div>
+        <div class="box box3 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "clustering2">
+           
+            <figure></figure>
+            <strong>DEATH</strong>
+        </div>
+        <div class="box box4 wow fadeInUp clust" data-page = "clustering2">
+            
+            <figure></figure>
+            <strong>MURDER</strong>
+        </div>
+        
+        <div class="box box9 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "clustering2">
+           
+            <figure></figure>
+            <strong>ASSASINATION</strong>
+        </div>
+        <div class="box box10 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "clustering2">
+           
+            <figure></figure>
+            <strong>FOG</strong>
+        </div>
+        <div class="box box11 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "clustering2">
+            
+            <figure></figure>
+            <strong>RACE</strong>
+        </div>
+        <div class="box box12 wow fadeInUp clust" data-page = "clustering2"">
+           
+            <figure></figure>
+            <strong>DANCE</strong>
         </div>
 
     </div>
 </div>
 <!--content-->
-<div class="content">   
+<div class="content"> 
+    
+   
     <div class="thumb-box4">
         <div class="container"> 
             <div class="row">
@@ -286,46 +309,6 @@
     </div>
 </div>
 <!--footer-->
-<!-- Modal -->
-                  <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-                    
-                      <!-- Modal content-->
-                      <div class="reg">
-                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
-                <div class="login-form">
-                      <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
-                      </div>
-                      
-                      <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                      <div id="firebaseui-auth-container"></div>
-                      <p class="new-animake">New in Animake?</p>
-                      <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
-                </div>
-                <form class="reg-form">
-                     <div class="form-group">
-                        <label for="inputEmail"  class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
-                      </div>
-                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" --> 
-                      <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                      <p class="already-reg">already registered?</p>
-                </form>
-                </div>
-                      
-                    </div>
-                  </div>
-
 <footer> 
     <div class="container">
         <figure><img src="img/fotterLogo.jpg" alt=""></figure>
@@ -334,25 +317,5 @@
 </footer>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
-<script src="js/firebaseAuth.js"></script>
-<script src="firebase/login.js"></script>
-<script src="firebase/register.js"></script>
-<script src="firebase/firebase-listener.js"></script>
-
-
-<script type="text/javascript" src="firebase/firebase-listener.js"></script>
-<script>
-    /*var btnLogOut = document.getElementById("logOutBtn");
-    btnLogOut.addEventListener('click', e => {
-    alert();
-    firebase.auth().signOut();
-});*/
-    /*firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(!firebaseUser){
-       window.location = "index.html?reg";
-    }
-});*/
-</script>
-
 </body>
 </html>
