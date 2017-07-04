@@ -1,39 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>my_library</title>
+<title>Clustering</title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">
 <meta name="author" content="Your name">
 <meta name = "format-detection" content = "telephone=no" />
-<!-- FIREBASE -->
-<!-- <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>   -->
-<!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> -->
-
-
-<!-- firebase -->
-<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>  
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> 
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<script src="firebase/config.js"></script>
-<script src="firebase/providers.js"></script> 
-<!-- end firebase -->
 <!--CSS-->
 <link rel="stylesheet" href="css/bootstrap.css" >
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/repository.css">
-<link rel="stylesheet" href="css/reg_form.css">
 <link rel="stylesheet" href="css/styleClustering.css">
-<link rel="stylesheet" href="css/styleClustering2.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="fonts/font-awesome.css">
-<link rel="stylesheet" href="css/my_library.css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -41,10 +24,17 @@
 <script src="js/jquery.mobilemenu.js"></script>
 <script src="js/jquery.equalheights.js"></script> 
 <script src="js/sForm.js"></script>
-<script src="js/scroll.js"></script>
-
+<script src="js/active.js"></script>
 <!--[if (gt IE 9)|!(IE)]><!-->
-
+<script src="js/wow/wow.js"></script>
+<script src="js/wow/device.min.js"></script>
+<script>
+    $(document).ready(function () {       
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+      }   
+    });
+</script>
 <!--<![endif]-->
 
 <!--[if lt IE 9]>
@@ -59,17 +49,6 @@
   </div>
   <link rel="stylesheet" href="css/ie.css">
   <![endif]-->
-
-<!-- firebase -->
-
- <!-- Initialize Firebase -->
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<!-- <script src="firebase/config.js"></script> -->
-<!-- <script src="firebase/providers.js"></script>  -->
-<!-- ИНИЦИАЛИЗАЦИЯ FIREBASE КОНЕЦ.-->
-<!--Код ниже инициализирует виджет для логина с помощью FirebaseUI  -->
-
-<!-- end firebase -->
 </head>
 <body>
 <div class="main">
@@ -96,48 +75,211 @@
                         </ul>
                     </li>
 
-                    <li class="sub-menu"><a href="index-1.html">about</a>
+                    <li class="sub-menu"><a href="index-1.html">about</a><span class="fa fa-angle-down"></span>
                         <ul class="submenu">
-                            <li><a href="#">columns 01</a></li>
+            				<li><a href="#">columns 01</a></li>
                             <li><a href="#">columns 02</a></li>
-                            <li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
+            				<li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
                                 <ul class="submenu">
                                     <li><a href="#">columns 04</a></li>
                                     <li><a href="#">columns 05</a></li>
                                   </ul> 
                             </li>
-                        </ul>
+            			</ul>
                     </li>
-                     <li> <a href="#">my library</a></li>
                     <li><a href="index-2.html">contacts</a></li>
                 </ul>
             </nav>
             <ul class="follow_icon">
-                <li class="cosialIcon"><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
-                <li class="cosialIcon"><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
-                <li class="cosialIcon"><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
-                <li><a href="registration_form.html"></a></li>
-                <div class="log-Out">
-                    <li class="logLi"><p id="logOutBtn" type="button">Log-Out</p></li>
-                    <br>
-                    <div class="user-mail pull-right"></div>
-                </div>
-                <li class="sign-in">
-                  <!-- Trigger the modal with a button -->
-                  <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>                  
-                </li>
-
+                <li><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
+                <li><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
+                <li><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
+                <a href="#"><img class="img responsive " src="img/animakeFooter.png" style="width: 81px; height: 26px; margin-left: 7%; "></a>
             </ul>
             
             
         </header>
- 
+        <div class="radioBox">
+            <div class="container">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 radioB">
+                    <div class="b-none"><p class="text-center">My Assets</p></div> 
+                    <div class="del_btn">
+                        <a href="#">Delete Selected</a>
+                    </div>
+                    
+                </div> 
+                <!-- <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8 ">
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Event" > Event
+                    </label>
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Mood"> Mood
+                    </label>
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Location"> Location
+                    </label>
+                    <label class="radio-inline" onclick="radio(this)">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Mental State"> Mental State
+                    </label>
+                </div> -->
+            </div>
+        </div>
     </div>
 </div>
-<div class="zodiac_box"> 
-<div class="container library">
-    
-</div>
+<div class="zodiac_box">     
+    <div class="container zodiacCont">
+        
+        
+        <div class="box box1 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "#">
+                <figure></figure>
+<!--                 <strong>CONSTRACTION</strong>
+ -->                
+                        <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+                        
+                
+        </div>
+        <div class="box box2 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>ROBBERY</strong> -->
+             <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box3 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>DEATH</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box4 wow fadeInUp clust" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>MURDER</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        
+        <div class="box box5 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>BLAST</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box6 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>FOOTBALL</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box7 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "#">
+           
+            <figure></figure>
+            <!-- <strong>WIN MOMENTS</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box8 wow fadeInUp clust" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>DANCE</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box1 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>CONSTRACTION</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box2 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>ROBBERY</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box3 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "#">
+           
+            <figure></figure>
+            <!-- <strong>DEATH</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box4 wow fadeInUp clust" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>MURDER</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        
+        <div class="box box9 wow fadeInUp clust" data-wow-delay="0.3s" data-page = "#">
+           
+            <figure></figure>
+            <!-- <strong>ASSASINATION</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box10 wow fadeInUp clust" data-wow-delay="0.2s" data-page = "#">
+           
+            <figure></figure>
+            <!-- <strong>FOG</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box11 wow fadeInUp clust" data-wow-delay="0.1s" data-page = "#">
+            
+            <figure></figure>
+            <!-- <strong>RACE</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+        <div class="box box12 wow fadeInUp clust" data-page = "#"">
+           
+            <figure></figure>
+            <!-- <strong>DANCE</strong> -->
+            <label class="fancy-checkbox">
+                            <input type="checkbox" />
+                            <span></span>
+                        </label>
+        </div>
+
+    </div>
 </div>
 <!--content-->
 <div class="content"> 
@@ -243,68 +385,7 @@
     </div>
   
 </footer>
-<!-- Modal -->
-                  <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-                    
-                      <!-- Modal content-->
-                      <div class="reg">
-                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
-                <div class="login-form">
-                      <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
-                      </div>
-                      
-                      <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                      <div id="firebaseui-auth-container"></div>
-                      <p class="new-animake">New in Animake?</p>
-                      <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
-                </div>
-                <form class="reg-form">
-                     <div class="form-group">
-                        <label for="inputEmail"  class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
-                      </div>
-                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" --> 
-                      <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                      <p class="already-reg">already registered?</p>
-                </form>
-                </div>
-                      
-                    </div>
-                  </div>
-
-
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
-<!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
-
-<script src="js/firebaseAuth.js"></script>
-<script src="firebase/firebase-listener.js"></script>
-<script src="js/active.js"></script>
-<script src="js/repository.js"></script>
-<script src="js/active.js"></script>
-<script src="js/wow/wow.js"></script>
-<script src="js/wow/device.min.js"></script>
-<script>
-    $(document).ready(function () {       
-      if ($('html').hasClass('desktop')) {
-        new WOW().init();
-      }   
-    });
-</script>
-<script src="firebase/login.js"></script>
-<script src="firebase/register.js"></script>
-<script type="text/javascript" src="firebase/firebase-listener.js"></script>
-</script>
 </body>
 </html>
