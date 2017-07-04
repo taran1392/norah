@@ -30,7 +30,7 @@ body{
     margin-left: 74%;
     margin-top: -1.5%;
     width: 87%;
-
+    z-index: 2;
 }
 .subMenuS li{
 	display: none;
@@ -40,6 +40,7 @@ body{
 	background-color: #261635!important;
 	opacity: 0.7;
 	float: right;
+	cursor: pointer;
 }
 .subMenuS li:hover {
 	background-color:#B55581!important; 
@@ -81,8 +82,8 @@ body{
 	outline: none;
 	background-image: url(../img/search.png);
 	background-repeat: no-repeat;
-	padding: 1% 20%;
-    background-size:5%;
+	padding: 3% 20%;
+    background-size:8%;
     background-position: right center;
     margin-top: 1%;
     width: 100%;
@@ -96,7 +97,7 @@ body{
 }
 
 .clust figure img {
-    width: 98%!important;
+    width: 75%!important;
     margin-top: -6%;
     height: 283%!important;
 }
@@ -106,8 +107,29 @@ body{
 .radioB{
 	padding: 1% 0;
 }
-.radioBox span{
+.filter span{
 	font-size: 15px;
+	margin-right: 5%;
+}
+.closeDiv{
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: #6E5D7E;
+    padding: 1% 2%;
+    border-radius: 10px;
+}
+.closeDiv button{
+	padding-left: 3%;
+	background-color: #6E5D7E;
+	border: none;
+	outline: none;
+	margin-top: 3%;
+}
+.filterP{
+	margin: 1%;
+}
+.closeDiv a{
+	color: white;
 }
 .zodiacCont .box{
 	width: 25%;
@@ -251,3 +273,15 @@ body{
 }
 
 
+/*.Rounded_Rectangle_1_copy {
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.251;
+  position: absolute;
+  left: 308px;
+  top: 53px;
+  width: 67px;
+  height: 25px;
+  z-index: 83;
+}
+*/
