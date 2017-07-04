@@ -39,11 +39,16 @@ jQuery(document).ready(function(){
         $('.login-form').show();
     });
 
-    $('.box, .tp').off('click').on('click', function(e){
+    $('.clustering .box, .tp').off('click').on('click', function(e){
         if(!$(e.target).is('.fa')) {
             window.location.href= $(this).attr('data-page') + ".html";
         }
-    })   
+    });
+
+    $('.openModal').off('click').on('click', function(e){
+        e.preventDefault();
+        $('#js-modal').show();
+    })
     
 
 /*--------------------------firebase storage--------------------*/
@@ -64,23 +69,34 @@ jQuery(document).ready(function(){
         var gsReference = firebase.storage().refFromURL('gs://animake-672fc.appspot.com');
         var gifs = {};
         var anims = {};
-    
+    console.log("fireObject = ", fireObject);
         for (key in fireObject) {
             var obj = fireObject[key].split("-");
+    console.log("obj = ", obj);
             var gif = 'gifsFires/'+obj[0];
+    console.log("gif = ", gif);
             var anim = 'Animake/'+obj[1];
+    console.log("anim = ", anim);
             var spaceRef = storageRef.child(gif);
+    console.log("spaceRef = ", spaceRef);
+    console.log("storageRef.child(",gif,").getDownloadURL() = ", storageRef.child(gif).getDownloadURL());
             storageRef.child(gif).getDownloadURL().then(function(url) {
+    console.log("gif url = ", url);
                 var num = url.match(/F\d+/);
+    console.log("gif num = ", num);
                 gifs[num] = url;
                 sessionStorage.setItem('satorage_gifs', JSON.stringify(gifs));
             }).catch(function(error) {});
     
             storageRef.child(anim).getDownloadURL().then(function(url) {
+    console.log("anim url = ", anim);
                 var num = url.match(/F\d+/);
+    console.log("anim num = ", num);
                 anims[num] = url;
                 sessionStorage.setItem('satorage_anims', JSON.stringify(anims));
             }).catch(function(error) {})
         }
     });
+    console.log("sessionStorage.getItem('satorage_gifs') = ", sessionStorage.getItem('satorage_gifs'));
+    console.log("sessionStorage.getItem('satorage_anims') = ", sessionStorage.getItem('satorage_anims'));
 })
