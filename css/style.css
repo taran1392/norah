@@ -2543,6 +2543,7 @@ nav.tm_navbar li:hover > a{
 .log-Out{
 	display: none;
 }
+<<<<<<< HEAD
 header {
 	position: relative;
 	width: 100%;
@@ -2552,3 +2553,65 @@ header {
     background: #4b3065; 
     box-shadow: 0px 4px 4px 0px #3D2854;
 }
+=======
+.b-none {     background: none !important;
+    display: inline-block;
+    padding: 31px !important;
+    float: left; }
+
+.b-none p {
+	    margin-bottom: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+}
+.del_btn {
+        float: left;
+    margin: 20px 0 0 30px;
+    padding: 0 !important;
+    background: none !important;
+}
+.del_btn a {
+    background: #e36480;
+    display: inline-block;
+    color: #fff;
+    padding: 13px 25px;
+    border-radius: 100px;
+    font-size: 19px;
+}
+.del_btn a:hover {
+	background: #51376a;
+}
+.fancy-checkbox {
+    text-align: center;
+    color: white;
+    width: 20px;
+    float: right;
+    margin: 15px 0 0 0 !important;
+    position: absolute;
+    bottom: 18px;
+    z-index: 9;
+    right: 32px;
+}
+
+
+
+.fancy-checkbox input[type="checkbox"] {
+    display: none;
+}
+ 
+.fancy-checkbox span:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    width: 3em;
+    font-size: 25px;
+    height: 3em;
+    content: '\f096';
+    margin-right: .3em;
+}
+ 
+.fancy-checkbox input[type="checkbox"]:checked ~ span:before {
+    content: '\f14a';
+}
+>>>>>>> origin/master
