@@ -2543,3 +2543,12 @@ nav.tm_navbar li:hover > a{
 .log-Out{
 	display: none;
 }
+header {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 11;
+    background: #4b3065; 
+    box-shadow: 0px 4px 4px 0px #3D2854;
+}
