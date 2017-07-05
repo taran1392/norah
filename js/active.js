@@ -59,9 +59,10 @@ jQuery(document).ready(function() {
             queryDatabase(token);
             /*
             closeLoginModal();
+            */
             $('.login-form').hide();
             $('.reg-form').hide();
-            */
+
         }
     });
 
