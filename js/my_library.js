@@ -19,7 +19,7 @@ function loadPage() {
                 firebase.storage().ref("animFiles").child(animations[animKey]+".anim").getDownloadURL().then(function (animDownloadUrl) {
                     firebase.storage().ref("mp4Files").child(animations[animKey]+".mp4").getDownloadURL().then(function (downloadUrl) {
                         blocks +='<div class="box box'+k+' fadeInUp clust" data-wow-delay="0.3s" data-page="#">';
-                        blocks +='<video autoplay loop>';
+                        blocks +='<video autoplay loop controls muted>';
                         blocks +='<source src="'+downloadUrl+'" type="video/mp4" />';
                         blocks +='</video>';
                         blocks +='<label class="fancy-checkbox">';

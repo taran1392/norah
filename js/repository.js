@@ -19,9 +19,9 @@ function getVideos(page, th) {
                     blocks +='<div class="box box'+k+' fadeInUp clust">';
                     blocks +='<div style="z-index: 111;">';
                     blocks +='<a class="newwwww" href="javascript:;" data-name="'+animations[animKey].name+'"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                    blocks +='<a data-url="'+animDownloadUrl+'" data-name="'+animations[animKey].name+'.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+                    blocks +='<a href="'+animDownloadUrl+'" download="'+animations[animKey].name+'.anim"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks +='</div>';
-                    blocks +='<video autoplay loop>';
+                    blocks +='<video autoplay loop controls muted>';
                     blocks +='<source src="'+downloadUrl+'" type="video/mp4" />';
                     blocks +='</video>';
                     blocks +='</div>';
