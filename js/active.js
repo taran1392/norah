@@ -57,9 +57,9 @@ jQuery(document).ready(function() {
             // User is signed in.
             var token = firebase.auth().currentUser.uid;
             queryDatabase(token);
-            /*
+
             closeLoginModal();
-            */
+            $('#js-modal').show();
             $('.login-form').hide();
             $('.reg-form').hide();
 
