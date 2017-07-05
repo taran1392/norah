@@ -25,10 +25,11 @@ function queryDatabase(token) {
     })
 }
 
-
+var onceBool;
 
 
 jQuery(document).ready(function() {
+    onceBool = true;
     $('.login-form .new-animake').off('click').on('click', function() {
         $('.login-form').hide();
         $('.reg-form').show();
@@ -62,7 +63,10 @@ jQuery(document).ready(function() {
             $('#js-modal').hide();
             $('.login-form').hide();
             $('.reg-form').hide();
-            location.reload();
+            if (onceBool == true) {
+                location.reload();
+                onceBool = false;
+            }
         }
     });
 
