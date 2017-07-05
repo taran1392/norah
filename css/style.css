@@ -2603,3 +2603,10 @@ nav.tm_navbar li:hover > a{
 .fancy-checkbox input[type="checkbox"]:checked ~ span:before {
     content: '\f14a';
 }
+
+
+.downloadbutton {
+	right: 50px;
+	position: relative;
+	top: 6px;
+}

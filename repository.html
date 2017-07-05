@@ -13,11 +13,6 @@
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
     <meta name="format-detection" content="telephone=no" />
-    <!-- FIREBASE -->
-    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>   -->
-    <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> -->
-
-
     <!-- firebase -->
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
@@ -41,6 +36,7 @@
     <script src="js/jquery.mobilemenu.js"></script>
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/sForm.js"></script>
+    <script src="js/blockUI.js"></script>
 
     <!--[if (gt IE 9)|!(IE)]><!-->
 
@@ -58,17 +54,6 @@
   </div>
   <link rel="stylesheet" href="css/ie.css">
   <![endif]-->
-
-    <!-- firebase -->
-
-    <!-- Initialize Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <!-- <script src="firebase/config.js"></script> -->
-    <!-- <script src="firebase/providers.js"></script>  -->
-    <!-- ИНИЦИАЛИЗАЦИЯ FIREBASE КОНЕЦ.-->
-    <!--Код ниже инициализирует виджет для логина с помощью FirebaseUI  -->
-
-    <!-- end firebase -->
 </head>
 
 <body>
@@ -156,11 +141,11 @@
                         <!-- <div class="pull-left closeDiv">
                        <p class="pull-left filterP">Bodypartsused</p>
                        <button class="pull-right closeBtn">X</button>
-                   </div> 
+                   </div>
                    <div class="pull-left closeDiv">
                        <p class="pull-left filterP">Bodypartsused</p>
                        <button class="pull-right closeBtn">X</button>
-                   </div> 
+                   </div>
                    <div class="pull-left closeDiv">
                        <p class="pull-left filterP">Bodypartsused</p>
                        <button class="pull-right closeBtn">X</button>
@@ -421,18 +406,18 @@
         <div class="row">
             <div class="col-lg-5 col-lg-offset-5 col-lg-5 col-lg-offset-5 col-lg-5 col-lg-offset-5 col-lg-5 col-lg-offset-5">
                 <nav aria-label="...">
-                    <ul class="pagination">
-                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">Page No. <-</span></a></li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">5 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">6 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">7 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">8 <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="#">9 <span class="sr-only">(current)</span></a></li>
-                        <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">-> Last</span></a></li>
+                    <ul class="pagination repo-pages">
+                        <!--<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">Page No. <-</span></a></li>-->
+                        <li class="active"><a href="#" onclick="getVideos(1, this);">1 <span class="sr-only">(current)</span></a></li>
+                        <!--<li class=""><a href="#" onclick="getVideos(2, this);">2 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(3, this);">3 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(4, this);">4 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(5, this);">5 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(6, this);">6 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(7, this);">7 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(8, this);">8 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class=""><a href="#" onclick="getVideos(9, this);">9 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">-> Last</span></a></li>-->
                     </ul>
                 </nav>
             </div>
@@ -605,7 +590,7 @@
     <script src="firebase/register.js"></script>
     <script type="text/javascript" src="firebase/firebase-listener.js"></script>
     <!-- <script type="text/javascript">
-   
+
 
 jQuery(document).ready(function(){
 var storageRef = firebase.storage().ref();
@@ -617,7 +602,7 @@ storageRef.child('gifsFires/1.gif').getDownloadURL().then(function(url) {
     console.log("url = ", url);
     $('.gifPic').attr('src', url);
     document.getElementsByClassName('gifPic').src = url;
- 
+
 }).catch(function(error) {
 
 });
@@ -625,7 +610,6 @@ storageRef.child('gifsFires/1.gif').getDownloadURL().then(function(url) {
 
 
 </script>  -->
-    </script>
 </body>
 
 </html>
