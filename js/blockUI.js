@@ -126,9 +126,9 @@
             css: {
                 padding: 0,
                 margin: 0,
-                width: '30%',
-                top: '40%',
-                left: '35%',
+
+                top: '50%',
+                left: '40%',
                 textAlign: 'center',
                 color: '#000',
                 border: '3px solid #aaa',
@@ -140,7 +140,7 @@
             themedCSS: {
                 width: '30%',
                 top: '40%',
-                left: '35%'
+                left: '0%'
             },
 
             // styles for the overlay
@@ -156,21 +156,19 @@
 
             // styles applied when using $.growlUI
             growlCSS: {
-                /*
-                                width: '350px',
-                                top: '10px',
-                                left: '',
-                                right: '10px',
-                                border: 'none',
-                                padding: '5px',
-                                opacity: 0.6,
-                                cursor: 'default',
-                                color: '#fff',
-                                backgroundColor: '#000',
-                                '-webkit-border-radius': '10px',
-                                '-moz-border-radius': '10px',
-                                'border-radius': '10px'
-                           */
+                width: '350px',
+                top: '10px',
+                left: '1',
+                right: '200px',
+                border: 'none',
+                padding: '5px',
+                opacity: 0.6,
+                cursor: 'default',
+                color: '#fff',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                'border-radius': '10px'
             },
 
             // IE issues: 'about:blank' fails on HTTPS and javascript:false is s-l-o-w
