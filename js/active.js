@@ -58,11 +58,11 @@ jQuery(document).ready(function() {
             var token = firebase.auth().currentUser.uid;
             queryDatabase(token);
 
-            closeLoginModal();
-            $('#js-modal').show();
+            // closeLoginModal();
+            $('#js-modal').hide();
             $('.login-form').hide();
             $('.reg-form').hide();
-
+            location.reload();
         }
     });
 
