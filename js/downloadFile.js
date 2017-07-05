@@ -6,10 +6,18 @@ function downloadFile(th) {
         url: url,
         success: function(data) {
             var blob=new Blob([data]);
-            var link=document.createElement('a');
-            link.href=window.URL.createObjectURL(blob);
-            link.download=fileName;
-            link.click();
+
+            var file = window.URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = file;
+            a.download = fileName;
+            console.log(file);
+            document.body.appendChild(a);
+            a.click();
+
+            window.onfocus = function () {
+                document.body.removeChild(a)
+            }
         }
     });
 }
