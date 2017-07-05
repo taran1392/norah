@@ -87,16 +87,6 @@ firebase.database().ref("animations").orderByChild("name").once("value", functio
 
 jQuery(document).ready(function(){
 
-/*---------firebase storage zodiacCont--------------*/
-getVideos(2);
-
-/*--------------------Side Bar------------------------------------*/
-/*var fireBaseSideBar = firebase.database().ref().child("tags");
-
-fireBaseSideBar.on('value',function(datasnapshot){
-	$(".sideLi").html() = datasnapshot.val();
-	})*/
-
 firebase.database().ref("/tags/").once('value').then(function(snapshot) {
         var fireObject = snapshot.val();
         // console.log("fireObject = ", fireObject);
