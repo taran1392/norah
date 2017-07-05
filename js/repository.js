@@ -13,7 +13,7 @@ function getVideos(page, th) {
     var completed = 1;
     firebase.database().ref("animations").orderByChild("name").startAt(startAt).limitToFirst(resultsPerPage).once("value", function(ss) {
         var animations = ss.val();
-        Object.keys(animations).forEach(function(animKey) {
+        animations && Object.keys(animations).forEach(function(animKey) {
             firebase.storage().ref("animFiles").child(animations[animKey].name+".anim").getDownloadURL().then(function (animDownloadUrl) {
                 firebase.storage().ref("mp4Files").child(animations[animKey].name+".mp4").getDownloadURL().then(function (downloadUrl) {
                     blocks +='<div class="box box'+k+' fadeInUp clust">';
@@ -63,7 +63,8 @@ function getVideos(page, th) {
 }
 
 firebase.database().ref("animations").orderByChild("name").once("value", function(ss) {
-    pages = Math.ceil(Object.keys(ss.val()).length/resultsPerPage);
+    ss = ss.val();
+    pages = ss && Math.ceil(Object.keys(ss).length/resultsPerPage);
     var pageHTML = '<li class="active"><a href="javascript:;" onclick="getVideos(1, this);">1 <span class="sr-only">(current)</span></a></li>';
     for(var page = 2; page <= pages; page++) {
         pageHTML += '<li class=""><a href="javascript:;" onclick="getVideos('+page+', this);">' + page+ ' <span class="sr-only">(current)</span></a></li>';

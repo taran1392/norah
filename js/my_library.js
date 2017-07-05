@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    setTimeout(loadPage, 500);
+    setTimeout(loadPage, 1500);
 });
 
 function loadPage() {
@@ -11,7 +11,11 @@ function loadPage() {
         var userId = firebase.auth().currentUser.uid;
         firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function (ss) {
             var animations = ss.val();
-            Object.keys(animations).forEach(function(animKey) {
+            if(!animations) {
+                alert("No items in library");
+                $.unblockUI();
+            }
+            animations && Object.keys(animations).forEach(function(animKey) {
                 firebase.storage().ref("animFiles").child(animations[animKey]+".anim").getDownloadURL().then(function (animDownloadUrl) {
                     firebase.storage().ref("mp4Files").child(animations[animKey]+".mp4").getDownloadURL().then(function (downloadUrl) {
                         blocks +='<div class="box box'+k+' fadeInUp clust" data-wow-delay="0.3s" data-page="#">';
