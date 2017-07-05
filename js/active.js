@@ -60,7 +60,7 @@ jQuery(document).ready(function() {
             queryDatabase(token);
 
             // closeLoginModal();
-            $('.modal fade in').hide();
+            $('.modal fade').hide();
             $('.reg').hide();
             $('#js-modal').hide();
             $('.login-form').hide();
