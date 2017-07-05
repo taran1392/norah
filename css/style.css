@@ -2610,3 +2610,12 @@ nav.tm_navbar li:hover > a{
 	position: relative;
 	top: 6px;
 }
+
+.animation-name {
+	position: relative;
+	top: 150px;
+	font-size: 14px;
+	opacity: 1;
+	padding: 0;
+	transform: inherit;
+}
