@@ -14,44 +14,48 @@ function getVideos(page, th) {
     firebase.database().ref("animations").orderByChild("name").startAt(startAt).limitToFirst(resultsPerPage).once("value", function(ss) {
         var animations = ss.val();
         Object.keys(animations).forEach(function(animKey) {
-            firebase.storage().ref("mp4Files").child(animations[animKey].name+".mp4").getDownloadURL().then(function (downloadUrl) {
-                animations[animKey]['mp4Url'] = downloadUrl;
-                blocks +='<div class="box box'+k+' fadeInUp clust">';
-                blocks +='<div style="z-index: 111;">';
-                blocks +='<a class="newwwww" href="javascript:;" data-name="'+animations[animKey].name+'"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                blocks +='<a href="'+downloadUrl+'" download><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
-                blocks +='</div>';
-                blocks +='<video autoplay loop>';
-                blocks +='<source src="'+downloadUrl+'" type="video/mp4" />';
-                blocks +='</video>';
-                blocks +='</div>';
-                k++;
-                if(k === completed) {
-                    $('.zodiacCont').html(blocks);
+            firebase.storage().ref("animFiles").child(animations[animKey].name+".anim").getDownloadURL().then(function (animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(animations[animKey].name+".mp4").getDownloadURL().then(function (downloadUrl) {
+                    blocks +='<div class="box box'+k+' fadeInUp clust">';
+                    blocks +='<div style="z-index: 111;">';
+                    blocks +='<a class="newwwww" href="javascript:;" data-name="'+animations[animKey].name+'"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+                    blocks +='<a data-url="'+animDownloadUrl+'" data-name="'+animations[animKey].name+'.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+                    blocks +='</div>';
+                    blocks +='<video autoplay loop>';
+                    blocks +='<source src="'+downloadUrl+'" type="video/mp4" />';
+                    blocks +='</video>';
+                    blocks +='</div>';
+                    k++;
+                    if(k === completed) {
+                        $('.zodiacCont').html(blocks);
 
-                    $('.newwwww').click(function(){
-                        var animName = $(this).data("name");
-                        var userId = firebase.auth().currentUser.uid;
-                        firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function (snap) {
-                            var libraryItems = snap.val();
-                            var exists = false;
-                            console.log(libraryItems);
-                            libraryItems && Object.keys(libraryItems).forEach(function (itemKey) {
-                                exists = exists || (libraryItems[itemKey] == animName);
-                            });
-                            if(!exists) {
-                                var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
-                                newObjRef.set(animName);
-                                alert("Added to library");
+                        $('.newwwww').click(function(){
+                            if(firebase.auth().currentUser) {
+                                var animName = $(this).data("name");
+                                var userId = firebase.auth().currentUser.uid;
+                                firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function (snap) {
+                                    var libraryItems = snap.val();
+                                    var exists = false;
+                                    console.log(libraryItems);
+                                    libraryItems && Object.keys(libraryItems).forEach(function (itemKey) {
+                                        exists = exists || (libraryItems[itemKey] == animName);
+                                    });
+                                    if(!exists) {
+                                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
+                                        newObjRef.set(animName);
+                                        alert("Added to library");
+                                    } else {
+                                        alert("Already in library");
+                                    }
+                                })
                             } else {
-                                alert("Already in library");
+                                $('#myModal').modal('show');
                             }
                         })
 
-                    })
-
-                    $.unblockUI();
-                }
+                        $.unblockUI();
+                    }
+                })
             })
             completed++;
         });
