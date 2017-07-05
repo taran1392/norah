@@ -1,4 +1,4 @@
-$('.follow_icon button').click(function(){
+$('.sign-in button').click(function(){
   $('#myModal').modal('show');
 });
 
