@@ -1,76 +1,46 @@
-var resultsPerPage = 12;
-var pages = 0;
-
-function getVideos(page, th) {
-    $.blockUI();
-    if(th != undefined) {
-        $(th).parent().parent().find(".active").toggleClass("active");
-        $(th).parent().toggleClass("active");
-    }
-    var startAt = ((page - 1) * resultsPerPage) + 1;
-    var blocks = '';
-    var k = 1;
-    var completed = 1;
-    firebase.database().ref("animations").orderByChild("name").startAt(startAt).limitToFirst(resultsPerPage).once("value", function(ss) {
-        var animations = ss.val();
-        Object.keys(animations).forEach(function(animKey) {
-            firebase.storage().ref("mp4Files").child(animations[animKey].name+".mp4").getDownloadURL().then(function (downloadUrl) {
-                animations[animKey]['mp4Url'] = downloadUrl;
-                blocks +='<div class="box box'+k+' fadeInUp clust">';
-                blocks +='<div style="z-index: 111;">';
-                blocks +='<a class="newwwww" href="javascript:;" data-name="'+animations[animKey].name+'"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                blocks +='<a href="'+downloadUrl+'" download><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
-                blocks +='</div>';
-                blocks +='<video autoplay loop>';
-                blocks +='<source src="'+downloadUrl+'" type="video/mp4" />';
-                blocks +='</video>';
-                blocks +='</div>';
-                k++;
-                if(k === completed) {
-                    $('.zodiacCont').html(blocks);
-
-                    $('.newwwww').click(function(){
-                        var animName = $(this).data("name");
-                        var userId = firebase.auth().currentUser.uid;
-                        firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function (snap) {
-                            var libraryItems = snap.val();
-                            var exists = false;
-                            console.log(libraryItems);
-                            libraryItems && Object.keys(libraryItems).forEach(function (itemKey) {
-                                exists = exists || (libraryItems[itemKey] == animName);
-                            });
-                            if(!exists) {
-                                var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
-                                newObjRef.set(animName);
-                                alert("Added to library");
-                            } else {
-                                alert("Already in library");
-                            }
-                        })
-
-                    })
-
-                    $.unblockUI();
-                }
-            })
-            completed++;
-        });
-    });
-}
-
-firebase.database().ref("animations").orderByChild("name").once("value", function(ss) {
-    pages = Math.ceil(Object.keys(ss.val()).length/resultsPerPage);
-    var pageHTML = '<li class="active"><a href="javascript:;" onclick="getVideos(1, this);">1 <span class="sr-only">(current)</span></a></li>';
-    for(var page = 2; page <= pages; page++) {
-        pageHTML += '<li class=""><a href="javascript:;" onclick="getVideos('+page+', this);">' + page+ ' <span class="sr-only">(current)</span></a></li>';
-    }
-    $('.repo-pages').html(pageHTML);
-});
 
 jQuery(document).ready(function(){
 
 /*---------firebase storage zodiacCont--------------*/
-getVideos(1);
+
+if (sessionStorage.getItem("satorage_gifs") && sessionStorage.getItem("satorage_anims")) {
+  // Restore the contents of the text field
+  var satorage_gifs = JSON.parse(sessionStorage.getItem("satorage_gifs"));
+  var satorage_anims = JSON.parse(sessionStorage.getItem("satorage_anims"));
+  console.log("satorage_gifs = ", satorage_gifs);
+  console.log("satorage_anims = ", satorage_anims);
+  var blocks = '';
+  var k = 1;
+
+
+  for(key in satorage_gifs){
+  	console.log("key - ", key);
+  	blocks +='<div class="box box'+k+' wow fadeInUp clust">';
+        blocks +='<div>';
+        
+        blocks +='<a class="newwwww" href="#"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+        blocks +='<a href="'+satorage_anims[key]+'" download><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+        blocks +='</div><figure class="newFigure"> <img src="'+satorage_gifs[key]+'" class="gifPic"></figure><strong></strong>';
+        
+        blocks +='</div>';
+        ++k;
+  }
+  $('.zodiacCont').html(blocks);
+
+  $('.newwwww').click(function(){
+		var str = $(this).parent().next().find('img').attr('src');
+		
+		firebase.auth().onAuthStateChanged(function(user) {
+
+			// console.log(user.uid);
+			var newPostKey = firebase.database().ref();
+			newPostKey.push().set(str);
+		});
+	})
+}
+
+
+
 
 /*--------------------Side Bar------------------------------------*/
 /*var fireBaseSideBar = firebase.database().ref().child("tags");
@@ -81,18 +51,18 @@ fireBaseSideBar.on('value',function(datasnapshot){
 
 firebase.database().ref("/tags/").once('value').then(function(snapshot) {
         var fireObject = snapshot.val();
-        // console.log("fireObject = ", fireObject);
+        console.log("fireObject = ", fireObject);
         var t = 0;
         for(var key in fireObject) {
-            // console.log("key = ", key);
-            // console.log("fireObject[",key,"] = ", fireObject[key]);
+            console.log("key = ", key);
+            console.log("fireObject[",key,"] = ", fireObject[key]);
             var sabUl = "<ul class='nav nav-pills nav-stacked subMenuS'>";
             for(var b in fireObject[key]) {
-                sabUl += "<li  class = 'subManuLi' role='presentation'><a href='javascript:;'>"+fireObject[key][b]+"</a></li>";
+                sabUl += "<li  class = 'subManuLi' role='presentation'><a href='#'>"+fireObject[key][b]+"</a></li>";
             }
             sabUl += "</ul>";
             var active = (t == 0) ? " class='active'" : ''; 
-            $(".menuS").append('<li role="presentation"'+active+'><a href="javascript:;">'+key+'</a>'+sabUl+'</li>');
+            $(".menuS").append('<li role="presentation"'+active+'><a href="#">'+key+'</a>'+sabUl+'</li>');
             ++t;
         }
         var subLi = '';
