@@ -63,10 +63,7 @@ jQuery(document).ready(function() {
             $('#js-modal').hide();
             $('.login-form').hide();
             $('.reg-form').hide();
-            if (onceBool == true) {
-                location.reload();
-                onceBool = false;
-            }
+
         }
     });
 
