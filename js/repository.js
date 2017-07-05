@@ -23,10 +23,11 @@ function getVideos(page, th) {
     var k = 1;
     var completed = 1;
     var data = animationsArray.slice(offset, (page * resultsPerPage));
-    if(!data.length) {
+    if (!data.length) {
         $.unblockUI();
     } else {
         data.forEach(function(anim) {
+<<<<<<< Updated upstream
             firebase.storage().ref("animFiles").child(anim.name+".anim").getDownloadURL().then(function (animDownloadUrl) {
                 firebase.storage().ref("mp4Files").child(anim.name+".mp4").getDownloadURL().then(function (downloadUrl) {
                     blocks +='<div class="box box'+k+' fadeInUp clust">';
@@ -39,6 +40,19 @@ function getVideos(page, th) {
                     blocks +='<source src="'+downloadUrl+'" type="video/mp4" />';
                     blocks +='</video>';
                     blocks +='</div>';
+=======
+            firebase.storage().ref("animFiles").child(anim.name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(anim.name + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    blocks += '<div class="box box' + k + ' fadeInUp clust">';
+                    blocks += '<div style="z-index: 111;">';
+                    blocks += '<a class="newwwww" href="javascript:;" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+                    blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+                    blocks += '</div>';
+                    blocks += '<video autoplay loop controls muted>';
+                    blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
+                    blocks += '</video>';
+                    blocks += '</div>';
+>>>>>>> Stashed changes
                     k++;
                     if (k === completed) {
                         $('.zodiacCont').html(blocks);
@@ -88,7 +102,7 @@ firebase.database().ref("animations").orderByChild("name").once("value", functio
 
 jQuery(document).ready(function() {
 
-firebase.database().ref("/tags/").once('value').then(function(snapshot) {
+    firebase.database().ref("/tags/").once('value').then(function(snapshot) {
 
         var fireObject = snapshot.val();
         var t = 0;
@@ -103,26 +117,26 @@ firebase.database().ref("/tags/").once('value').then(function(snapshot) {
             $(".menuS").append('<li role="presentation"' + active + '><a href="javascript:;">' + key + '</a>' + sabUl + '</li>');
             ++t;
         }
-        
+
         $(".subManuLi").off('click').on('click', function() {
-        var subLi = '';
-            if (!$(this).hasClass("activeTag")){
-                    $(this).addClass("active activeTag");
+            var subLi = '';
+            if (!$(this).hasClass("activeTag")) {
+                $(this).addClass("active activeTag");
                 var name = $(this).attr('data-name');
-                    subLi += '<div class="pull-left closeDiv">';
-                    subLi += '<p class="pull-left filterP">' + $(this).html() + '</p>';
-                    subLi += '<button class="pull-right closeBtn" data-name="' + name + '">X</button>';
-                    subLi += '</div>';
-                    $(".tagName").append(subLi);
-                    selected = true;
-                   
+                subLi += '<div class="pull-left closeDiv">';
+                subLi += '<p class="pull-left filterP">' + $(this).html() + '</p>';
+                subLi += '<button class="pull-right closeBtn" data-name="' + name + '">X</button>';
+                subLi += '</div>';
+                $(".tagName").append(subLi);
+                selected = true;
+
             }
             $(".closeBtn").off('click').on('click', function() {
                 var name = $(this).attr('data-name');
                 $(this).parent().remove();
-                $('.subMenuS li[data-name="'+name+'"]').removeClass('active activeTag');
+                $('.subMenuS li[data-name="' + name + '"]').removeClass('active activeTag');
             });
-        
+
         });
     });
     /*----------------------CloseButton---------------------*/
