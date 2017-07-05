@@ -2423,6 +2423,18 @@ _:-ms-fullscreen.input-lg,
 :root input[type="month"].input-lg {
   line-height: 1.33;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -5243,6 +5255,9 @@ a.list-group-item {
 .panel-danger {
   .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
 }*/
+
+/* ////////////////////////  Start OF CSS DISABLED TO MAKE AutoRigger Popup Work 
+
 .embed-responsive {
   position: relative;
   display: block;
@@ -5435,6 +5450,9 @@ button.close {
     width: 900px;
   }
 }
+
+/////////////////////// END OF CSS DISABLED TO MAKE AutoRigger Popup Work */
+
 .tooltip {
   position: absolute;
   z-index: 1030;
