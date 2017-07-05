@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>About Us</title>
+<meta charset="utf-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+<meta name="description" content="Your description">
+<meta name="keywords" content="Your keywords">
+<meta name="author" content="Your name">
+<meta name = "format-detection" content = "telephone=no" />
+<!-- firebase -->
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>  
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" /> 
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script src="firebase/config.js"></script>
+<script src="firebase/providers.js"></script> 
+<!-- end firebase -->
+<!--CSS-->
+
+<link rel="stylesheet" href="css/bootstrap.css" >
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/contact-form.css">
+<link rel="stylesheet" href="fonts/font-awesome.css">
+<link rel="stylesheet" href="css/reg_form.css">
+<link rel="stylesheet" href="css/rigger_popup.css">
+<!--JS-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.mobilemenu.js"></script>
+<script src="js/jquery.equalheights.js"></script> 
+<script src="js/jquery.ui.totop.js"></script>
+<script src="js/TMForm.js"></script>
+<script src="js/modal.js"></script>  
+<script src="js/bootstrap-filestyle.js"></script> 
+
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script src="js/wow/wow.js"></script>
+<script src="js/wow/device.min.js"></script>
+<script>
+    $(document).ready(function () {       
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+      }   
+    });
+</script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+    <div id="ie6-alert" style="width: 100%; text-align:center;">
+    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
+      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
+        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
+      </map>
+  </div>
+  <![endif]-->
+</head>
+<body>
+<div class="main indent">
+    <!--header-->
+    <div class="container">
+        <header class="clearfix">
+            <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+                <ul class="nav sf-menu  clearfix ">
+
+                        <li class="sub-menu"><a href="index.html">Home</a>
+                            <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
+                                <li><a href="#">Animation</a>
+									<ul class="bodysub">
+                                        <li><a onclick="document.getElementById('js-upload-button').click();" style="cursor:pointer;">Auto Rigger</a></li>
+                                        <li><a href="repository.html">Repository</a></li>
+                                        <li><a href="merger_tool.html">Merger Tool</a></li>
+                                        <li><a href="pose_editor.html">Pose Editor</a></li>
+                                    </ul>
+								</li>
+                                <li><a href="#">3D Modelling</a>
+									<ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+								</li>
+                                <li><a href="#">Game maker</a>
+									<ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+								</li>
+								
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu"><a href="index-1.html">About</a><span class="fa fa-angle-down"></span>
+                            <!-- <ul class="submenu"> 
+            				<li><a href="#">columns 01</a></li>
+                            <li><a href="#">columns 02</a></li>
+            				<li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
+                                <ul class="submenu">
+                                    <li><a href="#">columns 04</a></li>
+                                    <li><a href="#">columns 05</a></li>
+                                  </ul> 
+                            </li> 
+            			</ul>-->
+                        </li>
+
+                        <li> <a href="my_library.html">My Library</a></li>
+                        <li><a href="index-4.html">Contacts</a></li>
+
+
+                    </ul>
+            </nav>
+			
+			
+            <ul class="follow_icon">
+                <li><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
+                <li><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
+                <li><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
+
+                <div class="log-Out">
+                    <li><p id="logOutBtn" type="button">Log-Out</p></li>
+                    <br>
+                    <div class="user-mail pull-left"></div>
+                </div>
+                <li class="sign-in">
+                    <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>                  
+                </li>
+            </ul>
+        </header>
+        <div class="logo_box indent">
+            <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/logo.png" alt="logo"></a></h1>
+        </div>
+    </div>
+</div>
+<!--content-->
+<div class="content indent">
+        <div class="who-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
+                        <h2 class="indent">About</h2>
+                        <div class="thumb-pad4">
+                            <div class="thumbnail">
+                                <figure><img src="img/page2_pic1.jpg" alt=""></figure>
+                                <div class="caption">
+                                    <h3>Praesent vestibulum molestie lacus aenean nonummy hendrerit mauris. Phasellus porta.</h3>
+                                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio.</p>
+                                    <p>Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+                                    <a href="#" class="btn-default btn3">read more</a>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h2 class="indent">History</h2>
+                        <ul class="list4">
+                            <li>
+                                <time datetime="2014-01-01">2001-2004</time>
+                                <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. </p>
+                            </li>
+                            <li>
+                                <time datetime="2014-01-01">2005-2009</time>
+                                <p>Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. Donec sit amet eros. </p>
+                            </li>
+                            <li>
+                                <time datetime="2014-01-01">2005-2009</time>
+                                <p>Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. </p>
+                            </li>
+                            <li>
+                                <time datetime="2014-01-01">2013-2014</time>
+                                <p>Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
+                        <h2 class="indent">Features</h2>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. </p>
+                        <ul class="list2">
+                            <li><a href="#">Donec eget tellus non erat</a></li>
+                            <li><a href="#">Lacinia fermentum vestibbulum iaculis lacinia est</a></li>
+                            <li><a href="#">Donec in velit vel ipsum auctor pulvinar</a></li>
+                            <li><a href="#">Proin dictum elementum velit</a></li>
+                            <li><a href="#">Fusce euismod consequat ante</a></li>
+                            <li><a href="#">Aliquam dapibus tincidunt metus</a></li>
+                        </ul>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. </p>
+                        <ul class="list2">
+                            <li><a href="#">Proin dictum elementum velit</a></li>
+                            <li><a href="#">Fusce euismod consequat ante</a></li>
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing</a></li>
+                            <li><a href="#">Pellentesque sed dolor</a></li>
+                            <li><a href="#">Aliquam congue fermentum nisl</a></li>
+                            <li><a href="#">Mauris accumsan nulla vel diam</a></li>
+                            <li><a href="#">Sed in lacus ut enim adipiscing aliquet</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="thumb-box5">
+            <div class="container">
+                <h2 class="wow fadeIn indent">Our staff</h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">  
+                        <div class="thumb-pad7">
+                            <div class="thumbnail">
+                                <figure><img src="img/page2_pic2.jpg" alt=""></figure>
+                                <div class="caption">
+                                    <h3>Helen Tompson</h3>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. </p>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">     
+                        <div class="thumb-pad7">
+                            <div class="thumbnail">
+                                <figure><img src="img/page2_pic3.jpg" alt=""></figure>
+                                <div class="caption">
+                                    <h3>Sandra Bullock</h3>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.2s">  
+                        <div class="thumb-pad7">
+                            <div class="thumbnail">
+                                <figure><img src="img/page2_pic4.jpg" alt=""></figure>
+                                <div class="caption">
+                                    <h3>Bradley Grosh</h3>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. </p>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-delay="0.3s">    
+                        <div class="thumb-pad7">
+                            <div class="thumbnail">
+                                <figure><img src="img/page2_pic5.jpg" alt=""></figure>
+                                <div class="caption">
+                                    <h3>Jessica Priston</h3>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="thumb-box6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
+                        <h2 class="indent">Why us?</h2>
+                        <ul class="list7">
+                            <li>
+                                <div class="badge">1.</div>
+                                <div class="extra-wrap">
+                                    <p><span>Praesent vestibulum</span> aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="badge">2.</div>
+                                <div class="extra-wrap">
+                                    <p><span>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. </span></p>
+                                    <p>Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="badge">3.</div>
+                                <div class="extra-wrap">
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="badge">4.</div>
+                                <div class="extra-wrap">
+                                    <p><span>Fusce feugiat malesuada odio.</span> Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h2 class="indent">Our vision</h2>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. </p>
+                        <ul class="list2">
+                            <li><a href="#">Donec eget tellus non erat</a></li>
+                            <li><a href="#">Lacinia fermentum vestibbulum iaculis lacinia est</a></li>
+                            <li><a href="#">Donec in velit vel ipsum auctor pulvinar</a></li>
+                            <li><a href="#">Proin dictum elementum velit</a></li>
+                            <li><a href="#">Fusce euismod consequat ante</a></li>
+                            <li><a href="#">Aliquam dapibus tincidunt metus</a></li>
+                        </ul>
+                        <p>Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. </p>
+                        <ul class="list2">
+                            <li><a href="#">Proin dictum elementum velit</a></li>
+                            <li><a href="#">Fusce euismod consequat ante</a></li>
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing </a></li>
+                            <li><a href="#">Pellentesque sed dolor</a></li>
+                            <li><a href="#">Aliquam congue fermentum nisl</a></li>
+                            <li><a href="#">Mauris accumsan nulla vel diam</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
+                        <h2 class="indent">Testimonials</h2>
+                        <ul class="list5">
+                            <li>
+                                <figure><img src="img/quote.png" alt=""></figure>
+                                <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna.</p>
+                                <a href="#">Sam Kromstain</a>
+                                <p><span>sociis natoque </span></p>
+                            </li>
+                            <li>
+                                <figure><img src="img/quote.png" alt=""></figure>
+                                <p>Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna.</p>
+                                <a href="#">Alan Smith</a>
+                                <p><span>sociis natoque </span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!--footer-->
+<footer> 
+    <div class="container">
+        <figure><img src="img/foo_logo.png" alt=""></figure>
+        <p>&copy; <em id="copyright-year"></em> <span>|</span> <a href="index-5.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+
+<!-- Modal -->
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="reg">
+                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
+                <div class="login-form">
+                      <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                      </div>
+                      
+                      <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                      <div id="firebaseui-auth-container"></div>
+                      <p class="new-animake">New in Animake?</p>
+                      <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                </div>
+                <form class="reg-form">
+                     <div class="form-group">
+                        <label for="inputEmail"  class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                      </div>
+                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" --> 
+                      <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                      <p class="already-reg">already registered?</p>
+                </form>
+                </div>
+                      
+                    </div>
+                  </div>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/tm-scripts.js"></script>
+<!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
+
+<script src="js/firebaseAuth.js"></script>
+<script src="firebase/login.js"></script>
+<script src="firebase/register.js"></script>
+<script src="firebase/firebase-listener.js"></script>
+
+
+
+</script>
+
+</body>
+</html>
