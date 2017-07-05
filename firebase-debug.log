@@ -1,0 +1,42 @@
+[debug] [2017-07-05T15:19:16.875Z] ----------------------------------------------------------------------
+[debug] [2017-07-05T15:19:16.880Z] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-07-05T15:19:16.881Z] CLI Version:  3.9.1
+[debug] [2017-07-05T15:19:16.881Z] Platform:     darwin
+[debug] [2017-07-05T15:19:16.881Z] Node Version: v6.9.4
+[debug] [2017-07-05T15:19:16.884Z] Time:         Wed Jul 05 2017 20:49:16 GMT+0530 (IST)
+[debug] [2017-07-05T15:19:16.884Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-05T15:19:16.919Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-05T15:19:16.920Z] > authorizing via signed-in user
+[debug] [2017-07-05T15:19:16.924Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-07-05T15:19:16.925Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/1Q9khMRDNuqTV4yzC4DrZTeb40SzLCl0FxkTtzSvCf4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Jul 05 2017 20:49:16 GMT+0530 (IST)
+[debug] [2017-07-05T15:19:17.124Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-05T15:19:17.127Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/animake-672fc  
+ Wed Jul 05 2017 20:49:17 GMT+0530 (IST)
+[debug] [2017-07-05T15:19:18.656Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-05T15:19:18.657Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/animake-672fc/tokens  
+ Wed Jul 05 2017 20:49:18 GMT+0530 (IST)
+[debug] [2017-07-05T15:19:19.852Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'animake-672fc'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2017-07-05T15:19:48.404Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/animake-672fc/uploads/-KoIKOT85yFh3JgrkSot?fileCount=1611&message=  
+ Wed Jul 05 2017 20:49:48 GMT+0530 (IST)
+[debug] [2017-07-05T15:22:46.176Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-05T15:22:46.190Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 1611 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] [2017-07-05T15:22:52.322Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/animake-672fc/releases { hosting: 
+   { public: '.',
+     rewrites: [ [Object] ],
+     version: '-KoIKOT85yFh3JgrkSot',
+     prefix: '-KoIKOT85yFh3JgrkSot/',
+     manifest: [] } } 
+ Wed Jul 05 2017 20:52:52 GMT+0530 (IST)

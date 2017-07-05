@@ -2,7 +2,7 @@ var resultsPerPage = 12;
 var pages = 0;
 
 function getVideos(page, th) {
-    $.blockUI.defaults.css = {};
+
     $.blockUI();
     if (th != undefined) {
         $(th).parent().parent().find(".active").toggleClass("active");

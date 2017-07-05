@@ -156,19 +156,21 @@
 
             // styles applied when using $.growlUI
             growlCSS: {
-                width: '350px',
-                top: '10px',
-                left: '',
-                right: '10px',
-                border: 'none',
-                padding: '5px',
-                opacity: 0.6,
-                cursor: 'default',
-                color: '#fff',
-                backgroundColor: '#000',
-                '-webkit-border-radius': '10px',
-                '-moz-border-radius': '10px',
-                'border-radius': '10px'
+                /*
+                                width: '350px',
+                                top: '10px',
+                                left: '',
+                                right: '10px',
+                                border: 'none',
+                                padding: '5px',
+                                opacity: 0.6,
+                                cursor: 'default',
+                                color: '#fff',
+                                backgroundColor: '#000',
+                                '-webkit-border-radius': '10px',
+                                '-moz-border-radius': '10px',
+                                'border-radius': '10px'
+                           */
             },
 
             // IE issues: 'about:blank' fails on HTTPS and javascript:false is s-l-o-w
