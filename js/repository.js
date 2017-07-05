@@ -36,7 +36,7 @@ function getVideos(page, th) {
                     blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks += '<div class="animation-name">' + anim.name + '</div>';
                     blocks += '</div>';
-                    blocks += '<video autoplay loop controls muted>';
+                    blocks += '<video autoplay loop  muted>';
                     blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
                     blocks += '</video>';
                     blocks += '</div>';
