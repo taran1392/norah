@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <meta name="format-detection" content="telephone=no" />
+    <!-- firebase -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="firebase/config.js"></script>
+    <script src="firebase/providers.js"></script>
+    <!-- end firebase -->
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reg_form.css">
+    <link rel="stylesheet" href="fonts/font-awesome.css">
+    <link rel="stylesheet" href="css/rigger_popup.css">
+    <style>
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <!--JS-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
+    <script src="js/sForm.js"></script>
+    <script src="js/active.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/wow/wow.js"></script>
+    <script src="js/wow/device.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+    <div id="ie6-alert" style="width: 100%; text-align:center;">
+    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
+      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
+        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
+      </map>
+  </div>
+  <link rel="stylesheet" href="css/ie.css">
+  <![endif]-->
+</head>
+
+<body>
+    <div class="main">
+        <!--header-->
+        <div class="container">
+            <header class="clearfix">
+                <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+                    <ul class="nav sf-menu  clearfix ">
+
+                        <li class="sub-menu"><a href="index.html">Home</a>
+                            <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
+                                <li><a href="#">Animation</a>
+                                    <ul class="bodysub">
+                                        <li><a onclick="document.getElementById('js-upload-button').click();" style="cursor:pointer;">Auto Rigger</a></li>
+                                        <li><a href="repository.html">Repository</a></li>
+                                        <li><a href="merger_tool.html">Merger Tool</a></li>
+                                        <li><a href="pose_editor.html">Pose Editor</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">3D Modelling</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Game maker</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu"><a href="about.html">About</a><span class="fa fa-angle-down"></span>
+                            <!-- <ul class="submenu"> 
+            				<li><a href="#">columns 01</a></li>
+                            <li><a href="#">columns 02</a></li>
+            				<li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
+                                <ul class="submenu">
+                                    <li><a href="#">columns 04</a></li>
+                                    <li><a href="#">columns 05</a></li>
+                                  </ul> 
+                            </li> 
+            			</ul>-->
+                        </li>
+
+                        <li> <a href="my_library.html">My Library</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+
+
+                    </ul>
+
+                </nav>
+                <ul class="follow_icon">
+                    <li class="cosialIcon">
+                        <a href="#"><img src="img/follow_icon1.png" alt=""></a>
+                    </li>
+                    <li class="cosialIcon">
+                        <a href="#"><img src="img/follow_icon2.png" alt=""></a>
+                    </li>
+                    <li class="cosialIcon">
+                        <a href="#"><img src="img/follow_icon3.png" alt=""></a>
+                    </li>
+                    <div class="log-Out">
+                        <li class="logLi">
+                            <p id="logOutBtn" type="button">Log-Out</p>
+                        </li>
+                        <br>
+                        <div class="user-mail pull-right"></div>
+                    </div>
+                    <li class="sign-in">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-in</button>
+                    </li>
+                </ul>
+
+            </header>
+            <div class="logo_box">
+                <h1 class="navbar-brand navbar-brand_">
+                    <a href="index.html"><img src="img/animake.png" alt="logo" class="img responsive"></a>
+                </h1>
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-sm-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
+                        <form id="search" class="search" action="search.php" method="GET" accept-charset="utf-8">
+                            <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}" placeholder="TAKE ME THROUGH THE TOUR">
+                            <a href="#" onClick="document.getElementById('search').submit()"> <img class="img responsive slaq" src="img/arrow.png" alt="" style="width: 50px; height: 37px; "> </a>
+                        </form>
+                        <time datetime="2014-01-01">Nov. 22, 2014</time>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zodiac_box">
+        <div class="container zodiacCont">
+            <div class="tp" id="tp" data-page="index">
+                <p><a class="t1" id="t1" onclick="placeH1()">ANIMATION TOOL</a></p>
+                <p><a class="t2" id="t2" onclick="placeH1()">3D MODELLING TOOL <br> (yet to launch)</a></p>
+                <p><a class="t3" id="t3" onclick="placeH1()">GAME MAKER <br> (yet to launch)</a></p>
+            </div>
+
+            <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
+
+
+                <figure>
+                    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+                        <input class="btn btn-success" type="file" id="js-upload" name="foo" accept=".obj" />
+                    </form>
+                    <a id="js-upload-button"><img src="img/repostory.png" alt=""></a>
+                </figure>
+                <strong>AUTO RIGGER</strong>
+            </div>
+            <div class="box box2 wow fadeInUp" data-wow-delay="0.2s">
+                <figure>
+                    <a href="repository.html"><img src="img/body merge.png" alt=""></a>
+                </figure>
+                <strong>ANIMATION REPOSITORY</strong>
+            </div>
+            <div class="box box3 wow fadeInUp" data-wow-delay="0.1s">
+                <figure>
+                    <a href="merger_tool.html"><img src="img/body ani style transfer.png" alt=""></a>
+                </figure>
+                <strong>ANIMATION MERGER TOOL</strong>
+            </div>
+            <div class="box box4 wow fadeInUp">
+
+                <figure><img src="img/showreel.png" alt=""></figure>
+                <strong>BODY ANIMATION<br>POSE EDITOR</strong>
+            </div>
+
+            <div class="box box5 wow fadeInUp" data-wow-delay="0.3s">
+                <div>
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                    <a href="#" class="btn-default btn5">read more</a>
+                </div>
+                <figure><img src="img/repostory.png" alt=""></figure>
+                <strong>FACE ANIMATION REPOSITORY</strong>
+            </div>
+            <div class="box box6 wow fadeInUp" data-wow-delay="0.2s">
+                <div>
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                    <a href="#" class="btn-default btn5">read more</a>
+                </div>
+                <figure><img src="img/face auto exp.png" alt=""></figure>
+                <strong>FACE 3D MODEL <br> AUTO RIGGER</strong>
+            </div>
+            <div class="box box7 wow fadeInUp" data-wow-delay="0.1s">
+                <div>
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                    <a href="#" class="btn-default btn5">read more</a>
+                </div>
+                <figure><img src="img/face merge exp.png" alt=""></figure>
+                <strong>FACE EXPRESSION EMOTION MERGER</strong>
+            </div>
+            <div class="box box8 wow fadeInUp">
+                <div>
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                    <a href="#" class="btn-default btn5">read more</a>
+                </div>
+                <figure><img src="img/showreel.png" alt=""></figure>
+                <strong>SHOWREEL</strong>
+            </div>
+
+            <div class="box box9C wow fadeInUp" data-wow-delay="0.1s">
+                <div>
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                    <a href="#" class="btn-default btn5">read more</a>
+                </div>
+                <figure><img src="img/create event.png" alt=""></figure>
+                <strong>EVENT CREATION</strong>
+
+
+            </div>
+            <div class="box box11C wow fadeInUp">
+                <div>
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                    <a
+                        href="# " class="btn-default btn5 ">read more</a>
+                </div>
+                <figure><img src="img/timeline.png " alt=" "></figure>
+                <strong>TIMELINE BASED EDITING</strong>
+
+
+            </div>
+
+        </div>
+    </div>
+    <!--content-->
+    <div class="content ">
+        <!-- <div class="thumb-box1 ">
+        <div class="container ">          
+            <h2>Let the stars help you to discover your fate</h2>
+            <ul class="list1 ">
+                <li><a href="# ">Horoscopes</a></li>
+                <li><a href="# ">psychics</a></li>
+                <li><a href="# ">tarot</a></li>
+                <li><a href="# ">oracles</a></li>
+                <li><a href="# ">numerology</a></li>
+                <li><a href="# ">forecasts</a></li>
+                <li><a href="# ">faraway fortunes</a></li>
+            </ul>
+            <strong>Today`s horoscope:</strong>
+            <div class="row ">
+                <div class="col-lg-5 col-md-6 col-sm-6 col-lg-offset-1 ">
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-6 ">
+                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
+                </div>
+            </div>
+            <a href="# " class="btn-default btn1 ">all about your sign</a>
+            <a href="# " class="btn-default btn2 ">chinese portrait</a>
+        </div>
+    </div> -->
+        <!--     <div class="thumb-box2 ">
+    <div class="container "> 
+        <div class="row ">
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <strong>Your biorhythms</strong>
+                <div class="thumb-pad1 ">
+                    <div class="thumbnail ">
+                        <figure><img src="img/page1_pic1.jpg " alt=" "></figure>
+                        <div class="caption ">
+                            <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
+                            <a href="# " class="btn-default btn3 ">read more</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <strong>Love & romance</strong>
+                <div class="thumb-pad1 ">
+                    <div class="thumbnail ">
+                        <figure><img src="img/page1_pic2.jpg " alt=" "></figure>
+                        <div class="caption ">
+                            <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
+                            <a href="# " class="btn-default btn3 ">read more</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <strong>Dreams</strong>
+                <div class="thumb-pad1 ">
+                    <div class="thumbnail ">
+                        <figure <img src="img/page1_pic3.jpg " alt=" "></figure>
+                        <div class="caption ">
+                            <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. </p>
+                            <a href="# " class="btn-default btn3 ">read more</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+        <div class="thumb-box4 ">
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-lg-3 col-md-3 col-sm-6 ">
+                        <strong>Horoscopes</strong>
+                        <ul class="list2 ">
+                            <li><a href="# ">2015 Horoscope</a></li>
+                            <li><a href="# ">2014 Chinese Horoscope</a></li>
+                            <li><a href="# ">Daily Horoscope</a></li>
+                            <li><a href="# ">Weekly Horoscope</a></li>
+                            <li><a href="# ">Monthly Horoscope</a></li>
+                            <li><a href="# ">Daily Love Horoscope</a></li>
+                            <li><a href="# ">Career Horoscope</a></li>
+                            <li><a href="# ">Weekly Money Horoscope</a></li>
+                            <li><a href="# ">Wellness Horoscope</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 ">
+                        <strong>Tarot readings</strong>
+                        <ul class="list2 ">
+                            <li><a href="# ">Daily Tarot Reading</a></li>
+                            <li><a href="# ">Weekly Tarot Reading</a></li>
+                            <li><a href="# ">Monthly Tarot Reading</a></li>
+                            <li><a href="# ">Today/Tomorrow Tarot</a></li>
+                            <li><a href="# ">Daily Love Tarot</a></li>
+                            <li><a href="# ">Lover's Triangle Reading</a></li>
+                            <li><a href="# ">Dream Tarot Interpretation</a></li>
+                            <li><a href="# ">Inner Animal Tarot</a></li>
+                            <li><a href="# ">Friend Or Foe Tarot</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 ">
+                        <strong>Fun & alternative</strong>
+                        <ul class="list2 ">
+                            <li><a href="# ">Celebrity Birthday</a></li>
+                            <li><a href="# ">Celebrity Love Match</a></li>
+                            <li><a href="# ">Dream Dictionary</a></li>
+                            <li><a href="# ">Pet Compatibility</a></li>
+                            <li><a href="# ">Magic Love Ball</a></li>
+                            <li><a href="# ">Psychic Test</a></li>
+                            <li><a href="# ">Shell Oracle</a></li>
+                            <li><a href="# ">Daily Love Oracle</a></li>
+                            <li><a href="# ">Rate Your Date</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 ">
+                        <strong>more about astrology</strong>
+                        <ul class="list2 ">
+                            <li><a href="# ">Premium Charts and Reports</a></li>
+                            <li><a href="# ">12 Zodiac Sign Profiles</a></li>
+                            <li><a href="# ">12 Chinese Signs</a></li>
+                            <li><a href="# ">Chinese Calendar</a></li>
+                            <li><a href="# ">Mayan Astrology</a></li>
+                            <li><a href="# ">AstroProfile by e-mail</a></li>
+                            <li><a href="# ">Horoscope & Astrology Articles</a></li>
+                            <li><a href="# ">Psychic Articles</a></li>
+                            <li><a href="# ">Astrology Facts</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="thumb-box3 ">
+            <div class="container ">
+                <div class="box ">
+                    <div class="row ">
+                        <div class="col-lg-3 ">
+                            <strong>sign up for free</strong>
+                        </div>
+                        <div class="col-lg-4 " style="visibility: hidden; ">
+                            <p>get your daily horoscope, daily lovescope and daily tarot by email</p>
+                        </div>
+                        <div class="col-lg-5 ">
+                            <form id="newsletter " accept-charset="utf-8 ">
+                                <div class="success ">Your subscribe request has been sent!</div>
+                                <label class="email ">
+                                <input type="email " value="Enter your email here ">
+                                <span class="error ">*This is not a valid email address.</span>
+                            </label>
+                                <a href="# " data-type="submit ">subscribe</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 ">
+                        <p class="text-justify footerText ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <footer>
+        <div class="container ">
+            <figure><img src="img/fotterLogo.jpg " alt=" "></figure>
+        </div>
+
+    </footer>
+
+
+    <!-- Modal -->
+    <div class="modal fade " id="myModal " role="dialog ">
+        <div class="modal-dialog ">
+
+            <!-- Modal content-->
+            <div class="reg ">
+                <img src="img/animakeFooter.png " alt="logo " class="img-logo img responsive ">
+                <div class="login-form ">
+                    <div class="form-group ">
+                        <label for="inputEmail " class="sr-only ">Email address</label>
+                        <input type="email " class="form-control " id="inputEmail " placeholder="ENTER EMAIL ID ">
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputPassword " class="sr-only ">Password</label>
+                        <input type="password " class="form-control " id="inputPassword " placeholder="ENTER PASSWORD ">
+                    </div>
+
+                    <button type="button " class="btn btn-default but1 " id="loginBtn ">Log-In</button>
+                    <div id="firebaseui-auth-container "></div>
+                    <p class="new-animake ">New in Animake?</p>
+                    <button id="logOutBtn " class="btn btn-lg btn-primary btn-block hide " type="button ">Log-Out</button>
+                </div>
+                <form class="reg-form ">
+                    <div class="form-group ">
+                        <label for="inputEmail " class="sr-only ">Email address</label>
+                        <input type="email " class="form-control " id="regEmail " placeholder="ENTER EMAIL ID ">
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputPassword " class="sr-only ">Password</label>
+                        <input type="password " class="form-control " id="regPassword " placeholder="ENTER PASSWORD ">
+                    </div>
+                    <!-- //id="regBtn " class="btn btn-lg btn-primary btn-block " -->
+                    <button type="button " class="btn btn-default but2 " type="button " id="regBtn ">Create account</button>
+                    <p class="already-reg ">already registered?</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="js-modal" class="modal">
+        <div class="modal__overlay">
+            <div class="modal__inner">
+                <div class="modal__header">
+                    AutoRigger
+                </div>
+                <div id="js-close-modal" class="modal__close">
+                    <?xml version="1.0" encoding="iso-8859-1"?>
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 475.2 475.2" style="enable-background:new 0 0 475.2 475.2;" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M405.6,69.6C360.7,24.7,301.1,0,237.6,0s-123.1,24.7-168,69.6S0,174.1,0,237.6s24.7,123.1,69.6,168s104.5,69.6,168,69.6
+			s123.1-24.7,168-69.6s69.6-104.5,69.6-168S450.5,114.5,405.6,69.6z M386.5,386.5c-39.8,39.8-92.7,61.7-148.9,61.7
+			s-109.1-21.9-148.9-61.7c-82.1-82.1-82.1-215.7,0-297.8C128.5,48.9,181.4,27,237.6,27s109.1,21.9,148.9,61.7
+			C468.6,170.8,468.6,304.4,386.5,386.5z" />
+                            <path d="M342.3,132.9c-5.3-5.3-13.8-5.3-19.1,0l-85.6,85.6L152,132.9c-5.3-5.3-13.8-5.3-19.1,0c-5.3,5.3-5.3,13.8,0,19.1
+			l85.6,85.6l-85.6,85.6c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4l85.6-85.6l85.6,85.6c2.6,2.6,6.1,4,9.5,4
+			c3.5,0,6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1l-85.4-85.6l85.6-85.6C347.6,146.7,347.6,138.2,342.3,132.9z" />
+                        </g>
+                    </g>
+                </svg>
+
+                </div>
+                <div class="row no-gutters">
+                    <div id="js-viewer" class="col-sm-7 col-md-8 col-xs-12 viewer">
+                        <canvas id="js-canvas"></canvas>
+                    </div>
+                    <div class="col-sm-5 col-md-4 hidden-xs-down bg-faded sidebar">
+                        <div id="js-controls">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/tm-scripts.js "></script>
+    <!--script src="./firebase_files/ie10-viewport-bug-workaround.js "></script-->
+
+    <script src="js/firebaseAuth.js "></script>
+    <script src="firebase/login.js "></script>
+    <script src="firebase/register.js "></script>
+    <script src="firebase/firebase-listener.js "></script>
+
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+
+    <script src="js/grid/Detector.js"></script>
+    <script src="js/grid/three.js"></script>
+    <script src="js/grid/TrackballControls.js"></script>
+    <script src="js/grid/MTLLoader.js"></script>
+    <script src="js/grid/dat.gui.min.js"></script>
+    <script src="js/grid/OBJLoader2.js"></script>
+    <script src="js/grid/WWOBJLoader2.js"></script>
+    <script>
+        window.onload = function() {
+
+            var socket = io.connect('http://45.76.150.25:8080');
+
+
+
+            /*
+             setTimeout(loaderPause, 15000);
+
+             function loaderPause() {
+                 document.getElementById("loader").style.display = "none";
+             }
+             */
+
+            var webLoader = function() {
+                console.log('WebLoader');
+                var Validator = THREE.OBJLoader2.prototype._getValidator();
+
+                function webLoader(elementToBindTo) {
+                    this.renderer = null;
+                    this.canvas = elementToBindTo;
+                    this.aspectRatio = 1;
+                    this.recalcAspectRatio();
+
+                    this.scene = null;
+                    this.cameraDefaults = {
+                        posCamera: new THREE.Vector3(0.0, 175.0, 500.0),
+                        posCameraTarget: new THREE.Vector3(0, 0, 0),
+                        near: 0.1,
+                        far: 10000,
+                        fov: 45
+                    };
+                    this.camera = null;
+                    this.cameraTarget = this.cameraDefaults.posCameraTarget;
+
+                    this.controls = null;
+
+                    this.smoothShading = true;
+                    this.doubleSide = false;
+                    this.streamMeshes = true;
+
+                    this.cube = null;
+                    this.pivot = null;
+
+                    this.wwObjLoader2 = new THREE.OBJLoader2.WWOBJLoader2();
+                    this.wwObjLoader2.setCrossOrigin('anonymous');
+
+                    // File Input
+                    this.inputFileElem = document.getElementById('js-upload');
+
+                    // webModal
+                    this.webModal = document.getElementById('js-modal');
+                    this.webModalClose = document.getElementById('js-close-modal');
+                    this.elemUploadButton = document.getElementById('js-upload-button');
+
+                    this.elemUploadButton.addEventListener('click', this.openModal.bind(this), false);
+
+                    // Check for the various File API support.
+                    this.fileApiAvailable = true;
+                    if (window.File && window.FileReader && window.FileList && window.Blob) {
+
+                        console.log('File API is supported! Enabling all features.');
+                    } else {
+
+                        this.fileApiAvailable = false;
+                        console.warn('File API is not supported! Disabling file loading.');
+                    }
+                }
+
+                webLoader.prototype.initGL = function() {
+                    this.renderer = new THREE.WebGLRenderer({
+                        canvas: this.canvas,
+                        antialias: true,
+                        autoClear: true
+                    });
+                    this.renderer.setClearColor(0x1d1d1d);
+
+                    this.scene = new THREE.Scene();
+
+                    this.camera = new THREE.PerspectiveCamera(this.cameraDefaults.fov, this.aspectRatio,
+                        this.cameraDefaults.near,
+                        this.cameraDefaults.far);
+                    this.resetCamera();
+                    this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement);
+
+                    var ambientLight = new THREE.AmbientLight(0x404040);
+                    var directionalLight1 = new THREE.DirectionalLight(0xC0C090);
+                    var directionalLight2 = new THREE.DirectionalLight(0xC0C090);
+
+                    directionalLight1.position.set(-100, -50, 100);
+                    directionalLight2.position.set(100, 50, -100);
+
+                    this.scene.add(directionalLight1);
+                    this.scene.add(directionalLight2);
+                    this.scene.add(ambientLight);
+
+                    var helper = new THREE.GridHelper(1200, 60, 0x222222, 0x272727);
+                    this.scene.add(helper);
+
+                    this.createPivot();
+                };
+
+                webLoader.prototype.createPivot = function() {
+                    this.pivot = new THREE.Object3D();
+                    this.pivot.name = 'Pivot';
+                    this.scene.add(this.pivot);
+                };
+
+                webLoader.prototype.initPostGL = function() {
+                    var self = this;
+                    var reportProgress = function reportProgress(content) {
+                        console.log('Progress: ' + content);
+                    };
+                    var materialsLoaded = function materialsLoaded(materials) {
+                        var count = Validator.isValid(materials) ? materials.length : 0;
+                        console.log('Loaded #' + count + ' materials.');
+                    };
+                    var meshLoaded = function meshLoaded(name, bufferGeometry, material) {
+                        console.log('Loaded mesh: ' + name + ' Material name: ' + material.name);
+                    };
+                    var completedLoading = function completedLoading() {
+                        self.openModal();
+                        console.log('Loading complete!');
+                    };
+                    this.wwObjLoader2.registerCallbackProgress(reportProgress);
+                    this.wwObjLoader2.registerCallbackCompletedLoading(completedLoading);
+                    this.wwObjLoader2.registerCallbackMaterialsLoaded(materialsLoaded);
+                    this.wwObjLoader2.registerCallbackMeshLoaded(meshLoaded);
+
+                    return true;
+                };
+
+                webLoader.prototype.loadFiles = function(prepData) {
+                    prepData.setSceneGraphBaseNode(this.pivot);
+                    prepData.setStreamMeshes(this.streamMeshes);
+                    this.wwObjLoader2.prepareRun(prepData);
+                    this.wwObjLoader2.run();
+                };
+
+                webLoader.prototype._handleFileSelect = function(event, pathTexture) {
+                    var fileObj = null;
+                    var fileMtl = null;
+                    var files = event.target.files;
+
+                    for (var i = 0, file; file = files[i]; i++) {
+
+                        if (file.name.indexOf('\.obj') > 0 && fileObj === null) {
+                            fileObj = file;
+                        }
+
+                        if (file.name.indexOf('\.mtl') > 0 && fileMtl === null) {
+                            fileMtl = file;
+                        }
+                    }
+
+                    if (!Validator.isValid(fileObj)) {
+                        alert('Unable to load OBJ file from given files.');
+                    }
+
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(fileDataObj) {
+
+                        var uint8Array = new Uint8Array(fileDataObj.target.result);
+                        if (fileMtl === null) {
+
+                            app.loadFilesUser({
+                                name: 'userObj',
+                                objAsArrayBuffer: uint8Array,
+                                pathTexture: pathTexture,
+                                mtlAsString: null
+                            });
+                        } else {
+
+                            fileReader.onload = function(fileDataMtl) {
+
+                                app.loadFilesUser({
+                                    name: 'userObj',
+                                    objAsArrayBuffer: uint8Array,
+                                    pathTexture: pathTexture,
+                                    mtlAsString: fileDataMtl.target.result
+                                });
+                            };
+                            fileReader.readAsText(fileMtl);
+                        }
+                    };
+                    fileReader.readAsArrayBuffer(fileObj);
+                };
+
+                webLoader.prototype.loadFilesUser = function(objDef) {
+                    var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataArrayBuffer(objDef.name,
+                        objDef.objAsArrayBuffer,
+                        objDef.pathTexture, objDef.mtlAsString);
+                    prepData.setSceneGraphBaseNode(this.pivot);
+                    prepData.setStreamMeshes(this.streamMeshes);
+                    this.wwObjLoader2.prepareRun(prepData);
+                    this.wwObjLoader2.run();
+                };
+
+                webLoader.prototype.resizeDisplayGL = function() {
+
+                    this.recalcAspectRatio();
+                    this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight, false);
+                    console.log('RDGL');
+                    this.updateCamera();
+                };
+
+                webLoader.prototype.recalcAspectRatio = function() {
+                    this.aspectRatio = this.canvas.offsetHeight === 0 ? 1 : this.canvas.offsetWidth / this.canvas
+                        .offsetHeight;
+                };
+
+                webLoader.prototype.resetCamera = function() {
+                    this.camera.position.copy(this.cameraDefaults.posCamera);
+                    this.cameraTarget.copy(this.cameraDefaults.posCameraTarget);
+
+                    this.updateCamera();
+                };
+
+                webLoader.prototype.updateCamera = function() {
+                    this.camera.aspect = this.aspectRatio;
+                    this.camera.lookAt(this.cameraTarget);
+                    this.camera.updateProjectionMatrix();
+                };
+
+                webLoader.prototype.render = function() {
+                    if (!this.renderer.autoClear) this.renderer.clear();
+
+                    this.controls.update();
+                    this.renderer.render(this.scene, this.camera);
+                };
+
+                webLoader.prototype.alterSmoothShading = function() {
+
+                    var scope = this;
+                    scope.smoothShading = !scope.smoothShading;
+                    console.log(scope.smoothShading ? 'Enabling SmoothShading' : 'Enabling FlatShading');
+
+                    scope.traversalFunction = function(material) {
+                        material.shading = scope.smoothShading ? THREE.SmoothShading : THREE.FlatShading;
+                        material.needsUpdate = true;
+                    };
+                    var scopeTraverse = function scopeTraverse(object3d) {
+                        scope.traverseScene(object3d);
+                    };
+                    scope.pivot.traverse(scopeTraverse);
+                };
+
+                webLoader.prototype.alterDouble = function() {
+
+                    var scope = this;
+                    scope.doubleSide = !scope.doubleSide;
+                    console.log(scope.doubleSide ? 'Enabling DoubleSide materials' :
+                        'Enabling FrontSide materials');
+
+                    scope.traversalFunction = function(material) {
+                        material.side = scope.doubleSide ? THREE.DoubleSide : THREE.FrontSide;
+                    };
+
+                    var scopeTraverse = function scopeTraverse(object3d) {
+                        scope.traverseScene(object3d);
+                    };
+                    scope.pivot.traverse(scopeTraverse);
+                };
+
+                webLoader.prototype.traverseScene = function(object3d) {
+
+                    if (object3d.material instanceof THREE.MultiMaterial) {
+
+                        var materials = object3d.material.materials;
+                        for (var name in materials) {
+
+                            if (materials.hasOwnProperty(name)) this.traversalFunction(materials[name]);
+                        }
+                    } else if (object3d.material) {
+
+                        this.traversalFunction(object3d.material);
+                    }
+                };
+
+                webLoader.prototype.clearAllAssests = function() {
+                    var scope = this;
+                    var remover = function remover(object3d) {
+
+                        if (object3d === scope.pivot) {
+                            return;
+                        }
+                        console.log('Removing: ' + object3d.name);
+                        scope.scene.remove(object3d);
+
+                        if (object3d.hasOwnProperty('geometry')) {
+                            object3d.geometry.dispose();
+                        }
+                        if (object3d.hasOwnProperty('material')) {
+
+                            var mat = object3d.material;
+                            if (mat.hasOwnProperty('materials')) {
+
+                                var materials = mat.materials;
+                                for (var name in materials) {
+
+                                    if (materials.hasOwnProperty(name)) materials[name].dispose();
+                                }
+                            }
+                        }
+                        if (object3d.hasOwnProperty('texture')) {
+                            object3d.texture.dispose();
+                        }
+                    };
+
+                    scope.scene.remove(scope.pivot);
+                    scope.pivot.traverse(remover);
+                    scope.createPivot();
+                    scope.inputFileElem.value = null;
+                    console.log();
+                };
+
+                webLoader.prototype.openModal = function() {
+                    var self = this;
+                    console.log(self.webModal);
+                    this.webModal.classList.add('is-open');
+                    this.webModalClose.addEventListener("click", this.closeModal.bind(this), false);
+                    console.log('Modal Opened');
+                }
+                webLoader.prototype.closeModal = function() {
+                    var self = this;
+                    this.webModal.classList.remove('is-open');
+                    this.webModalClose.removeEventListener("click", this.closeModal, true);
+                    app.clearAllAssests();
+                    console.log('Modal Closed');
+
+                }
+
+                return webLoader;
+            }();
+
+            var app = new webLoader(document.getElementById('js-canvas'));
+
+            // Init dat.gui and controls
+            var elemFileInput = document.getElementById('js-upload');
+
+
+            var WWOBJLoader2Control = function WWOBJLoader2Control() {
+                this.smoothShading = app.smoothShading;
+                this.doubleSide = app.doubleSide;
+                this.streamMeshes = app.streamMeshes;
+            };
+            var wwObjLoader2Control = new WWOBJLoader2Control();
+
+            var gui = new dat.GUI({
+                autoPlace: false,
+                width: '100%'
+            });
+
+            var menuDiv = document.getElementById('js-controls');
+            menuDiv.appendChild(gui.domElement);
+            var folderOptions = gui;
+            // var controlSmooth = folderOptions.add( wwObjLoader2Control, 'smoothShading' ).name( 'Smooth Shading' );
+
+            if (app.fileApiAvailable) {
+
+                wwObjLoader2Control.pathTexture = 'obj/female02/';
+                // var controlPathTexture = folderOptions.add( wwObjLoader2Control, 'pathTexture' ).name( 'Relative path to textures' );
+                // controlPathTexture.onChange( function( value ) {
+                // 	console.log( 'Setting pathTexture to: ' + value );
+                // 	app.pathTexture = value + '/';
+                // });
+
+                wwObjLoader2Control.loadObjFile = function() {
+                    elemFileInput.click();
+                };
+                folderOptions.add(wwObjLoader2Control, 'loadObjFile').name('Select OBJ Files');
+
+                var loadObjFile = function() {
+                    elemFileInput.click();
+                }
+                var handleFileSelect = function handleFileSelect(object3d) {
+                    app._handleFileSelect(object3d, wwObjLoader2Control.pathTexture);
+                };
+
+                elemFileInput.addEventListener('change', handleFileSelect, false);
+
+                wwObjLoader2Control.clearAllAssests = function() {
+                    app.clearAllAssests();
+                };
+                wwObjLoader2Control.uploadServer = function() {
+                    console.log('Uploading');
+
+                    uploadFiles();
+
+                };
+
+
+                folderOptions.add(wwObjLoader2Control, 'clearAllAssests').name('Clear Scene');
+                folderOptions.add(wwObjLoader2Control, 'uploadServer').name('Save');
+
+            }
+
+            var resizeWindow = function resizeWindow() {
+                app.resizeDisplayGL();
+                console.log('rz');
+            };
+
+            var render = function render() {
+                requestAnimationFrame(render);
+                app.render();
+            };
+
+            function uploadFiles(event) {
+                // event.stopPropagation(); // Stop stuff happening
+                // event.preventDefault(); // Totally stop stuff happening
+
+                // START A LOADING SPINNER HERE
+                document.getElementById("loader").style.display = "";
+                document.getElementById("uploadForm").submit();
+
+                socket.emit('pause');
+                /*
+                // Create a formdata object and add the files
+                var data = new FormData();
+                $.each(document.getElementById('js-upload').files, function(key, value) {
+                    data.append(key, value);
+                });
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    dataType: 'json',
+                    processData: false, // Don't process the files
+                    contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                    success: function(data, textStatus, jqXHR) {
+                        if (typeof data.error === 'undefined') {
+                            // Success so call function to process the form
+                            submitForm(event, data);
+                        } else {
+                            // Handle errors here
+                            console.log('ERRORS: ' + data.error);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Handle errors here
+                        console.log('ERRORS: ' + textStatus);
+                        // STOP LOADING SPINNER
+                    }
+                });
+				*/
+            }
+            window.addEventListener('resize', resizeWindow, false);
+
+            console.log('Starting initialisation phase...');
+            app.initGL();
+            app.resizeDisplayGL();
+            app.initPostGL();
+
+
+
+            render();
+
+        };
+
+        function placeH1() {
+            document.getElementById('tp').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

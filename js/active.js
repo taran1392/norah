@@ -60,11 +60,12 @@ jQuery(document).ready(function() {
             queryDatabase(token);
 
             // closeLoginModal();
+
             $('#myModal').hide();
             $('.reg').hide();
-            $('#js-modal').hide();
             $('.login-form').hide();
             $('.reg-form').hide();
+
 
         }
     });
