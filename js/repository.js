@@ -21,7 +21,7 @@ function getVideos(page, th) {
                     blocks += '<a class="newwwww" href="javascript:;" data-name="' + animations[animKey].name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
                     blocks += '<a href="' + animDownloadUrl + '" download="' + animations[animKey].name + '.anim"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks += '</div>';
-                    blocks += '<video autoplay loop controls="false" muted>';
+                    blocks += '<video autoplay loop muted>';
                     blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
                     blocks += '</video>';
                     blocks += '</div>';
