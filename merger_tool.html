@@ -14,7 +14,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-
+    <link href="css/style1.css" rel="stylesheet">
     <link href="fonts/font-awesome.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
 
@@ -23,77 +23,164 @@
     <!-- Google font (If Use) -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="canonical" href="https://codepen.io/jeffaudio/pen/gaVmyX">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="Build/FileSave.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
-
+    <style>
+        #slider1::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #09F 48%, lightgray 48%)
+        }
+        
+        #slider1::-moz-range-track {
+            background: linear-gradient(to right, #09F 48%, lightgray 48%)
+        }
+    </style>
+    <style class="cp-pen-styles">
+        .slider-container {
+            border: none;
+            padding: 5px;
+            background: blue;
+        }
+        
+        input[type=range] {
+            -webkit-appearance: none;
+            /* Hides the slider so that custom slider can be made */
+            width: 100%;
+            /* Specific width is required for Firefox. */
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        
+        input[type=range]:focus {
+            outline: none;
+            /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+        }
+        
+        input[type=range]::-ms-track {
+            width: 100%;
+            cursor: pointer;
+            background: transparent;
+            /* Hides the slider so custom styles can be added */
+            border-color: transparent;
+            color: transparent;
+        }
+        
+        .range-label {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .range-container {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 5px;
+        }
+        
+        .slider {
+            width: 100%;
+            margin: 0;
+            margin-top: 5px;
+            height: 30px;
+            background: #39244E;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #aeaeae;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        .slider::-moz-range-thumb {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #aeaeae;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        .slider::-ms-thumb {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #aeaeae;
+            cursor: pointer;
+            margin-top: -7px;
+            margin-top: -3px;
+        }
+        
+        .slider::-webkit-slider-runnable-track {
+            height: 6px;
+            border-radius: 6px;
+            background: blue;
+        }
+        
+        .slider::-moz-range-track {
+            height: 6px;
+            border-radius: 6px;
+            background: blue;
+        }
+        
+        .slider::-moz-focus-outer {
+            border: 0;
+        }
+        
+        .slider::-ms-track {
+            height: 6px;
+            border-radius: 6px;
+            background: blue;
+        }
+        
+        .slider::-ms-fill-lower {
+            background: #09f;
+            border-radius: 6px;
+        }
+        
+        .slider::-ms-fill-upper {
+            background: lightgray;
+            border-radius: 6px;
+        }
+        
+        .slider::-ms-tooltip {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <!-- mian wrapper start -->
     <div class="main_wapper">
         <div class="merger_container">
-            <header class="clearfix">
+
+            <div class="head_h1" style="top: 0px;">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
                     <ul class="nav sf-menu  clearfix ">
-
-                        <li class="sub-menu"><a href="index.html">Home</a>
-                            <ul class="homeSub">
-                                <li><a href="#" id="body">body</a>
-                                    <ul class="bodysub">
-                                        <li><a href="#">columns 04</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">face</a></li>
-                                <li><a href="#">events</a></li>
-                                <li><a href="#">timeline</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li class="sub-menu"><a href="index-1.html">About</a><span class="fa fa-angle-down"></span>
-
-                        </li>
-
-                        <li> <a href="">My Library</a></li>
-                        <li><a href="index-4.html">Contacts</a></li>
-
-
+                        <li class="sub-menu"><a href="index.html">Home</a></li>
                     </ul>
-
                 </nav>
-                <ul class="follow_icon">
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon1.png" alt=""></a>
-                    </li>
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon2.png" alt=""></a>
-                    </li>
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon3.png" alt=""></a>
-                    </li>
-                    <div class="log-Out">
-                        <li class="logLi">
-                            <p id="logOutBtn" type="button">Log-Out</p>
-                        </li>
-                        <br>
-                        <div class="user-mail pull-right"></div>
-                    </div>
-                    <li class="sign-in">
-                        <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>
-                    </li>
-                </ul>
-
-            </header>
-            <div style="width: 1110px; margin-left: 120px; background-color:#6A597A; margin-top: 10px;">
-                <h1>Body Part wise blending</h1>
+                <h1>Body Part wise blending</li>
+                </h1>
             </div>
             <div class="merger_container_animation">
                 <div class="container">
@@ -274,9 +361,6 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script src="js/script.js"></script>
-
-
-
 
 </body>
 
