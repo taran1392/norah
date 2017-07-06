@@ -112,8 +112,8 @@ jQuery(document).ready(function() {
                 $(this).addClass("active activeTag");
                 var name = $(this).attr('data-name');
                 subLi += '<div class="pull-left closeDiv">';
-                subLi += '<p class="pull-left filterP">' + $(this).html() + '</p>';
-                subLi += '<button class="pull-right closeBtn" data-name="' + name + '">X</button>';
+                subLi += '<p class="pull-left filterP">' + $(this).html();
+                subLi += '<button class="pull-right closeBtn" data-name="' + name + '">X</button>' + '</p>';
                 subLi += '</div>';
                 $(".tagName").append(subLi);
                 selected = true;
