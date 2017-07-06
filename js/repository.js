@@ -1,5 +1,6 @@
 var resultsPerPage = 12;
 var pages = 0;
+tags = [];
 
 var animationsArray = []
 $.blockUI();
@@ -12,6 +13,31 @@ firebase.database().ref("animations").orderByChild("name").once("value", functio
     getVideos(1);
 });
 
+function matchTags() {
+    var arrayLength = tags.length;
+    var anim_final = [];
+    if (arrayLength > 0 && !$.isEmptyObject(animationsArray)) {
+        animationsArray.forEach(function(anim) {
+
+            var count = 0;
+            for (var t in anim['tags']) {
+                for (var i = 0; i < arrayLength; i++) {
+                    if (t == tags[i]) {
+                        count++;
+                    }
+                }
+            }
+            if (count == arrayLength) {
+                anim_final.push(anim);
+            }
+        });
+    } else {
+        return animationsArray;
+        console.log("Returning original");
+    }
+    return anim_final;
+}
+
 function getVideos(page, th) {
     $.blockUI();
     if (th != undefined) {
@@ -22,9 +48,14 @@ function getVideos(page, th) {
     var blocks = '';
     var k = 1;
     var completed = 1;
-    var data = animationsArray.slice(offset, (page * resultsPerPage));
+    var anim_final = matchTags();
+    console.log(anim_final);
+    var data = anim_final.slice(offset, (page * resultsPerPage));
     if (!data.length) {
+        // Add toast code to blocks variable
+        $('.zodiacCont').html(blocks); 
         $.unblockUI();
+        console.log("No data");
     } else {
         data.forEach(function(anim) {
 
@@ -113,16 +144,27 @@ jQuery(document).ready(function() {
                 var name = $(this).attr('data-name');
                 subLi += '<div class="pull-left closeDiv">';
                 subLi += '<p class="pull-left filterP">' + $(this).html();
-                subLi += '<button class="pull-right closeBtn" data-name="' + name + '">X</button>' + '</p>';
+                subLi += '<button id="' + $(this).text() +'" class="pull-right closeBtn" data-name="' + name + '">X</button>' + '</p>';
                 subLi += '</div>';
                 $(".tagName").append(subLi);
+                console.log($(this).text());
+                tags.push($(this).text());
                 selected = true;
+                getVideos(1);
 
             }
             $(".closeBtn").off('click').on('click', function() {
+                removeItem = $(this).attr('id');
+                console.log("removeItem");
+                console.log(removeItem);
+                tags = jQuery.grep(tags, function(value) {
+                  return value != removeItem;
+                });
+
                 var name = $(this).attr('data-name');
                 $(this).parent().remove();
                 $('.subMenuS li[data-name="' + name + '"]').removeClass('active activeTag');
+                getVideos(1);
             });
 
         });
