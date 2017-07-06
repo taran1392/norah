@@ -31,7 +31,7 @@
     <script src="Build/UnityLoader.js"></script>
 	
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/NorahWebBuild.json");
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
     <style>
         #slider1::-webkit-slider-runnable-track {
@@ -230,7 +230,7 @@
                     <div class="col-md-4 output-window">
                         <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Output Window</h2>
                         <div id="gameContainer2" class="col-md-11">
-							<img src="img/man2.png" width="100%">
+							<div id="gameContainer" style="height: 250px"></div>
 							<div class="enter-name">
 						<div class="row">
 						<div class="col-md-10" style="padding:0;margin:0;padding-left:17px;">
