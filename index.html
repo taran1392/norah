@@ -111,8 +111,10 @@
     </div>
     <div class="zodiac_box">
         <div class="container zodiacCont">
-            <div class="tp" id="tp" onclick="placeH1();">
-                <p><a href="#" class="t1" id="t1" onclick="javascript: placeH1();">ANIMATION TOOL</a></p>
+            <div class="tp" id="tp" onclick="placeH1();" data-page="index">
+                <p>
+                    <span class="t1" id="t1" onclick="return placeH1();">ANIMATION TOOL</span>
+                </p>
                 <p><a class="t2" id="t2" onclick="placeH1();">3D MODELLING TOOL <br> (yet to launch)</a></p>
                 <p><a class="t3" id="t3" onclick="placeH1();">GAME MAKER <br> (yet to launch)</a></p>
             </div>
@@ -267,6 +269,7 @@
     <script>
         function placeH1() {
             document.getElementById('tp').style.display = 'none';
+            return false;
         }
     </script>
 

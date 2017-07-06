@@ -45,11 +45,11 @@
     max-width: 94%;
     margin: auto;
     height: 100%;
-	top:660px;
+	top:30px;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
-    transform: translateY(-100%);
+   
     transition: transform ease-in .4s; }
     .is-open .modal__inner {
       transform: translateY(0%);
