@@ -126,13 +126,13 @@
             css: {
                 padding: 0,
                 margin: 0,
-
+                opacity: 0.6,
                 top: '50%',
                 left: '40%',
                 textAlign: 'center',
-                color: '#000',
+                /*color: '#000',
                 border: '3px solid #aaa',
-                backgroundColor: '#fff',
+                backgroundColor: '#fff',*/
                 cursor: 'wait'
             },
 
@@ -161,11 +161,11 @@
                 left: '1',
                 right: '200px',
                 border: 'none',
-                padding: '5px',
+                /*padding: '5px',*/
                 opacity: 0.6,
                 cursor: 'default',
-                color: '#fff',
-                backgroundColor: '#000',
+                /*color: '#fff',
+                backgroundColor: '#000',*/
                 '-webkit-border-radius': '10px',
                 '-moz-border-radius': '10px',
                 'border-radius': '10px'
