@@ -60,13 +60,16 @@
             <div class="container">
                 <header class="clearfix">
                     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                        <ul class="nav sf-menu  clearfix">
+                        <ul class="nav sf-menu  clearfix ">
 
-                            <li class="sub-menu"><a href="index.html">Home</a>
+                            <li class="sub-menu"><a href="index.html">Home</a><span class="fa fa-angle-down"></span>
                                 <ul class="homeSub">
+                                    <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
                                     <li><a href="#">Animation</a>
                                         <ul class="bodysub">
-                                            <li><a href="ARigger.html">Auto Rigger</a></li>
+                                            <li><a href="ARigger.html" style="cursor:pointer;">Auto Rigger</a></li>
                                             <li><a href="repository.html">Repository</a></li>
                                             <li><a href="merger_tool.html">Merger Tool</a></li>
                                             <li><a href="pose_editor.html">Pose Editor</a></li>
@@ -82,21 +85,42 @@
                                             <li><a href="#">Yet To Launch</a></li>
                                         </ul>
                                     </li>
+
                                 </ul>
                             </li>
-                            <li class="sub-menu"><a href="about.html">About</a></li>
+
+                            <li class="sub-menu"><a href="about.html">About</a>
+
+                            </li>
+
                             <li> <a href="my_library.html">My Library</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.html">Contacts</a></li>
+
+
                         </ul>
                     </nav>
-                    <div class="follow_icon reposFollowIcon">
-                        <div class="user-mail pull-right"></div>
-                        <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
-                        <div class="sign-in">
-                            <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
+                    <ul class="follow_icon">
+                        <li class="cosialIcon">
+                            <a href="#"><img src="img/follow_icon1.png" alt=""></a>
+                        </li>
+                        <li class="cosialIcon">
+                            <a href="#"><img src="img/follow_icon2.png" alt=""></a>
+                        </li>
+                        <li class="cosialIcon">
+                            <a href="#"><img src="img/follow_icon3.png" alt=""></a>
+                        </li>
+                        <div class="log-Out">
+                            <li class="logLi">
+                                <p id="logOutBtn" type="button">Log-Out</p>
+                            </li>
+                            <br>
+                            <div class="user-mail pull-right"></div>
                         </div>
-                    </div>
+                        <li class="sign-in">
+                            <!-- Trigger the modal with a button -->
+                            <button type="button" class="btn btn-info btn-lg"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-in</button>
+                        </li>
+                    </ul>
                 </header>
             </div>
         </div>
