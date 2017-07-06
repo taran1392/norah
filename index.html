@@ -57,7 +57,7 @@
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
                     <ul class="nav sf-menu  clearfix">
 
-                        <li class="sub-menu"><a href="index.html">Home</a>
+                        <li class="sub-menu"><a href="index.html">Home</a><span class="fa fa-angle-down"></span>
                             <ul class="homeSub">
                                 <li><a href="#">Animation</a>
                                     <ul class="bodysub">
@@ -110,11 +110,9 @@
         </div>
     </div>
     <div class="zodiac_box">
-        <div class="container zodiacCont">
-            <div class="tp" id="tp" onclick="placeH1();" data-page="index">
-                <p>
-                    <span class="t1" id="t1" onclick="return placeH1();">ANIMATION TOOL</span>
-                </p>
+        <div class="container" style="position:relative;">
+            <div class="tp3" id="tp3" onclick="javascript: placeH1();" data-page="index">
+                <p><span class="t1" id="t1" onclick="javascript: placeH1();">ANIMATION TOOL</span></p>
                 <p><a class="t2" id="t2" onclick="placeH1();">3D MODELLING TOOL <br> (yet to launch)</a></p>
                 <p><a class="t3" id="t3" onclick="placeH1();">GAME MAKER <br> (yet to launch)</a></p>
             </div>
@@ -268,8 +266,7 @@
     <script src="firebase/firebase-listener.js "></script>
     <script>
         function placeH1() {
-            document.getElementById('tp').style.display = 'none';
-            return false;
+            document.getElementById('tp3').style.display = 'none';
         }
     </script>
 
