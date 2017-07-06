@@ -716,6 +716,7 @@ nav.tm_navbar .sub-menu ul ul li a:hover {
 }
 
 .zodiac_box .box>div p {
+    top: 50%;
     color: #a17dbc;
 }
 
@@ -866,7 +867,7 @@ nav.tm_navbar .sub-menu ul ul li a:hover {
 }
 
 .zodiac_box .box figure {
-    height: 111px;
+    height: 120%;
     line-height: 111px;
     margin-bottom: 5px;
 }
@@ -2898,7 +2899,7 @@ nav.tm_navbar .sub-menu>ul>li a {}
     position: absolute;
     z-index: 500;
     background: black;
-    opacity: 0.8;
+    opacity: 0.9;
     width: 100%;
     height: 100%;
 }
@@ -2912,13 +2913,13 @@ nav.tm_navbar .sub-menu>ul>li a {}
     position: absolute;
     z-index: 500;
     background: black;
-    opacity: 0.8;
+    opacity: 0.5;
     width: 100%;
     height: 100%;
 }
 
 .tp3:hover {
-    opacity: 0.7;
+    opacity: 0.4;
     cursor: pointer;
 }
 
@@ -2926,7 +2927,7 @@ nav.tm_navbar .sub-menu>ul>li a {}
     position: absolute;
     z-index: 500;
     background: black;
-    opacity: 0.8;
+    opacity: 0.95;
     width: 100%;
     top: 290px;
     height: 100%;
