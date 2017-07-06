@@ -181,6 +181,14 @@
     width: 40%;
 }
 
+.login-form .return-to-home{
+	margin-left: 30%;
+    font-size: 150%;
+    color: #e56381;
+    cursor: pointer;
+    width: 40%;
+}
+
 
 
 #firebaseui-auth-container{
