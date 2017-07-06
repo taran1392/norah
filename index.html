@@ -73,26 +73,36 @@
         <div class="container">
             <header class="clearfix">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu  clearfix">
+                    <ul class="nav sf-menu  clearfix ">
 
-                        <li class="sub-menu"><a href="index.html">home</a>
+                        <li class="sub-menu"><a href="index.html">Home</a>
                             <ul class="homeSub">
-                                <li><a href="#" id="body">body</a>
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
+                                <li><a href="#">Animation</a>
                                     <ul class="bodysub">
-                                        <li><a href="#">columns 04</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                        <li><a href="#">columns 05</a></li>
+                                        <li><a href="ARigger.html">Auto Rigger</a></li>
+                                        <li><a href="repository.html">Repository</a></li>
+                                        <li><a href="merger_tool.html">Merger Tool</a></li>
+                                        <li><a href="pose_editor.html">Pose Editor</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">face</a></li>
-                                <li><a href="#">events</a></li>
-                                <li><a href="#">timeline</a></li>
+                                <li><a href="#">3D Modelling</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Game maker</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
 
                             </ul>
                         </li>
 
-                        <li class="sub-menu"><a href="index-1.html">about</a><span class="fa fa-angle-down"></span>
+                        <li class="sub-menu"><a href="about.html">About</a><span class="fa fa-angle-down"></span>
                             <!-- <ul class="submenu"> 
             				<li><a href="#">columns 01</a></li>
                             <li><a href="#">columns 02</a></li>
@@ -105,8 +115,8 @@
             			</ul>-->
                         </li>
 
-                        <li> <a href="my_library.html">my library</a></li>
-                        <li><a href="index-4.html">contacts</a></li>
+                        <li> <a href="my_library.html">My Library</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
 
 
                     </ul>
@@ -133,13 +143,12 @@
             </header>
             <div class="logo_box">
                 <h1 class="navbar-brand navbar-brand_">
-                    <a href="index.html"><img src="img/animake.png" alt="logo" class="img responsive"></a>
+                    <a href="index.html"><img src="img/norah.png" alt="logo" class="img responsive"></a>
                 </h1>
                 <div class="row">
                     <div class="col-lg-6 col-md-8 col-sm-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
                         <form id="search" class="search" action="search.php" method="GET" accept-charset="utf-8">
                             <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}" placeholder="TAKE ME THROUGH THE TOUR">
-                            <a href="#" onClick="document.getElementById('search').submit()"> <img class="img responsive slaq" src="img/arrow.png" alt="" style="width: 50px; height: 37px;"> </a>
                         </form>
                         <time datetime="2014-01-01">Nov. 22, 2014</time>
                     </div>
@@ -149,35 +158,38 @@
     </div>
     <div class="zodiac_box">
         <div class="container zodiacCont">
-            <div class="tp" data-page="home">
-                <p><a href="#" class="t1">ANIMATION TOOL</a></p>
-                <p><a href="#" class="t2">3D MODELLING TOOL <br> (yet to launch)</a></p>
-                <p><a href="#" class="t3">GAME MAKER <br> (yet to launch)</a></p>
+            <div class="tp" id="tp" data-page="index">
+                <p><a class="t1" id="t1" onclick="placeH1()">ANIMATION TOOL</a></p>
+                <p><a class="t2" id="t2" onclick="placeH1()">3D MODELLING TOOL <br> (yet to launch)</a></p>
+                <p><a class="t3" id="t3" onclick="placeH1()">GAME MAKER <br> (yet to launch)</a></p>
             </div>
 
             <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
 
 
                 <figure>
-                    <a href="AutoRigger1.html"><img src="img/repostory.png" alt=""></a>
+                    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+                        <input class="btn btn-success" type="file" id="js-upload" name="foo" accept=".obj" />
+                    </form>
+                    <a href="ARigger.html"><img src="img/rigger.png" alt=""></a>
                 </figure>
                 <strong>AUTO RIGGER</strong>
             </div>
             <div class="box box2 wow fadeInUp" data-wow-delay="0.2s">
                 <figure>
-                    <a href="repository.html"><img src="img/body merge.png" alt=""></a>
+                    <a href="repository.html"><img src="img/repository.png" alt=""></a>
                 </figure>
                 <strong>ANIMATION REPOSITORY</strong>
             </div>
             <div class="box box3 wow fadeInUp" data-wow-delay="0.1s">
                 <figure>
-                    <a href="merger_tool.html"><img src="img/body ani style transfer.png" alt=""></a>
+                    <a href="merger_tool.html"><img src="img/body merge.png" alt=""></a>
                 </figure>
                 <strong>ANIMATION MERGER TOOL</strong>
             </div>
             <div class="box box4 wow fadeInUp">
 
-                <figure><img src="img/showreel.png" alt=""></figure>
+                <figure><img src="img/pose.png" alt=""></figure>
                 <strong>BODY ANIMATION<br>POSE EDITOR</strong>
             </div>
 
