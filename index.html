@@ -19,12 +19,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <script src="firebase/config.js"></script>
     <script src="firebase/providers.js"></script>
-    <!--
-    <script src="js/firebaseAuth.js"></script>
-    <script src="firebase/login.js"></script>
-    <script src="firebase/register.js"></script>
-    <script src="firebase/firebase-listener.js"></script>-->
-    <!-- end firebase -->
 
     <!--CSS-->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -52,20 +46,7 @@
             }
         });
     </script>
-    <!--<![endif]-->
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-
-    <div id="ie6-alert" style="width: 100%; text-align:center;">
-    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
-      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
-        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
-      </map>
-  </div>
-  <link rel="stylesheet" href="css/ie.css">
-  <![endif]-->
 </head>
 
 <body>
@@ -130,10 +111,13 @@
     </div>
     <div class="zodiac_box">
         <div class="container zodiacCont">
-            <div class="tp" id="tp" data-page="index">
-                <p><a class="t1" id="t1" onclick="placeH1()">ANIMATION TOOL</a></p>
-                <p><a class="t2" id="t2" onclick="placeH1()">3D MODELLING TOOL <br> (yet to launch)</a></p>
-                <p><a class="t3" id="t3" onclick="placeH1()">GAME MAKER <br> (yet to launch)</a></p>
+            <div class="tp" id="tp" onclick="placeH1();">
+                <p><a href="#" class="t1" id="t1" onclick="javascript: placeH1();">ANIMATION TOOL</a></p>
+                <p><a class="t2" id="t2" onclick="placeH1();">3D MODELLING TOOL <br> (yet to launch)</a></p>
+                <p><a class="t3" id="t3" onclick="placeH1();">GAME MAKER <br> (yet to launch)</a></p>
+            </div>
+
+            <div class="tp2" id="tp2">
             </div>
 
             <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
@@ -280,6 +264,11 @@
     <script src="firebase/login.js "></script>
     <script src="firebase/register.js "></script>
     <script src="firebase/firebase-listener.js "></script>
+    <script>
+        function placeH1() {
+            document.getElementById('tp').style.display = 'none';
+        }
+    </script>
 
 </body>
 

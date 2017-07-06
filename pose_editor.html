@@ -44,153 +44,146 @@
             }
         });
     </script>
-    <!--<![endif]-->
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-
-    <div id="ie6-alert" style="width: 100%; text-align:center;">
-    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
-      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
-        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
-      </map>
-  </div>
-  <link rel="stylesheet" href="css/ie.css">
-  <![endif]-->
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="stylesheet" href="css/poseeditor.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="BuildPose/UnityLoader.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build.json");
+    </script>
 </head>
 
 <body>
-    <div class="main">
-        <!--header-->
-        <div class="container">
-            <header class="clearfix">
-                <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu  clearfix ">
+    <section>
+        <div class="main">
+            <!--header-->
+            <div class="container">
+                <header class="clearfix">
+                    <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+                        <ul class="nav sf-menu  clearfix">
 
-                        <li class="sub-menu"><a href="index.html">home</a>
-                            <ul class="homeSub">
-                                <li><a href="#" id="body">body</a>
-                                    <ul class="bodysub">
-                                        <li><a href="#">columns 04</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                        <li><a href="#">columns 05</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">face</a></li>
-                                <li><a href="#">events</a></li>
-                                <li><a href="#">timeline</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li class="sub-menu"><a href="index-1.html">about</a><span class="fa fa-angle-down"></span>
-                            <!-- <ul class="submenu"> 
-                            <li><a href="#">columns 01</a></li>
-                            <li><a href="#">columns 02</a></li>
-                            <li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
-                                <ul class="submenu">
-                                    <li><a href="#">columns 04</a></li>
-                                    <li><a href="#">columns 05</a></li>
-                                  </ul> 
-                            </li> 
-                        </ul>-->
-                        </li>
-
-                        <li> <a href="my_library.html">my library</a></li>
-                        <li><a href="index-4.html">contacts</a></li>
-
-
-                    </ul>
-
-                </nav>
-                <ul class="follow_icon">
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon1.png" alt=""></a>
-                    </li>
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon2.png" alt=""></a>
-                    </li>
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon3.png" alt=""></a>
-                    </li>
-                    <div class="log-Out">
-                        <li class="logLi">
-                            <p id="logOutBtn" type="button">Log-Out</p>
-                        </li>
-                        <br>
+                            <li class="sub-menu"><a href="index.html">Home</a>
+                                <ul class="homeSub">
+                                    <li><a href="#">Animation</a>
+                                        <ul class="bodysub">
+                                            <li><a href="ARigger.html">Auto Rigger</a></li>
+                                            <li><a href="repository.html">Repository</a></li>
+                                            <li><a href="merger_tool.html">Merger Tool</a></li>
+                                            <li><a href="pose_editor.html">Pose Editor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">3D Modelling</a>
+                                        <ul class="bodysub">
+                                            <li><a href="#">Yet To Launch</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Game maker</a>
+                                        <ul class="bodysub">
+                                            <li><a href="#">Yet To Launch</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu"><a href="about.html">About</a></li>
+                            <li> <a href="my_library.html">My Library</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                    <div class="follow_icon reposFollowIcon">
                         <div class="user-mail pull-right"></div>
+                        <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                        <div class="sign-in">
+                            <!-- Trigger the modal with a button -->
+                            <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
+                        </div>
                     </div>
-                    <li class="sign-in">
-                        <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>
-                    </li>
-                </ul>
-
-            </header>
-        </div>
-    </div>
-    <div class="zodiac_box">
-
-    </div>
-
-    <!--footer-->
-    <footer>
-        <div class="container">
-            <figure><img src="img/fotterLogo.jpg" alt=""></figure>
-        </div>
-
-    </footer>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="reg">
-                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
-                <div class="login-form">
-                    <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
-                    </div>
-
-                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                    <div id="firebaseui-auth-container"></div>
-                    <p class="new-animake">New in Animake?</p>
-                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
-                </div>
-                <form class="reg-form">
-                    <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
-                    </div>
-                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
-                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                    <p class="already-reg">already registered?</p>
-                </form>
+                </header>
             </div>
-
         </div>
-    </div>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/tm-scripts.js"></script>
-    <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
 
-    <script src="js/firebaseAuth.js"></script>
-    <script src="firebase/login.js"></script>
-    <script src="firebase/register.js"></script>
-    <script src="firebase/firebase-listener.js"></script>
+
+        <div class="wrapper">
+            <!--content-->
+            <div class="content" id="content">
+
+                <div class="webgl-content">
+                    <div id="gameContainer" style="width: 960px; height: 600px"></div>
+                    <div class="footer">
+                        <div class="webgl-logo"></div>
+                        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+                        <div class="title">Runtime Animation Editor</div>
+                        <br/>
+                        <input id="anim_url" autocomplete="on" type="text" placeholder="animation url" value="http://35.197.25.101:8080/JSONAnimations/aim_pistol.json">
+                        <button type="button" value="Load Animation" onclick="loadAnimFromUrl();">Load Animation</button>
+                    </div>
+                </div>
+                <script>
+                    // Engine loading is finished, we can call animations loading method...
+                    function loadAnimFromUrl() {
+                        var url = document.getElementById('anim_url').value;
+                        gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', url);
+                    }
+                </script>
+
+
+            </div>
+        </div>
+        <div class="push"></div>
+        <!--footer-->
+        <div class="footer">
+            <footer>
+                <div class="container">
+                    <figure><img src="img/fotterLogo.jpg" alt=""></figure>
+                </div>
+
+            </footer>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="reg">
+                    <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                        </div>
+
+                        <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                        <div id="firebaseui-auth-container"></div>
+                        <p class="new-animake">New in Animake?</p>
+                        <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                    </div>
+                    <form class="reg-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                        </div>
+                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                        <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                        <p class="already-reg">already registered?</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/tm-scripts.js"></script>
+        <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
+        <script src="js/firebaseAuth.js"></script>
+        <script src="firebase/login.js"></script>
+        <script src="firebase/register.js"></script>
+        <script src="firebase/firebase-listener.js"></script>
 </body>
 
 </html>
