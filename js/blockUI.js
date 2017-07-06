@@ -126,7 +126,7 @@
             css: {
                 padding: 0,
                 margin: 0,
-                opacity: 0.6,
+                opacity: 0.8,
                 top: '50%',
                 left: '40%',
                 textAlign: 'center',
@@ -146,7 +146,7 @@
             // styles for the overlay
             overlayCSS: {
                 backgroundColor: '#000',
-                opacity: 0.6,
+                opacity: 0.7,
                 cursor: 'wait'
             },
 
