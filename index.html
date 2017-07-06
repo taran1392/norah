@@ -12,7 +12,6 @@
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
     <meta name="format-detection" content="telephone=no" />
-    <script src="js/jquery.js"></script>
     <!-- firebase -->
 
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
@@ -33,6 +32,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/reg_form.css">
     <link rel="stylesheet" href="fonts/font-awesome.css">
+    <link rel="stylesheet" href="css/rigger_popup.css">
     <!--JS-->
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -44,6 +44,7 @@
     <!--[if (gt IE 9)|!(IE)]><!-->
     <script src="js/wow/wow.js"></script>
     <script src="js/wow/device.min.js"></script>
+
     <script>
         $(document).ready(function() {
             if ($('html').hasClass('desktop')) {
@@ -73,13 +74,13 @@
         <div class="container">
             <header class="clearfix">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu  clearfix ">
+                    <ul class="nav sf-menu  clearfix">
 
                         <li class="sub-menu"><a href="index.html">Home</a>
                             <ul class="homeSub">
-                                <!--<li><a href="#" id="body">body</a>
-                                    
-                                </li>-->
+                                <li><a href="#" id="body">body</a>
+
+                                </li>
                                 <li><a href="#">Animation</a>
                                     <ul class="bodysub">
                                         <li><a href="ARigger.html">Auto Rigger</a></li>
@@ -145,14 +146,6 @@
                 <h1 class="navbar-brand navbar-brand_">
                     <a href="index.html"><img src="img/norah.png" alt="logo" class="img responsive"></a>
                 </h1>
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
-                        <form id="search" class="search" action="search.php" method="GET" accept-charset="utf-8">
-                            <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}" placeholder="TAKE ME THROUGH THE TOUR">
-                        </form>
-                        <time datetime="2014-01-01">Nov. 22, 2014</time>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -168,9 +161,9 @@
 
 
                 <figure>
-                    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+                    <!-- <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
                         <input class="btn btn-success" type="file" id="js-upload" name="foo" accept=".obj" />
-                    </form>
+                    </form>-->
                     <a href="ARigger.html"><img src="img/rigger.png" alt=""></a>
                 </figure>
                 <strong>AUTO RIGGER</strong>
@@ -241,7 +234,7 @@
                     <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
                     <a href="#" class="btn-default btn5">read more</a>
                 </div>
-                <figure><img src="img/timeline.png" alt=" "></figure>
+                <figure><img src="img/timeline.png" alt=""></figure>
                 <strong>TIMELINE BASED EDITING</strong>
 
 
@@ -323,7 +316,7 @@
     <!--footer-->
     <footer>
         <div class="container">
-            <figure><img src="img/fotterLogo.jpg" alt=" "></figure>
+            <figure><img src="img/fotterLogo.jpg" alt=""></figure>
         </div>
 
     </footer>
@@ -360,9 +353,10 @@
                         <label for="inputPassword" class="sr-only">Password</label>
                         <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
                     </div>
-                    <!-- //id="regBtn " class="btn btn-lg btn-primary btn-block " -->
-                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                    <!--<div id="regBtn" class="btn btn-lg btn-primary btn-block ">-->
+                    <button id="regBtn" type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
                     <p class="already-reg">already registered?</p>
+
                 </form>
             </div>
 
@@ -371,7 +365,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/tm-scripts.js"></script>
     <!--script src="./firebase_files/ie10-viewport-bug-workaround.js "></script-->
-
+    <script src="js/firebaseAuth.js "></script>
+    <script src="firebase/login.js "></script>
+    <script src="firebase/register.js "></script>
+    <script src="firebase/firebase-listener.js "></script>
 
 </body>
 
