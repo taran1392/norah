@@ -53,24 +53,25 @@ function getVideos(page, th) {
     var data = anim_final.slice(offset, (page * resultsPerPage));
     if (!data.length) {
         // Add toast code to blocks variable
-        $('.zodiacCont').html(blocks); 
+        $('.zodiacCont').html(blocks);
         $.unblockUI();
         console.log("No data");
     } else {
         data.forEach(function(anim) {
-
+            // blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
             firebase.storage().ref("animFiles").child(anim.name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                 firebase.storage().ref("mp4Files").child(anim.name + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     blocks += '<div class="box box' + k + ' fadeInUp clust">';
                     blocks += '<div style="z-index: 111;">';
                     blocks += '<a class="newwwww" href="javascript:;" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                    blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+                    blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks += '<div class="animation-name">' + anim.name + '</div>';
                     blocks += '</div>';
                     blocks += '<video autoplay loop  muted>';
                     blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
                     blocks += '</video>';
                     blocks += '</div>';
+                    console.log(animDownloadUrl);
 
                     k++;
                     if (k === completed) {
@@ -144,7 +145,7 @@ jQuery(document).ready(function() {
                 var name = $(this).attr('data-name');
                 subLi += '<div class="pull-left closeDiv">';
                 subLi += '<p class="pull-left filterP">' + $(this).html();
-                subLi += '<button id="' + $(this).text() +'" class="pull-right closeBtn" data-name="' + name + '">X</button>' + '</p>';
+                subLi += '<button id="' + $(this).text() + '" class="pull-right closeBtn" data-name="' + name + '">X</button>' + '</p>';
                 subLi += '</div>';
                 $(".tagName").append(subLi);
                 console.log($(this).text());
@@ -158,7 +159,7 @@ jQuery(document).ready(function() {
                 console.log("removeItem");
                 console.log(removeItem);
                 tags = jQuery.grep(tags, function(value) {
-                  return value != removeItem;
+                    return value != removeItem;
                 });
 
                 var name = $(this).attr('data-name');

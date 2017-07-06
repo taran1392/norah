@@ -98,17 +98,8 @@
                             </ul>
                         </li>
 
-                        <li class="sub-menu"><a href="about.html">About</a><span class="fa fa-angle-down"></span>
-                            <!-- <ul class="submenu"> 
-            				<li><a href="#">columns 01</a></li>
-                            <li><a href="#">columns 02</a></li>
-            				<li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
-                                <ul class="submenu">
-                                    <li><a href="#">columns 04</a></li>
-                                    <li><a href="#">columns 05</a></li>
-                                  </ul> 
-                            </li> 
-            			</ul>-->
+                        <li class="sub-menu"><a href="about.html">About</a>
+
                         </li>
 
                         <li> <a href="my_library.html">My Library</a></li>
@@ -117,28 +108,15 @@
 
                     </ul>
                 </nav>
-                <ul class="follow_icon">
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon1.png" alt=""></a>
-                    </li>
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon2.png" alt=""></a>
-                    </li>
-                    <li class="cosialIcon">
-                        <a href="#"><img src="img/follow_icon3.png" alt=""></a>
-                    </li>
-                    <div class="log-Out">
-                        <li class="logLi">
-                            <p id="logOutBtn" type="button">Log-Out</p>
-                        </li>
-                        <br>
-                        <div class="user-mail pull-right"></div>
-                    </div>
-                    <li class="sign-in">
+                <div class="follow_icon reposFollowIcon">
+                    <div class="user-mail pull-right"></div>
+                    <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                    <div class="sign-in">
                         <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-info btn-lg"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-in</button>
-                    </li>
-                </ul>
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
+                    </div>
+                </div>
+
             </header>
             <div class="logo_box indent">
                 <h1 class="navbar-brand navbar-brand_">
@@ -226,8 +204,7 @@
     <!--footer-->
     <footer>
         <div class="container">
-            <figure><img src="img/foo_logo.png" alt=""></figure>
-            <p>&copy; <em id="copyright-year"></em> <span>|</span> <a href="index-5.html">Privacy Policy</a></p>
+            <figure><img src="img/fotterLogo.jpg" alt=""></figure>
         </div>
     </footer>
     <script src="js/bootstrap.min.js"></script>
@@ -237,12 +214,12 @@
 
         function google_api_map_init() {
             var map;
-            var coordData = new google.maps.LatLng(parseFloat(40.646197), parseFloat(-73.9724068, 14));
-            var markCoord1 = new google.maps.LatLng(parseFloat(40.643180), parseFloat(-73.9874068, 14));
-            var markCoord2 = new google.maps.LatLng(parseFloat(40.6422180), parseFloat(-73.9784068, 14));
-            var markCoord3 = new google.maps.LatLng(parseFloat(40.6482180), parseFloat(-73.9724068, 14));
-            var markCoord4 = new google.maps.LatLng(parseFloat(40.6442180), parseFloat(-73.9664068, 14));
-            var markCoord5 = new google.maps.LatLng(parseFloat(40.6379180), parseFloat(-73.9552068, 14));
+            var coordData = new google.maps.LatLng(parseFloat(12.919718), parseFloat(77.577471, 14));
+            var markCoord1 = new google.maps.LatLng(parseFloat(12.919718), parseFloat(77.577471, 14));
+            var markCoord2 = new google.maps.LatLng(parseFloat(12.919718), parseFloat(77.577471, 14));
+            var markCoord3 = new google.maps.LatLng(parseFloat(12.919718), parseFloat(77.577471, 14));
+            var markCoord4 = new google.maps.LatLng(parseFloat(12.919718), parseFloat(77.577471, 14));
+            var markCoord5 = new google.maps.LatLng(parseFloat(12.919718), parseFloat(77.577471, 14));
             var marker;
 
             var styleArray = [{

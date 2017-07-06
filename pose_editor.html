@@ -49,7 +49,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="BuildPose/UnityLoader.js"></script>
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build.json");
+        var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build3.json");
     </script>
 </head>
 
@@ -60,13 +60,16 @@
             <div class="container">
                 <header class="clearfix">
                     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                        <ul class="nav sf-menu  clearfix">
+                        <ul class="nav sf-menu  clearfix ">
 
-                            <li class="sub-menu"><a href="index.html">Home</a>
+                            <li class="sub-menu"><a href="index.html">Home</a><span class="fa fa-angle-down"></span>
                                 <ul class="homeSub">
+                                    <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
                                     <li><a href="#">Animation</a>
                                         <ul class="bodysub">
-                                            <li><a href="ARigger.html">Auto Rigger</a></li>
+                                            <li><a href="ARigger.html" style="cursor:pointer;">Auto Rigger</a></li>
                                             <li><a href="repository.html">Repository</a></li>
                                             <li><a href="merger_tool.html">Merger Tool</a></li>
                                             <li><a href="pose_editor.html">Pose Editor</a></li>
@@ -82,11 +85,18 @@
                                             <li><a href="#">Yet To Launch</a></li>
                                         </ul>
                                     </li>
+
                                 </ul>
                             </li>
-                            <li class="sub-menu"><a href="about.html">About</a></li>
+
+                            <li class="sub-menu"><a href="about.html">About</a>
+
+                            </li>
+
                             <li> <a href="my_library.html">My Library</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.html">Contacts</a></li>
+
+
                         </ul>
                     </nav>
                     <div class="follow_icon reposFollowIcon">
@@ -97,6 +107,7 @@
                             <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
                         </div>
                     </div>
+
                 </header>
             </div>
         </div>
@@ -114,7 +125,7 @@
                         <div class="title">Runtime Animation Editor</div>
                         <br/>
                         <input id="anim_url" autocomplete="on" type="text" placeholder="animation url" value="http://35.197.25.101:8080/JSONAnimations/aim_pistol.json">
-                        <button type="button" value="Load Animation" onclick="loadAnimFromUrl();">Load Animation</button>
+                        <button type="button" value="Load Animation" onclick="javascript:loadAnimFromUrl();">Load Animation</button>
                     </div>
                 </div>
                 <script>
@@ -130,14 +141,14 @@
         </div>
         <div class="push"></div>
         <!--footer-->
-        <div class="footer">
+        <!--<div class="footer">
             <footer>
                 <div class="container">
                     <figure><img src="img/fotterLogo.jpg" alt=""></figure>
                 </div>
 
             </footer>
-        </div>
+        </div>-->
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">

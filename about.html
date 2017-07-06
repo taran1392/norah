@@ -69,13 +69,16 @@
         <div class="container">
             <header class="clearfix">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu  clearfix">
+                    <ul class="nav sf-menu  clearfix ">
 
                         <li class="sub-menu"><a href="index.html">Home</a><span class="fa fa-angle-down"></span>
                             <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
                                 <li><a href="#">Animation</a>
                                     <ul class="bodysub">
-                                        <li><a href="ARigger.html">Auto Rigger</a></li>
+                                        <li><a href="ARigger.html" style="cursor:pointer;">Auto Rigger</a></li>
                                         <li><a href="repository.html">Repository</a></li>
                                         <li><a href="merger_tool.html">Merger Tool</a></li>
                                         <li><a href="pose_editor.html">Pose Editor</a></li>
@@ -100,35 +103,20 @@
                         </li>
 
                         <li> <a href="my_library.html">My Library</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
 
 
                     </ul>
                 </nav>
-
-
-                <ul class="follow_icon">
-                    <li>
-                        <a href="#"><img src="img/follow_icon1.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="img/follow_icon2.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="img/follow_icon3.png" alt=""></a>
-                    </li>
-
-                    <div class="log-Out">
-                        <li>
-                            <p id="logOutBtn" type="button">Log-Out</p>
-                        </li>
-                        <br>
-                        <div class="user-mail pull-left"></div>
+                <div class="follow_icon reposFollowIcon">
+                    <div class="user-mail pull-right"></div>
+                    <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                    <div class="sign-in">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
                     </div>
-                    <li class="sign-in">
-                        <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-up</button>
-                    </li>
-                </ul>
+                </div>
+
             </header>
             <div class="logo_box indent">
                 <h1 class="navbar-brand navbar-brand_">
@@ -334,8 +322,7 @@
     <!--footer-->
     <footer>
         <div class="container">
-            <figure><img src="img/foo_logo.png" alt=""></figure>
-            <p>&copy; <em id="copyright-year"></em> <span>|</span> <a href="index-5.html">Privacy Policy</a></p>
+            <figure><img src="img/fotterLogo.jpg" alt=""></figure>
         </div>
     </footer>
 

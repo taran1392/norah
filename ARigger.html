@@ -44,7 +44,7 @@
                                 </li>-->
                                     <li><a href="#">Animation</a>
                                         <ul class="bodysub">
-                                            <li><a href="ARigger.html">Auto Rigger</a></li>
+                                            <li><a href="ARigger.html" style="cursor:pointer;">Auto Rigger</a></li>
                                             <li><a href="repository.html">Repository</a></li>
                                             <li><a href="merger_tool.html">Merger Tool</a></li>
                                             <li><a href="pose_editor.html">Pose Editor</a></li>
@@ -73,30 +73,15 @@
 
 
                         </ul>
-
                     </nav>
-                    <ul class="follow_icon">
-                        <li class="cosialIcon">
-                            <a href="#"><img src="img/follow_icon1.png" alt=""></a>
-                        </li>
-                        <li class="cosialIcon">
-                            <a href="#"><img src="img/follow_icon2.png" alt=""></a>
-                        </li>
-                        <li class="cosialIcon">
-                            <a href="#"><img src="img/follow_icon3.png" alt=""></a>
-                        </li>
-                        <div class="log-Out">
-                            <li class="logLi">
-                                <p id="logOutBtn" type="button">Log-Out</p>
-                            </li>
-                            <br>
-                            <div class="user-mail pull-right"></div>
-                        </div>
-                        <li class="sign-in">
+                    <div class="follow_icon reposFollowIcon">
+                        <div class="user-mail pull-right"></div>
+                        <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                        <div class="sign-in">
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg regB"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign-in</button>
-                        </li>
-                    </ul>
+                            <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
+                        </div>
+                    </div>
 
                 </header>
 
@@ -109,7 +94,7 @@
                 <div class="container-fluid page-wrapper">
 
                     <div class="row no-gutters">
-                        <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+                        <form ref='uploadForm' id='uploadForm' action='https://45.76.150.25:443/upload' method='post' encType="multipart/form-data">
                             <input class="btn btn-success" type="file" id="js-upload" name="foo" accept=".obj" />
 
                         </form>
@@ -173,7 +158,7 @@
         <script>
             window.onload = function() {
 
-                var socket = io.connect('http://45.76.150.25:8080');
+                var socket = io.connect('https://45.76.150.25:443');
 
 
 
@@ -583,7 +568,7 @@
                     // event.preventDefault(); // Totally stop stuff happening
 
                     // START A LOADING SPINNER HERE
-                    document.getElementById("loader").style.display = "";
+                    //  document.getElementById("loader").style.display = "";
                     document.getElementById("uploadForm").submit();
 
                     socket.emit('pause');
