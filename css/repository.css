@@ -175,9 +175,18 @@ body {
 }
 
 .pagination>.active>span,
-.pagination>.active>a,
+.pagination>.active>a {
+    color: white;
+    cursor: pointer;
+    background-color: #E36480;
+}
+
 .pagination>.active>span:hover,
-.pagination>.active>a:focus,
+.pagination>.active>a:focus {
+    background-color: #E36480;
+    color: #CA496B;
+}
+
 .pagination>.active>span:focus {
     background-color: #412A58;
     color: #CA496B;
