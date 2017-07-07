@@ -1,9 +1,9 @@
 var UnityLoader = UnityLoader || {
     compatibilityCheck: function(e, t, r) {
-        UnityLoader.SystemInfo.hasWebGL ? UnityLoader.SystemInfo.mobile ? e.popup("Please note that Unity WebGL is not currently supported on mobiles. Press OK if you wish to continue anyway.", [{
+        UnityLoader.SystemInfo.hasWebGL ? UnityLoader.SystemInfo.mobile ? e.popup("Please note that WebGL is not currently supported on mobiles. Press OK if you wish to continue anyway.", [{
             text: "OK",
             callback: t
-        }]) : ["Firefox", "Chrome", "Safari"].indexOf(UnityLoader.SystemInfo.browser) == -1 ? e.popup("Please note that your browser is not currently supported for this Unity WebGL content. Press OK if you wish to continue anyway.", [{
+        }]) : ["Firefox", "Chrome", "Safari"].indexOf(UnityLoader.SystemInfo.browser) == -1 ? e.popup("Please note that your browser is not currently supported for this WebGL content. Press OK if you wish to continue anyway.", [{
             text: "OK",
             callback: t
         }]) : t() : e.popup("Your browser does not support WebGL", [{
@@ -376,7 +376,7 @@ var UnityLoader = UnityLoader || {
         handler: function(e, t) {
             var r = t ? this.demangle(e, t) : e.message;
             if (!(t && t.errorhandler && t.errorhandler(r, e.filename, e.lineno) || (console.log("Invoking error handler due to\n" + r), "function" == typeof dump && dump("Invoking error handler due to\n" + r), r.indexOf("UnknownError") != -1 || r.indexOf("Program terminated with exit(0)") != -1 || this.didShowErrorMessage))) {
-                var r = "An error occured running the Unity content on this page. See your browser JavaScript console for more info. The error was:\n" + r;
+                var r = "An error occured running the WebGL content on this page. See your browser JavaScript console for more info. The error was:\n" + r;
                 r.indexOf("DISABLE_EXCEPTION_CATCHING") != -1 ? r = "An exception has occured, but exception handling has been disabled in this build. If you are the developer of this content, enable exceptions in your project WebGL player settings to be able to catch the exception or see the stack trace." : r.indexOf("Cannot enlarge memory arrays") != -1 ? r = "Out of memory. If you are the developer of this content, try allocating more memory to your WebGL build in the WebGL player settings." : r.indexOf("Invalid array buffer length") == -1 && r.indexOf("Invalid typed array length") == -1 && r.indexOf("out of memory") == -1 || (r = "The browser could not allocate enough memory for the WebGL content. If you are the developer of this content, try allocating less memory to your WebGL build in the WebGL player settings."), alert(r), this.didShowErrorMessage = !0
             }
         },
