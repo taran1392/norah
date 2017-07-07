@@ -19,12 +19,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <script src="firebase/config.js"></script>
     <script src="firebase/providers.js"></script>
-    <!--
-    <script src="js/firebaseAuth.js"></script>
-    <script src="firebase/login.js"></script>
-    <script src="firebase/register.js"></script>
-    <script src="firebase/firebase-listener.js"></script>-->
-    <!-- end firebase -->
 
     <!--CSS-->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -52,20 +46,7 @@
             }
         });
     </script>
-    <!--<![endif]-->
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-
-    <div id="ie6-alert" style="width: 100%; text-align:center;">
-    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
-      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
-        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
-      </map>
-  </div>
-  <link rel="stylesheet" href="css/ie.css">
-  <![endif]-->
 </head>
 
 <body>
@@ -74,13 +55,16 @@
         <div class="container">
             <header class="clearfix">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu  clearfix">
+                    <ul class="nav sf-menu  clearfix ">
 
-                        <li class="sub-menu"><a href="index.html">Home</a>
+                        <li class="sub-menu"><a href="index.html">Home</a><span class="fa fa-angle-down"></span>
                             <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
                                 <li><a href="#">Animation</a>
                                     <ul class="bodysub">
-                                        <li><a href="ARigger.html">Auto Rigger</a></li>
+                                        <li><a href="ARigger.html" style="cursor:pointer;">Auto Rigger</a></li>
                                         <li><a href="repository.html">Repository</a></li>
                                         <li><a href="merger_tool.html">Merger Tool</a></li>
                                         <li><a href="pose_editor.html">Pose Editor</a></li>
@@ -105,11 +89,10 @@
                         </li>
 
                         <li> <a href="my_library.html">My Library</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
 
 
                     </ul>
-
                 </nav>
                 <div class="follow_icon reposFollowIcon">
                     <div class="user-mail pull-right"></div>
@@ -131,13 +114,16 @@
     <div class="zodiac_box">
         <div class="container" style="position:relative;">
             <div class="tp3" id="tp3" onclick="javascript: placeH1();" data-page="index">
-                <p><span class="t1" id="t1" onclick="javascript: placeH1();">ANIMATION TOOL</span></p>
-                <p><a class="t2" id="t2" onclick="placeH1();">3D MODELLING TOOL <br> (yet to launch)</a></p>
-                <p><a class="t3" id="t3" onclick="placeH1();">GAME MAKER <br> (yet to launch)</a></p>
+                <a class="t1" id="t1" onclick="javascript: placeH1();">ANIMATION MODULE</a>
             </div>
-			
-			<div class="tp2" id="tp2">
-			</div>
+            <div class="tp5">
+                <p><a class="t2" id="t2" onclick="placeH1();">3D MODELLING MODULE <br> (...coming soon)</a></p>
+                <p><a class="t3" id="t3" onclick="placeH1();">GAME MAKER <br> (...coming soon)</a></p>
+            </div>
+
+
+            <div class="tp2" id="tp2">
+            </div>
 
             <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
 
@@ -164,7 +150,9 @@
             </div>
             <div class="box box4 wow fadeInUp">
 
-                <figure><img src="img/pose.png" alt=""></figure>
+                <figure>
+                    <a href="pose_editor.html"><img src="img/pose.png" alt=""></a>
+                </figure>
                 <strong>BODY ANIMATION<br>POSE EDITOR</strong>
             </div>
 
@@ -283,11 +271,11 @@
     <script src="firebase/login.js "></script>
     <script src="firebase/register.js "></script>
     <script src="firebase/firebase-listener.js "></script>
-	<script>
-		function placeH1() {
-			document.getElementById('tp3').style.display = 'none';
-		}
-	</script>
+    <script>
+        function placeH1() {
+            document.getElementById('tp3').style.display = 'none';
+        }
+    </script>
 
 </body>
 
