@@ -49,7 +49,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="BuildPose/UnityLoader.js"></script>
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build4.json");
+        var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build.json");
     </script>
 </head>
 
@@ -60,16 +60,13 @@
             <div class="container">
                 <header class="clearfix">
                     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                        <ul class="nav sf-menu  clearfix ">
+                        <ul class="nav sf-menu  clearfix">
 
-                            <li class="sub-menu"><a href="index.html">Home</a><span class="fa fa-angle-down"></span>
+                            <li class="sub-menu"><a href="index.html">Home</a>
                                 <ul class="homeSub">
-                                    <!--<li><a href="#" id="body">body</a>
-                                    
-                                </li>-->
                                     <li><a href="#">Animation</a>
                                         <ul class="bodysub">
-                                            <li><a href="ARigger.html" style="cursor:pointer;">Auto Rigger</a></li>
+                                            <li><a href="ARigger.html">Auto Rigger</a></li>
                                             <li><a href="repository.html">Repository</a></li>
                                             <li><a href="merger_tool.html">Merger Tool</a></li>
                                             <li><a href="pose_editor.html">Pose Editor</a></li>
@@ -85,18 +82,11 @@
                                             <li><a href="#">Yet To Launch</a></li>
                                         </ul>
                                     </li>
-
                                 </ul>
                             </li>
-
-                            <li class="sub-menu"><a href="about.html">About</a>
-
-                            </li>
-
+                            <li class="sub-menu"><a href="about.html">About</a></li>
                             <li> <a href="my_library.html">My Library</a></li>
-                            <li><a href="contact.html">Contacts</a></li>
-
-
+                            <li><a href="contact.html">Contact Us</a></li>
                         </ul>
                     </nav>
                     <div class="follow_icon reposFollowIcon">
@@ -107,7 +97,6 @@
                             <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
                         </div>
                     </div>
-
                 </header>
             </div>
         </div>
@@ -125,30 +114,24 @@
                         <div class="title">Runtime Animation Editor</div>
                         <br/>
                         <input id="anim_url" autocomplete="on" type="text" placeholder="animation url" value="http://35.197.25.101:8080/JSONAnimations/aim_pistol.json">
-                        <button type="button" value="Load Animation" onclick="javascript:loadAnimFromUrl();">Load Animation</button>
+                        <button type="button" value="Load Animation" onclick="loadAnimFromUrl();">Load Animation</button>
                     </div>
                 </div>
-                <script>
-                    // Engine loading is finished, we can call animations loading method...
-                    function loadAnimFromUrl() {
-                        var url = document.getElementById('anim_url').value;
-                        gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', url);
-                    }
-                </script>
+
 
 
             </div>
         </div>
         <div class="push"></div>
         <!--footer-->
-        <!--<div class="footer">
+        <div class="footer">
             <footer>
                 <div class="container">
                     <figure><img src="img/fotterLogo.jpg" alt=""></figure>
                 </div>
 
             </footer>
-        </div>-->
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -195,6 +178,81 @@
         <script src="firebase/login.js"></script>
         <script src="firebase/register.js"></script>
         <script src="firebase/firebase-listener.js"></script>
+        <script src="js/sForm.js"></script>
+        <script src="js/blockUI.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                setTimeout(loadPage, 1500);
+            });
+
+            var animations_library = [];
+
+            function loadAnimFromUrl(url) {
+                console.log("Inside loadAnimFromUrl");
+                console.log(url);
+                $("#anim_url").attr("value", url);
+                document.getElementById('anim_url').value = url;
+                gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', url);
+            }
+
+            function loadPage() {
+                if (firebase.auth().currentUser) {
+                    console.log("Auth");
+                    $.blockUI();
+                    var blocks = '';
+                    var k = 1;
+                    var completed = 1;
+                    var userId = firebase.auth().currentUser.uid;
+                    firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(ss) {
+                        var animations = ss.val();
+                        if (!animations) {
+                            alert("No items in library");
+                            $.unblockUI();
+                        }
+                        animations && Object.keys(animations).forEach(function(animKey) {
+                            console.log(animations[animKey]);
+                            animations_library.push(animations[animKey]);
+
+                            firebase.storage().ref("jsonFiles").child(animations[animKey] + ".json").getDownloadURL().then(function(downloadUrl) {
+                                console.log(downloadUrl);
+                                //downloadUrls.push(downloadUrl);
+                                console.log(typeof(downloadUrl));
+                                $("#anim_url").attr("value", downloadUrl);
+                                //document.getElementById('anim_url').value = downloadUrl;
+                                console.log("HERE");
+                                console.log(document.getElementById('anim_url').value);
+                                gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', downloadUrl);
+                                //loadAnimFromUrl(downloadUrl);
+
+
+
+
+                            });
+
+                            /*                firebase.storage().ref("animFiles").child(animations[animKey] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                                                firebase.storage().ref("mp4Files").child(animations[animKey] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                                                    console.log(animDownloadUrl);
+                                                    console.log(downloadUrl);
+                                                    blocks += '<video autoplay loop muted>';
+                                                    blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
+                                                    blocks += '</video>';
+                                                    downloadUrls.push(downloadUrl);
+
+                                                })
+                                            });*/
+
+                        });
+                        $.unblockUI();
+                    })
+                } else {
+                    $('#myModal').modal({
+                        backdrop: "static",
+                        keyboard: false,
+                        show: true
+                    });
+                }
+            }
+        </script>
 </body>
 
 </html>
