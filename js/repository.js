@@ -94,7 +94,7 @@ function getVideos(page, th) {
                                             //alert("Added to library");
                                     } else {
                                         toastr.info('Already in library')
-                                        alert("Already in library");
+                                            // alert("Already in library");
                                     }
                                 })
                             } else {
