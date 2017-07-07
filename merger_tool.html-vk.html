@@ -26,7 +26,6 @@
     <!-- Google font (If Use) -->
 
     <link rel="canonical" href="https://codepen.io/jeffaudio/pen/gaVmyX">
-    <script src="TemplateData/UnityProgress.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="Build/FileSave.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
@@ -37,14 +36,6 @@
     <script src="Build/UnityLoader.js"></script>
 
     <style>
-        p1 {
-            font-size: 35px;
-        }
-        
-        p2 {
-            font-size: 20px;
-        }
-        
         #slider1::-webkit-slider-runnable-track {
             background: linear-gradient(to right, #09F 48%, lightgray 48%)
         }
@@ -181,41 +172,53 @@
         }
         
         .main {
-            bottom: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
+
+            bottom:0;
+            position:absolute;
+            top:0;
+            width:100%;
+
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Modal -->
+<!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="reg">
-                <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
-                <hr>
-                <br>
-                <br>
-                <br>
-                <div align="center">
-                    <p1> <strong>Add Animations to <br>your Library</strong>
-                    </p1>
-                </div>
-                <br>
-                <br>
-                <div align="center">
-                    <p2> <strong><a href="index.html" >Return to Home</a></strong>
-                    </p2>
-                </div>
+                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                    </div>
 
-                <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
-                <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                <p class="already-reg">already registered?</p>
+                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                    <div id="firebaseui-auth-container"></div>
+                    <p class="new-animake">New in Animake?</p>
+                    <a href="/index.html" class="return-to-home">Return to Home</a>
+                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                </div>
+                <form class="reg-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                    </div>
+                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                    <p class="already-reg">already registered?</p>
                 </form>
             </div>
 
@@ -227,7 +230,7 @@
     <div class="main">
         <div class="">
 
-            <div class="merger_container_animation">
+            <div class="merger_container_animation" >
 
                 <div class="container">
                     <div class="row" style="background:#413f4c;padding:0;">
@@ -257,13 +260,13 @@
                                         </a>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="left_animation_mp43">
-
-                                            <video autoplay loop muted id="left_animation_mp4">
+                                                  <div class="left_animation_mp43">
+                                
+                                <video autoplay loop muted id="left_animation_mp4">
                                     <source id="left_animation_mp4_src" src="" type="video/mp4" />
                                 </video>
-                                            <!--<img src="img/plus_round.png" style="position:absolute;top:5px;left:19px;">-->
-                                        </div>
+                                <!--<img src="img/plus_round.png" style="position:absolute;top:5px;left:19px;">-->
+                            </div>
                                     </div>
 
                                     <div class="col-md-1">
@@ -273,8 +276,7 @@
                                     </div>
                                 </div>
                                 <span><center>Clip Length: 2 s</center></span>
-                                <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="https://firebasestorage.googleapis.com/v0/b/animake-672fc.appspot.com/o/yamlFiles%2Fblock.anim?alt=media&token=e05704ef-e047-4d5d-b690-d782817e329b" class="in_bg"
-                                    style="display:none;">
+                                <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="https://firebasestorage.googleapis.com/v0/b/animake-672fc.appspot.com/o/yamlFiles%2Fblock.anim?alt=media&token=e05704ef-e047-4d5d-b690-d782817e329b" class="in_bg" style="display:none;">
                             </div>
                             <div class="col-md-4 output-window">
                                 <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Output Window</h2>
@@ -308,12 +310,12 @@
                                         </a>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="image">
-                                            <video autoplay loop muted id="right_animation_mp4">
+                               <div class="image">
+                                       <video autoplay loop muted id="right_animation_mp4">
                                         <source id="right_animation_mp4_src" src="" type="video/mp4" />
                                 </video>
-                                            <!--<img src="img/plus_round.png" style="position:absolute;top:5px;left:19px;">-->
-                                        </div>
+                                    <!--<img src="img/plus_round.png" style="position:absolute;top:5px;left:19px;">-->
+                                </div>
                                     </div>
                                     <div class="col-md-1">
                                         <a href="javascript:ApplyRightAnim(1);" class="carousel-control right" style="right: 37px; height: 0px; top: 110px;">
@@ -440,25 +442,24 @@
     <script src="js/jquery.min.js"></script>
 
     <script>
-        var current_left;
-        var current_right;
-        window.yamllibrary = [];
-        window.mp4library = [];
-        yamlUrls = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/aggressive+look.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/backflip.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/block.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/casual+conversation.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/chicken+dance.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/dancing.anim"];
-        yamlUrls_left = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/chicken+dance.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/deep+breathing.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/fighting.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/playing+guitar.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/standing+idle1.anim"];
-        yamlUrls_right = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/backflip.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/block.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/dancing.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/flying+kick.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/kick.anim"];
-        mp4Urls_left = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/chicken+dance.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/deep+breathing.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/fighting.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/playing+guitar.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/standing+idle1.mp4"];
-        mp4Urls_right = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/backflip.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/block.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/dancing.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/flying+kick.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/kick.mp4"];
-        mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
-
+    var current_left;
+    var current_right;
+    window.yamllibrary = [];
+    window.mp4library = [];
+    yamlUrls = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/aggressive+look.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/backflip.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/block.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/casual+conversation.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/chicken+dance.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/dancing.anim"];
+    yamlUrls_left = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/chicken+dance.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/deep+breathing.anim", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/fighting.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/playing+guitar.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/big/standing+idle1.anim"];
+    yamlUrls_right = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/backflip.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/block.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/dancing.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/flying+kick.anim","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/yaml/small/kick.anim"];
+    mp4Urls_left = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/chicken+dance.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/deep+breathing.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/fighting.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/playing+guitar.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/standing+idle1.mp4"];
+    mp4Urls_right = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/backflip.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/block.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/dancing.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/flying+kick.mp4","http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/kick.mp4"];
+    mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4','http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4','http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4','http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4','http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4','http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
         // Engine loading is finished, we can call animations loading method...
-        function UnityLoadFinished() {
+function UnityLoadFinished() {
             var url1 = yamlUrls_left[current_left];
             var url2 = yamlUrls_right[current_right];
             document.getElementById('left_anim_name').value = url1;
             document.getElementById('right_anim_name').value = url2;
-            console.log("Initial left: ", url1);
-            console.log("Initial right: ", url2);
+            console.log("Initial left: ",url1);
+            console.log("Initial right: ",url2);
             //PlayAnimations();
             gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', url1 + "|" + url2);
             PlayAnimations();
@@ -467,9 +468,9 @@
         function PlayAnimations() {
 
             console.log("Inside PlayAnimations");
-            console.log("current_left: ", current_left);
-            console.log("current_right: ", current_right);
-
+            console.log("current_left: ",current_left);
+            console.log("current_right: ",current_right);
+            
             //Play left
             var player = document.getElementById('left_animation_mp4');
             var mp4Vid = document.getElementById('left_animation_mp4_src');
@@ -478,24 +479,22 @@
 
             player.load();
             player.play();
+
+            //Play Right
             var player = document.getElementById('right_animation_mp4');
             var mp4Vid = document.getElementById('right_animation_mp4_src');
-
-
             player.pause();
             mp4Vid.src = mp4Urls_right[current_right];
             player.load();
             player.play();
-
+            
         }
 
         function ApplyLeftAnim(direction) {
-
-
             console.log(current_left);
             console.log(direction);
             var len = yamlUrls_left.length;
-            current_left = current_left + direction;
+            current_left = current_left  + direction;
             if (current_left >= len) {
                 current_left = 0;
             }
@@ -510,11 +509,11 @@
         }
 
         function ApplyRightAnim(direction) {
-            console.log(current_right);
+             console.log(current_right);
             console.log(direction);
 
             var len = yamlUrls_right.length;
-            current_right = current_right + direction;
+            current_right = current_right  + direction;
             if (current_right >= len) {
                 current_right = 0;
             }
@@ -565,37 +564,43 @@
 
         rangeSlider();
 
-        $(document).ready(function() {
-            current_left = 0;
-            current_right = 0;
+$(document).ready(function() {
+    current_left = 0;
+    current_right = 0;
 
-            setTimeout(loadPage, 1500);
-        });
+    setTimeout(loadPage, 1500);
+});
 
-        /*var downloadUrls = [];
-        var animations_library = [];
-        var current_left = "";
-        var current_right = "";*/
-        function loadPage() {
+/*var downloadUrls = [];
+var animations_library = [];
+var current_left = "";
+var current_right = "";*/
+function loadPage() {
 
-            if (firebase.auth().currentUser) {
-                console.log("Auth");
-            } else {
-                console.log("Not logged in");
-                $('#myModal').modal({
-                    backdrop: "static",
-                    keyboard: false,
-                    show: true
-                });
-            }
+    if (firebase.auth().currentUser) {
+        console.log("Auth");
+
+        
         }
 
+        
 
+    else {
+        console.log("Not logged in");
+        $('#myModal').modal({
+            backdrop: "static",
+            keyboard: false,
+            show: true
+        });
+    }
+}
+
+    
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
+    
     </script>
 
     <script src="js/bootstrap.min.js"></script>
-
 
     <script src="js/script.js"></script>
 
