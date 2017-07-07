@@ -122,7 +122,7 @@
 
                     <br/>
                     <input id="anim_url" autocomplete="on" type="text" placeholder="animation url" value="http://35.197.25.101:8080/JSONAnimations/aim_pistol.json">
-                    <button type="button" value="Load Animation" onclick="loadAnimFromUrl();">Load Animation</button>
+
                 </div>
             </div>
         </div>
@@ -165,8 +165,8 @@
     <script src="js/tm-scripts.js"></script>
     <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
     <script src="js/firebaseAuth.js"></script>
-    <script src="firebase/login.js"></script>
-    <script src="firebase/register.js"></script>
+    <!--<script src="firebase/login.js"></script>
+    <script src="firebase/register.js"></script>-->
     <script src="firebase/firebase-listener.js"></script>
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
@@ -197,7 +197,9 @@
             if (firebase.auth().currentUser) {
                 // document.write('<script src="TemplateData/UnityProgress.js">\x3C/script>');
                 // document.write('<script src="BuildPose/UnityLoader.js">\x3C/script>');
-                var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build12 (Our Template).json");
+                var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build16 (Norah Template, New Anim).json", {
+                    onProgress: UnityProgress
+                });
                 console.log("Auth");
                 //$.blockUI();
                 var blocks = '';
