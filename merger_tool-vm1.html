@@ -498,7 +498,7 @@
             console.log(yamlUrls[current_left]);
             PlayAnimations();
             document.getElementById('left_anim_name').value = yamlUrls[current_left];
-            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', yamlUrls[current_left] + "|" + "1");
+            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', yamlUrls[current_left] + "|" + "0");
         }
 
         function ApplyRightAnim(direction) {
@@ -516,7 +516,7 @@
             console.log(yamlUrls[current_right]);
             PlayAnimations();
             document.getElementById('right_anim_name').value = yamlUrls[current_right];
-            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', yamlUrls[current_right] + "|" + "0");
+            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', yamlUrls[current_right] + "|" + "1");
         }
 
         function downloadAnim() {
