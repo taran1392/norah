@@ -36,9 +36,6 @@
     <script src="firebase/providers.js"></script>
     <script src="Build/UnityLoader.js"></script>
 
-    <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json");
-    </script>
     <style>
         p1 {
             font-size: 35px;
@@ -447,6 +444,9 @@
 
             if (firebase.auth().currentUser) {
                 console.log("Auth");
+                document.write('<script src="TemplateData/UnityProgress.js">\x3C/script>');
+                document.write('<script src="Build/UnityLoader.js">\x3C/script>');
+                var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json");
 
                 var blocks = '';
                 var k = 1;
