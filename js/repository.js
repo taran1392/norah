@@ -53,7 +53,7 @@ function getVideos(page, th) {
     var data = anim_final.slice(offset, (page * resultsPerPage));
     if (!data.length) {
         // Add toast code to blocks variable
-        $('.zodiacCont').html(blocks); 
+        $('.zodiacCont').html(blocks);
         $.unblockUI();
         console.log("No data");
     } else {
@@ -90,8 +90,10 @@ function getVideos(page, th) {
                                     if (!exists) {
                                         var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
                                         newObjRef.set(animName);
-                                        alert("Added to library");
+                                        toastr.info('Added to library')
+                                            //alert("Added to library");
                                     } else {
+                                        toastr.info('Already in library')
                                         alert("Already in library");
                                     }
                                 })
@@ -142,9 +144,9 @@ jQuery(document).ready(function() {
             if (!$(this).hasClass("activeTag")) {
                 $(this).addClass("active activeTag");
                 var name = $(this).attr('data-name');
-                subLi += '<div class="pull-left closeDiv ' + $(this).text() +'" style="margin-top:15px;">';
+                subLi += '<div class="pull-left closeDiv ' + $(this).text() + '" style="margin-top:15px;">';
                 subLi += '<p class="filterP">' + $(this).html();
-                subLi += '<a id="' + $(this).text() +'" class="closeBtn" data-name="' + name + '" style="font-size:14px;cursor:pointer">&nbsp;&nbsp;&nbsp;X</button>' + '</a>';
+                subLi += '<a id="' + $(this).text() + '" class="closeBtn" data-name="' + name + '" style="font-size:14px;cursor:pointer">&nbsp;&nbsp;&nbsp;X</button>' + '</a>';
                 subLi += '</div>';
                 $(".tagName").append(subLi);
                 console.log($(this).text());
@@ -156,10 +158,10 @@ jQuery(document).ready(function() {
             $(".closeBtn").off('click').on('click', function() {
                 removeItem = $(this).attr('id');
                 console.log("removeItem");
-				$('.'+removeItem).hide();
+                $('.' + removeItem).hide();
                 console.log(removeItem);
                 tags = jQuery.grep(tags, function(value) {
-                  return value != removeItem;
+                    return value != removeItem;
                 });
 
                 var name = $(this).attr('data-name');
