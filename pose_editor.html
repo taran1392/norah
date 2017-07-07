@@ -51,6 +51,15 @@
     <script>
         var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build4.json");
     </script>
+    <style>
+        p1 {
+            font-size: 35px;
+        }
+        
+        p2 {
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -108,7 +117,7 @@
 
                 <div class="webgl-content">
                     <div id="gameContainer" style="width: 960px; height: 600px"></div>
-                    <div class="footer">
+                    <div>
                         <div class="webgl-logo"></div>
                         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
                         <div class="title">Runtime Animation Editor</div>
@@ -117,21 +126,18 @@
                         <button type="button" value="Load Animation" onclick="loadAnimFromUrl();">Load Animation</button>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
-        <div class="push"></div>
-        <!--footer-->
-        <div class="footer">
-            <footer>
-                <div class="container">
-                    <figure><img src="img/fotterLogo.jpg" alt=""></figure>
-                </div>
-
-            </footer>
+        <div class="content">
         </div>
+        <!--footer-->
+
+        <footer>
+            <div class="container">
+                <figure><img src="img/fotterLogo.jpg" alt=""></figure>
+            </div>
+
+        </footer>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -139,36 +145,21 @@
 
                 <!-- Modal content-->
                 <div class="reg">
-                    <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
-                    <div class="login-form">
-                        <div class="form-group">
-                            <label for="inputEmail" class="sr-only">Email address</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
-                        </div>
-
-                        <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                        <div id="firebaseui-auth-container"></div>
-                        <p class="new-animake">New in Animake?</p>
-                        <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                    <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
+                    <hr>
+                    <br>
+                    <br>
+                    <br>
+                    <div align="center">
+                        <p1> <strong>Add Animations to <br>your Library</strong>
+                        </p1>
                     </div>
-                    <form class="reg-form">
-                        <div class="form-group">
-                            <label for="inputEmail" class="sr-only">Email address</label>
-                            <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
-                        </div>
-                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
-                        <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                        <p class="already-reg">already registered?</p>
-                    </form>
+                    <div align="center">
+                        <p2> <strong><a href="/repository.html" >Return to Repository</a></strong>
+                        </p2>
+                    </div>
                 </div>
+
             </div>
         </div>
         <script src="js/bootstrap.min.js"></script>
@@ -182,7 +173,7 @@
         <script src="js/blockUI.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                setTimeout(loadPage, 1500);
+                setTimeout(loadPage, 50);
             });
 
             var animations_library = [];
@@ -223,24 +214,7 @@
                                 console.log(document.getElementById('anim_url').value);
                                 gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', downloadUrl);
                                 //loadAnimFromUrl(downloadUrl);
-
-
-
-
                             });
-
-                            /*                firebase.storage().ref("animFiles").child(animations[animKey] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                                                firebase.storage().ref("mp4Files").child(animations[animKey] + ".mp4").getDownloadURL().then(function(downloadUrl) {
-                                                    console.log(animDownloadUrl);
-                                                    console.log(downloadUrl);
-                                                    blocks += '<video autoplay loop muted>';
-                                                    blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
-                                                    blocks += '</video>';
-                                                    downloadUrls.push(downloadUrl);
-
-                                                })
-                                            });*/
-
                         });
                         $.unblockUI();
                     })

@@ -40,6 +40,14 @@
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json");
     </script>
     <style>
+        p1 {
+            font-size: 35px;
+        }
+        
+        p2 {
+            font-size: 20px;
+        }
+        
         #slider1::-webkit-slider-runnable-track {
             background: linear-gradient(to right, #09F 48%, lightgray 48%)
         }
@@ -192,36 +200,20 @@
 
             <!-- Modal content-->
             <div class="reg">
-                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
-                <div class="login-form">
-                    <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
-                    </div>
-
-                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                    <div id="firebaseui-auth-container"></div>
-                    <p class="new-animake">New in Animake?</p>
-                    <a href="/index.html" class="return-to-home">Return to Home</a>
-                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
+                <hr>
+                <br>
+                <br>
+                <br>
+                <div align="center">
+                    <p1> <strong>Add Animations to <br>your Library</strong>
+                    </p1>
                 </div>
-                <form class="reg-form">
-                    <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
-                    </div>
-                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
-                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                    <p class="already-reg">already registered?</p>
-                </form>
+                <br>
+                <div align="center">
+                    <p2> <strong><a href="/repository.html" >Return to Repository</a></strong>
+                    </p2>
+                </div>
             </div>
 
         </div>
@@ -270,12 +262,7 @@
                                     </div>
 
                                     <div class="col-md-1">
-                                        <!--             <div>
-                                <video autoplay loop muted id="right_animation_mp4">
-                                        <source id="right_animation_mp4_src" src="" type="video/mp4" />
-                                </video>
-                            </div>
- -->
+
                                         <a onclick="PlayLeftAnim(1);" class="carousel-control right" style="right:37px; height: 0px; top: 110px;">
                                             <img src="img/right_icon.png">
                                         </a>
@@ -447,7 +434,7 @@
 
 
         $(document).ready(function() {
-            setTimeout(loadPage, 1500);
+            setTimeout(loadPage, 50);
         });
 
         var downloadUrls = [];
