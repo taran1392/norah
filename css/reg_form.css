@@ -2,9 +2,9 @@
 .reg{
 	position: fixed;
 	background-color: rgba(86, 76, 84, 0.78);
-	padding: 10%;
+	padding: 5% 10%;
 	border-radius: 15px;
-	top: 150px;
+	top: 0px;
 	z-index: 9999;
 }
 .reg .img-logo{
@@ -176,14 +176,6 @@
 .login-form .new-animake{
 	margin-left: 30%;
     font-size: 175%;
-    color: #e56381;
-    cursor: pointer;
-    width: 40%;
-}
-
-.login-form .return-to-home{
-	margin-left: 30%;
-    font-size: 150%;
     color: #e56381;
     cursor: pointer;
     width: 40%;
