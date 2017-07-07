@@ -171,14 +171,14 @@
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
     <script type="text/javascript">
-    function logout(){
-firebase.auth().signOut().then(function() {
-  console.log('Signed Out');
-}, function(error) {
-  console.error('Sign Out Error', error);
-});
-location.reload();
-    }
+        function logout() {
+            firebase.auth().signOut().then(function() {
+                console.log('Signed Out');
+            }, function(error) {
+                console.error('Sign Out Error', error);
+            });
+            location.reload();
+        }
         $(document).ready(function() {
             setTimeout(loadPage, 1500);
         });
@@ -197,7 +197,7 @@ location.reload();
             if (firebase.auth().currentUser) {
                 // document.write('<script src="TemplateData/UnityProgress.js">\x3C/script>');
                 // document.write('<script src="BuildPose/UnityLoader.js">\x3C/script>');
-                var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build4.json");
+                var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build12 (Our Template).json");
                 console.log("Auth");
                 //$.blockUI();
                 var blocks = '';
