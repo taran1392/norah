@@ -284,7 +284,7 @@
                                     <div class="enter-name">
                                         <div class="row">
                                             <div class="col-md-10" style="padding:0;margin:0;padding-left:17px;">
-                                                <input id="animation_name" type="text" autocomplete="off" placeholder="enter name" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
+                                                <input id="animation_name" type="text" autocomplete="off" value="test.anim" placeholder="enter name" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
                                             </div>
                                             <div class="col-md-1" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
                                                 <a href="javascript:downloadAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.png') no-repeat -0px 5px;border:0px solid #fff"></span></a>
@@ -577,7 +577,7 @@
                 console.log("Not logged in");
                 $('#myModal').modal({
                     backdrop: "static",
-                    keyboard: false,
+                    keyboard: true,
                     show: true
                 });
             }

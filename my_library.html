@@ -36,16 +36,30 @@
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
+
     <style>
         .fancy-checkbox {
             position: absolute;
-            bottom: 0;
+            top: 12px;
             right: 12px;
         }
         
         .zodiacCont .box {
-            width: 24%;
+            width: 196px;
+            height: 266px !important;
             margin-right: 7px;
+            margin-bottom: 7px
+        }
+        
+        .zodiac_box .box {
+            width: 223px;
+            min-height: 20px;
+            height: 264px !important;
+            background: #51376a !important;
+        }
+        
+        .zodiac_box .box:before {
+            background: transparent !important;
         }
         
         .radioB div {
@@ -53,9 +67,7 @@
             background-color: transparent;
         }
         
-        .radioB div:hover {
-            cursor: ;
-        }
+        .radioB div:hover {}
     </style>
 </head>
 
@@ -129,8 +141,8 @@
             </div>
         </div>
     </div>
-    <div class="zodiac_box">
-        <div class="container zodiacCont">
+    <div class="zodiac_box" style="text-align:left;">
+        <div class="container zodiacCont" style="display:none;">
 
 
             <div class="box box1 wow fadeInUp clust" data-wow-delay="0.3s" data-page="#">
@@ -283,10 +295,15 @@
             </div>
 
         </div>
+
+        <div class="temp_margin" style="display:block;width:100%;height:500px;">
+
+
+        </div>
     </div>
 
     <!--footer-->
-    <footer style="background:#fff">
+    <footer style="background:#fff;margin-top:250px;">
         <div class="container">
             <figure><img src="img/fotterLogo.jpg" alt=""></figure>
         </div>
