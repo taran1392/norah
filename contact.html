@@ -102,8 +102,8 @@
 
                         </li>
 
-                        <li> <a href="my_library.html">My Library</a></li>
-                        <li><a href="contact.html">Contacts</a></li>
+                        <!--<li> <a href="my_library.html">My Library</a></li>-->
+                        <li><a href="contact.html">Contact Us</a></li>
 
 
                     </ul>
@@ -203,7 +203,7 @@
 
             <!-- Modal content-->
             <div class="reg">
-                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
+                <img src="img/blank_modal.png" alt="logo" class="img-logo img responsive">
                 <div class="login-form">
                     <div class="form-group">
                         <label for="inputEmail" class="sr-only">Email address</label>
@@ -215,31 +215,30 @@
                     </div>
 
                     <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                    <div id="firebaseui-auth-container"></div>
-                    <p class="new-animake">New in Animake?</p>
+                    <!--<div id="firebaseui-auth-container"></div>--><br>
+                    <p align="center" class="new-animake">Sign-up</p>
                     <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                    <form class="reg-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                        </div>
+                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                        <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                        <p class="already-reg">already registered?</p>
+                    </form>
                 </div>
-                <form class="reg-form">
-                    <div class="form-group">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
-                    </div>
-                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
-                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                    <p class="already-reg">already registered?</p>
-                </form>
-            </div>
 
+            </div>
         </div>
-    </div>
-    <script src="js/firebaseAuth.js"></script>
-    <script src="firebase/login.js"></script>
-    <script src="firebase/register.js"></script>
-    <script src="firebase/firebase-listener.js"></script>
+        <script src="js/firebaseAuth.js"></script>
+        <script src="firebase/login.js"></script>
+        <script src="firebase/register.js"></script>
+        <script src="firebase/firebase-listener.js"></script>
 </body>
 
 </html>

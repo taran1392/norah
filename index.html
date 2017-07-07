@@ -23,6 +23,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact-form.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/reg_form.css">
     <link rel="stylesheet" href="fonts/font-awesome.css">
@@ -46,6 +47,15 @@
             }
         });
     </script>
+    <style>
+        p3 {
+            font-size: 19px;
+        }
+        
+        p4 {
+            font-size: 12px;
+        }
+    </style>
 
 </head>
 
@@ -88,8 +98,8 @@
 
                         </li>
 
-                        <li> <a href="my_library.html">My Library</a></li>
-                        <li><a href="contact.html">Contacts</a></li>
+                        <!--<li> <a href="my_library.html">My Library</a></li>-->
+                        <li><a href="contact.html">Contact Us</a></li>
 
 
                     </ul>
@@ -99,7 +109,7 @@
                     <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
                     <div class="sign-in">
                         <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i><p3>Sign-in</p3></button>
                     </div>
                 </div>
             </header>
@@ -146,10 +156,10 @@
             </div>
             <div class="box box4 wow fadeInUp">
 
-                <figure><img src="img/pose.png" alt="">
+                <figure>
                     <a href="pose_editor.html"><img src="img/pose.png" alt=""></a>
                 </figure>
-                <strong><br>BODY ANIMATION<br>POSE EDITOR</strong>
+                <strong><br>MOTION EDITOR</strong>
             </div>
 
             <!-- <div class="box box5 wow fadeInUp" data-wow-delay="0.3s">
@@ -226,7 +236,7 @@
 
             <!-- Modal content-->
             <div class="reg">
-                <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
+                <img src="img/blank_modal.png" alt="logo" class="img-logo img responsive">
                 <div class="login-form">
                     <div class="form-group">
                         <label for="inputEmail" class="sr-only">Email address</label>
@@ -238,8 +248,10 @@
                     </div>
 
                     <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
-                    <div id="firebaseui-auth-container"></div>
-                    <p class="new-animake">New in Animake?</p>
+                    <!--<div id="firebaseui-auth-container"></div>-->
+                    <br>
+                    <br>
+                    <p align="center" class="new-animake">Sign-up</p>
                     <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
                 </div>
                 <form class="reg-form">
@@ -251,10 +263,9 @@
                         <label for="inputPassword" class="sr-only">Password</label>
                         <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
                     </div>
-                    <!--<div id="regBtn" class="btn btn-lg btn-primary btn-block ">-->
-                    <button id="regBtn" type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
                     <p class="already-reg">already registered?</p>
-
                 </form>
             </div>
 

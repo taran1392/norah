@@ -1706,7 +1706,7 @@
     display: block;
     width: 100%;
     padding: 0.5rem 0.75rem;
-    font-size: 1rem;
+    font-size: 2rem;
     line-height: 1.25;
     color: #464a4c;
     background-color: #fff;
@@ -8486,7 +8486,7 @@ html h3 {
 
 html .btn {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 18.8%;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;

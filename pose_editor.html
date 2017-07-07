@@ -93,7 +93,7 @@
                             </ul>
                         </li>
                         <li class="sub-menu"><a href="about.html">About</a></li>
-                        <li> <a href="my_library.html">My Library</a></li>
+                        <!--<li> <a href="my_library.html">My Library</a></li>-->
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </nav>
@@ -197,7 +197,7 @@
             if (firebase.auth().currentUser) {
                 // document.write('<script src="TemplateData/UnityProgress.js">\x3C/script>');
                 // document.write('<script src="BuildPose/UnityLoader.js">\x3C/script>');
-                var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build16 (Norah Template, New Anim).json", {
+                var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build 17 (Production Release).json", {
                     onProgress: UnityProgress
                 });
                 console.log("Auth");

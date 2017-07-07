@@ -26,7 +26,6 @@
     <!-- Google font (If Use) -->
 
     <link rel="canonical" href="https://codepen.io/jeffaudio/pen/gaVmyX">
-    <script src="TemplateData/UnityProgress.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="Build/FileSave.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
@@ -37,14 +36,6 @@
     <script src="Build/UnityLoader.js"></script>
 
     <style>
-        p1 {
-            font-size: 35px;
-        }
-        
-        p2 {
-            font-size: 20px;
-        }
-        
         #slider1::-webkit-slider-runnable-track {
             background: linear-gradient(to right, #09F 48%, lightgray 48%)
         }
@@ -197,25 +188,35 @@
 
             <!-- Modal content-->
             <div class="reg">
-                <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
-                <hr>
-                <br>
-                <br>
-                <br>
-                <div align="center">
-                    <p1> <strong>Add Animations to <br>your Library</strong>
-                    </p1>
-                </div>
-                <br>
-                <br>
-                <div align="center">
-                    <p2> <strong><a href="index.html" >Return to Home</a></strong>
-                    </p2>
-                </div>
+                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                    </div>
 
-                <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
-                <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
-                <p class="already-reg">already registered?</p>
+                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                    <div id="firebaseui-auth-container"></div>
+                    <p class="new-animake">New in Animake?</p>
+                    <a href="/index.html" class="return-to-home">Return to Home</a>
+                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                </div>
+                <form class="reg-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                    </div>
+                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                    <p class="already-reg">already registered?</p>
                 </form>
             </div>
 
@@ -236,19 +237,20 @@
                                 <i class="fa fa-home" style="font-size:27px;color:#fefefe;margin-top:4px;"></i>
                             </a>
                         </div>
+
                         <div class="col-md-4">
                             <h1 class="merger_top_head">Body Part Wise Blending</h1>
                         </div>
-                        <div class="col-md-4">
 
-                            <button type="button" class="btn btn-info btn-sm pull-right" style="margin-top:3px;"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign-in</button>
-                        </div>
                     </div>
                     <div class="row" style="margin-top:7px;">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="col-md-4">
+
+                                <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Input 1</h2>
+
                                 <div class="row">
-                                    <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;"> </h2>
+                                    <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;"></h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1">
@@ -272,7 +274,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <span><center>Clip Length: 2 s</center></span>
+                                <span><center></center></span>
                                 <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="https://firebasestorage.googleapis.com/v0/b/animake-672fc.appspot.com/o/yamlFiles%2Fblock.anim?alt=media&token=e05704ef-e047-4d5d-b690-d782817e329b" class="in_bg"
                                     style="display:none;">
                             </div>
@@ -294,9 +296,10 @@
                                 </div>
 
                             </div>
+                            <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Input 2</h2>
                             <div class="col-md-4">
                                 <div class="row">
-                                    <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;"> </h2>
+                                    <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;"></h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1">
@@ -317,7 +320,7 @@
                                             <img src="img/right_icon.png"></a>
                                     </div>
                                 </div>
-                                <span><center>Clip Length: 3:23 s</center></span>
+                                <span><center></center></span>
                                 <input id="right_anim_name" autocomplete="on" type="text" placeholder="right animation name" value="http://35.197.25.101:8080/boxing.anim" class="in_bg" style="display:none;">
 
                             </div>
@@ -356,16 +359,17 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <!--               <div class="col-md-2">
                                     <div class="checkbox">
                                         <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="Blend Root Motion">Blend Root Motion</label>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
 
             <div class="blending_control">
                 <div class="container" style="padding:0;">
@@ -447,7 +451,6 @@
         mp4Urls_left = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/chicken+dance.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/deep+breathing.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/fighting.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/playing+guitar.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/standing+idle1.mp4"];
         mp4Urls_right = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/backflip.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/block.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/dancing.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/flying+kick.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/kick.mp4"];
         mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
-
         // Engine loading is finished, we can call animations loading method...
         function UnityLoadFinished() {
             var url1 = yamlUrls_left[current_left];
@@ -475,10 +478,10 @@
 
             player.load();
             player.play();
+
+            //Play Right
             var player = document.getElementById('right_animation_mp4');
             var mp4Vid = document.getElementById('right_animation_mp4_src');
-
-
             player.pause();
             mp4Vid.src = mp4Urls_right[current_right];
             player.load();
@@ -487,8 +490,6 @@
         }
 
         function ApplyLeftAnim(direction) {
-
-
             console.log(current_left);
             console.log(direction);
             var len = yamlUrls_left.length;
@@ -577,6 +578,8 @@
 
             if (firebase.auth().currentUser) {
                 console.log("Auth");
+
+
             } else {
                 console.log("Not logged in");
                 $('#myModal').modal({
@@ -588,11 +591,10 @@
         }
 
 
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json");
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
 
     <script src="js/bootstrap.min.js"></script>
-
 
     <script src="js/script.js"></script>
 
