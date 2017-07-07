@@ -35,7 +35,7 @@
     <script src="firebase/providers.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json");
     </script>
     <style>
         #slider1::-webkit-slider-runnable-track {
@@ -275,7 +275,7 @@
                                     </div>
                                 </div>
                                 <span><center>Clip Length: 2 s</center></span>
-                                <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="http://35.197.25.101:8080/boxing.anim" class="in_bg" style="display:none;">
+                                <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="http://35.197.25.101:8080/bored.anim" class="in_bg" style="display:none;">
                             </div>
                             <div class="col-md-4 output-window">
                                 <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Output Window</h2>
@@ -284,7 +284,7 @@
                                     <div class="enter-name">
                                         <div class="row">
                                             <div class="col-md-10" style="padding:0;margin:0;padding-left:17px;">
-                                                <input type="text" autocomplete="off" placeholder="enter name" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
+                                                <input id="animation_name" type="text" autocomplete="off" placeholder="enter name" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
                                             </div>
                                             <div class="col-md-1" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
                                                 <a href="javascript:downloadAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.png') no-repeat -0px 5px;border:0px solid #fff"></span></a>
@@ -320,7 +320,7 @@
                                     </div>
                                 </div>
                                 <span><center>Clip Length: 3:23 s</center></span>
-                                <input id="right_anim_name" autocomplete="on" type="text" placeholder="right animation name" value="http://35.197.25.101:8080/bicep_curl.anim" class="in_bg" style="display:none;">
+                                <input id="right_anim_name" autocomplete="on" type="text" placeholder="right animation name" value="http://35.197.25.101:8080/Catwalk_Walk_Forward.anim" class="in_bg" style="display:none;">
 
                             </div>
                         </div>
@@ -337,7 +337,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <div class="checkbox">
-                                        <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="Loop">Loop</label>
+                                        <label><input type="checkbox" autocomplete="off" value="" checked="checked" onclick='handleClick(this);' name="Loop">Loop</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -440,10 +440,63 @@
 
     <script>
         // Engine loading is finished, we can call animations loading method...
+function UnityLoadFinished() {
+            var url1 = document.getElementById('left_anim_name').value;
+            var url2 = document.getElementById('right_anim_name').value;
+            gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', url1 + "|" + url2);
+        }
 
+        function ApplyLeftAnim() {
+            var url = document.getElementById('left_anim_name').value;
+			alert('apply left anim: ' + url);
+            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url + "|" + "0");
+        }
+
+        function ApplyRightAnim() {
+            var url = document.getElementById('right_anim_name').value;
+			alert('apply right anim: ' + url);
+            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url + "|" + "1");
+        }
+
+        function downloadAnim() {
+            var txt = document.getElementById("animation_name");
+            var animName = txt.value;
+            gameInstance.SendMessage('ControllerHelper', 'ExportFromOutside', animName);
+        }
+
+        function handleClick(cb) {
+            var name = cb.getAttribute('name');
+            if (name == 'Loop')
+                gameInstance.SendMessage('ControllerHelper', 'SetLoop', cb.checked.toString());
+            if (name == 'TimeStretch')
+                gameInstance.SendMessage('ControllerHelper', 'SetTimeStretch', cb.checked.toString());
+        }
+
+        var rangeSlider = function() {
+            var slider = $('.range-slider'),
+                range = $('.range-slider__range'),
+                value = $('.range-slider__value');
+
+            slider.each(function() {
+
+                value.each(function() {
+                    var value = $(this).prev().attr('value');
+                    console.log(value);
+                    $(this).html(value);
+                });
+
+                range.on('input', function() {
+                    var name = $(this).attr('name');
+                    gameInstance.SendMessage('ControllerHelper', 'SetSliderValue', name + '|' + this.value);
+                    $(this).next(value).html(this.value);
+                });
+            });
+        };
+
+        rangeSlider();
 
 $(document).ready(function() {
-    setTimeout(loadPage, 1500);
+    //setTimeout(loadPage, 1500);
 });
 
 var downloadUrls = [];
@@ -650,61 +703,7 @@ function loadPage() {
     }
 
 
-        function UnityLoadFinished() {
-            var url1 = document.getElementById('left_anim_name').value;
-            var url2 = document.getElementById('right_anim_name').value;
-            gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', url1 + "|" + url2);
-        }
-
-        function ApplyLeftAnim() {
-            console.log("Inside ApplyLeftAnim");
-            console.log(animations_library);
-        console.log(downloadUrls);
-            var url = document.getElementById('left_anim_name').value;
-            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url + "|" + "0");
-        }
-
-        function ApplyRightAnim() {
-            var url = document.getElementById('right_anim_name').value;
-            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url + "|" + "1");
-        }
-
-        function downloadAnim() {
-            var txt = document.getElementById("animation_name");
-            var animName = txt.value;
-            gameInstance.SendMessage('ControllerHelper', 'ExportFromOutside', animName);
-        }
-
-        function handleClick(cb) {
-            var name = cb.getAttribute('name');
-            if (name == 'Loop')
-                gameInstance.SendMessage('ControllerHelper', 'SetLoop', cb.checked.toString());
-            if (name == 'TimeStretch')
-                gameInstance.SendMessage('ControllerHelper', 'SetTimeStretch', cb.checked.toString());
-        }
-
-        var rangeSlider = function() {
-            var slider = $('.range-slider'),
-                range = $('.range-slider__range'),
-                value = $('.range-slider__value');
-
-            slider.each(function() {
-
-                value.each(function() {
-                    var value = $(this).prev().attr('value');
-                    console.log(value);
-                    $(this).html(value);
-                });
-
-                range.on('input', function() {
-                    var name = $(this).attr('name');
-                    gameInstance.SendMessage('ControllerHelper', 'SetSliderValue', name + '|' + this.value);
-                    $(this).next(value).html(this.value);
-                });
-            });
-        };
-
-        rangeSlider();
+        
 
     } else {
         console.log("Not logged in");

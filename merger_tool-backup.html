@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Merger Toolmerger Tool</title>
+
+    <link rel="shortcut icon" href="" />
+
+    <!-- Bootstrap -->
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reg_form.css">
+    <!--<link href="css/styles.css" rel="stylesheet">-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="fonts/font-awesome.css" rel="stylesheet">
+
+
+
+
+    <!-- Google font (If Use) -->
+
+    <link rel="canonical" href="https://codepen.io/jeffaudio/pen/gaVmyX">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="Build/FileSave.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="firebase/config.js"></script>
+    <script src="firebase/providers.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
+    </script>
+    <style>
+        #slider1::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #09F 48%, lightgray 48%)
+        }
+        
+        #slider1::-moz-range-track {
+            background: linear-gradient(to right, #09F 48%, lightgray 48%)
+        }
+    </style>
+    <style class="cp-pen-styles">
+        .slider-container {
+            border: none;
+            padding: 5px;
+            background: blue;
+        }
+        
+        input[type=range] {
+            -webkit-appearance: none;
+            /* Hides the slider so that custom slider can be made */
+            width: 100%;
+            /* Specific width is required for Firefox. */
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        
+        input[type=range]:focus {
+            outline: none;
+            /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+        }
+        
+        input[type=range]::-ms-track {
+            width: 100%;
+            cursor: pointer;
+            background: transparent;
+            /* Hides the slider so custom styles can be added */
+            border-color: transparent;
+            color: transparent;
+        }
+        
+        .range-label {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .range-container {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 5px;
+        }
+        
+        .slider {
+            width: 100%;
+            margin: 0;
+            margin-top: 5px;
+            height: 30px;
+            background: #39244E;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #aeaeae;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        .slider::-moz-range-thumb {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #aeaeae;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        .slider::-ms-thumb {
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #aeaeae;
+            cursor: pointer;
+            margin-top: -7px;
+            margin-top: -3px;
+        }
+        
+        .slider::-webkit-slider-runnable-track {
+            height: 6px;
+            border-radius: 6px;
+            background: blue;
+        }
+        
+        .slider::-moz-range-track {
+            height: 6px;
+            border-radius: 6px;
+            background: blue;
+        }
+        
+        .slider::-moz-focus-outer {
+            border: 0;
+        }
+        
+        .slider::-ms-track {
+            height: 6px;
+            border-radius: 6px;
+            background: blue;
+        }
+        
+        .slider::-ms-fill-lower {
+            background: #09f;
+            border-radius: 6px;
+        }
+        
+        .slider::-ms-fill-upper {
+            background: lightgray;
+            border-radius: 6px;
+        }
+        
+        .slider::-ms-tooltip {
+            display: none;
+        }
+        
+        .main {
+
+            bottom:0;
+            position:absolute;
+            top:0;
+            width:100%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="reg">
+                <img src="img/animakeFooter.png" alt="logo" class="img-logo img responsive">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                    </div>
+
+                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                    <div id="firebaseui-auth-container"></div>
+                    <p class="new-animake">New in Animake?</p>
+                    <a href="/index.html" class="return-to-home">Return to Home</a>
+                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                </div>
+                <form class="reg-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                    </div>
+                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                    <p class="already-reg">already registered?</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal ends -->
+
+    <!-- mian wrapper start -->
+    <div class="main">
+        <div class="">
+
+            <div class="merger_container_animation" >
+
+                <div class="container">
+                    <div class="row" style="background:#413f4c;padding:0;">
+                        <div class="col-md-4">
+                            <a href="index.html">
+                                <i class="fa fa-home" style="font-size:27px;color:#fefefe;margin-top:4px;"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <h1 class="merger_top_head">Body Part Wise Blending</h1>
+                        </div>
+                        <div class="col-md-4">
+
+                            <button type="button" class="btn btn-info btn-sm pull-right" style="margin-top:3px;"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign-in</button>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:7px;">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Animation name</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <a href="javascript:ApplyLeftAnim();" class="carousel-control left" style="left:0px; top: 110px; height: 0px;">
+                                            <img src="img/left_icon.png">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="image">
+                                            <img src="img/img_placeholder.png" alt="" class="img-responsive">
+                                            <!--<img src="img/plus_round.png" style="position:absolute;top:5px;left:19px;">-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <a href="javascript:ApplyLeftAnim();" class="carousel-control right" style="right:37px; height: 0px; top: 110px;">
+                                            <img src="img/right_icon.png">
+                                        </a>
+                                    </div>
+                                </div>
+                                <span><center>Clip Length: 2 s</center></span>
+                                <input id="left_anim_name" autocomplete="on" type="text" placeholder="left animation name" value="http://35.197.25.101:8080/boxing.anim" class="in_bg" style="display:none;">
+                            </div>
+                            <div class="col-md-4 output-window">
+                                <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Output Window</h2>
+                                <div id="gameContainer2" class="col-md-11">
+                                    <div id="gameContainer" style="height: 250px"></div>
+                                    <div class="enter-name">
+                                        <div class="row">
+                                            <div class="col-md-10" style="padding:0;margin:0;padding-left:17px;">
+                                                <input type="text" autocomplete="off" placeholder="enter name" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
+                                            </div>
+                                            <div class="col-md-1" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
+                                                <a href="javascript:downloadAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.png') no-repeat -0px 5px;border:0px solid #fff"></span></a>
+                                            </div>
+                                            <div class="col-md-1" style="padding:0;margin:0;background:#4c4756;border-radius:0 0 10px 0">
+                                                <a href="#"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.png') no-repeat -26px 5px;border:0px solid #fff"></span></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <h2 style="color:#84838c;font-size:15px;text-align:center;padding:5px 0 0 0;">Animation name</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <a href="javascript:ApplyRightAnim();" class="carousel-control left" style="left: 0px; top: 110px; height: 0px;">
+                                            <img src="img/left_icon.png">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="image">
+                                            <img src="img/img_placeholder.png" alt="" class="img-responsive">
+                                            <!--<img src="img/plus_round.png" style="position:absolute;top:5px;left:19px;">-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="javascript:ApplyRightAnim();" class="carousel-control right" style="right: 37px; height: 0px; top: 110px;">
+                                            <img src="img/right_icon.png"></a>
+                                    </div>
+                                </div>
+                                <span><center>Clip Length: 3:23 s</center></span>
+                                <input id="right_anim_name" autocomplete="on" type="text" placeholder="right animation name" value="http://35.197.25.101:8080/bicep_curl.anim" class="in_bg" style="display:none;">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ./row-->
+
+
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1" style="margin-top:10px;">
+                            <div class="blending_options">
+                                <div class="col-md-3">
+                                    <h3 style="font-size:18px;color:#fefefe;margin-top:10px;">Blending Options:</h3>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="Loop">Loop</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="TimeStretch">Time stretch</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="">
+                                        <div class="col-md-5">
+                                            <label style="color:#fefefe;font-size:14px;margin-top:10px;">Start offset</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="StartOffs" style="margin-top:17px;">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" autocomplete="off" value="" onclick='handleClick(this);' name="Blend Root Motion">Blend Root Motion</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blending_control">
+                <div class="container" style="padding:0;">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h3 style="font-size:18px;color:#fefefe;margin-top:-20px;margin-left:2px;">Blending Control:</h3>
+                        <div class="blending_control_block">
+                            <label>Head</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Head">
+                            </div>
+                        </div>
+
+                        <div class="blending_control_block">
+                            <label>Torso</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Trso">
+                            </div>
+                        </div>
+
+                        <div class="blending_control_block">
+                            <label>Left Arm</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="ArmL">
+                            </div>
+                        </div>
+
+                        <div class="blending_control_block">
+                            <label>Right Arm</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="ArmR">
+                            </div>
+                        </div>
+
+                        <div class="blending_control_block">
+                            <label>Left Leg</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="LegL">
+                            </div>
+                        </div>
+
+                        <div class="blending_control_block">
+                            <label>Right Leg</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="LegR">
+                            </div>
+                        </div>
+
+                        <div class="blending_control_block">
+                            <label>Fingers</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Fing">
+                            </div>
+                        </div>
+                        <div class="blending_control_block">
+                            <label>Root</label>
+                            <div class="range-slider">
+                                <input class="range-slider__range" autocomplete="off" type="range" value="0" min="0" max="100" name="Root">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mian wrapper start -->
+
+
+
+    <script src="js/jquery.min.js"></script>
+
+    <script>
+        // Engine loading is finished, we can call animations loading method...
+
+
+$(document).ready(function() {
+    setTimeout(loadPage, 1500);
+});
+
+var downloadUrls = [];
+var animations_library = [];
+var current_left = "";
+var current_right = "";
+function loadPage() {
+
+    if (firebase.auth().currentUser) {
+        console.log("Auth");
+
+        var blocks = '';
+        var k = 1;
+        var completed = 1;
+        var userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(ss) {
+            console.log("HERE");
+            var animations = ss.val();
+            if (!animations) {
+                alert("No items in library");
+                $.unblockUI();
+            }
+            console.log(animations);
+            animations && Object.keys(animations).forEach(function(animKey) {
+                console.log(animations[animKey]);
+                animations_library.push(animations[animKey]);
+                current_left = animations[animKey];
+                current_right = animations[animKey];
+                //Start left mp4
+                firebase.storage().ref("mp4Files").child(animations[animKey] + ".mp4").getDownloadURL().then(function(downloadUrl)  {
+                    console.log(downloadUrl);
+                    downloadUrls.push(downloadUrl);
+                    console.log(typeof(downloadUrl));
+                   // $("#left_animation_mp4 > source").attr("src", downloadUrl.slice(1, -1));​
+
+                    var player = document.getElementById('left_animation_mp4');
+                    console.log(player);
+
+
+                    var mp4Vid = document.getElementById('left_animation_mp4_src');
+                console.log(mp4Vid);    
+
+                    player.pause();
+
+                  // Now simply set the 'src' property of the mp4Vid variable!!!!
+
+                    mp4Vid.src = downloadUrl;
+
+                    player.load();
+                    player.play();
+                    //document.getElementById('left_anim_name').value = animations[animkey];
+                    console.log("done");
+
+                    //Finish left
+                    //start right mp4
+
+                firebase.storage().ref("mp4Files").child(animations[animKey] + ".mp4").getDownloadURL().then(function(downloadUrl)  {
+                    console.log(downloadUrl);
+                    console.log(typeof(downloadUrl));
+                   // $("#left_animation_mp4 > source").attr("src", downloadUrl.slice(1, -1));​
+
+                    var player = document.getElementById('right_animation_mp4');
+                    console.log(player);
+
+
+                    var mp4Vid = document.getElementById('right_animation_mp4_src');
+                    console.log(mp4Vid);    
+
+                    player.pause();
+
+                  // Now simply set the 'src' property of the mp4Vid variable!!!!
+
+                    mp4Vid.src = downloadUrl;
+
+                    player.load();
+                    player.play();
+                    console.log("done");
+
+
+                });
+                //Finish right
+
+
+                });
+
+/*                firebase.storage().ref("animFiles").child(animations[animKey] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                    firebase.storage().ref("mp4Files").child(animations[animKey] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                        console.log(animDownloadUrl);
+                        console.log(downloadUrl);
+                        blocks += '<video autoplay loop muted>';
+                        blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
+                        blocks += '</video>';
+                        downloadUrls.push(downloadUrl);
+
+                    })
+                });*/
+
+            });
+        })
+
+        
+        PlayLeftAnim =function (direction){
+            console.log("here");
+            console.log("direction:",direction);
+            console.log(animations_library);
+            console.log(downloadUrls);
+
+
+            var index = -1;
+            var len = animations_library.length;
+            for(var i = 0; i < len; i++) {
+                if (animations_library[i] === current_left) {
+                    index = i;
+                    break;
+                }
+            }
+            console.log(index);
+            var current = index+direction;
+            if (current>=len){
+                current = 0;
+            }
+            if(current<0){
+                current = len-1;
+            }
+            //PlayAnimations(current,"left");
+            console.log("current=",current);
+            console.log(current_left);
+            current_left = animations_library[current];
+            PlayAnimations(current,"left");
+
+
+        }
+
+        PlayRightAnim =function (direction){
+            console.log("Inside PlayRightAnim");
+            console.log("direction:",direction);
+            console.log(animations_library);
+            console.log(downloadUrls);
+
+
+            var index = -1;
+            var len = animations_library.length;
+            for(var i = 0; i < len; i++) {
+                if (animations_library[i] === current_right) {
+                    index = i;
+                    break;
+                }
+            }
+            console.log(index);
+            var current = index+direction;
+            if (current>=len){
+                current = 0;
+            }
+            if(current<0){
+                current = len-1;
+            }
+            //PlayAnimations(current,"left");
+            console.log("current=",current);
+            console.log(current_left);
+            current_right = animations_library[current];
+            PlayAnimations(current,"right");
+
+
+        }
+
+        function PlayAnimations(current, dir){
+            console.log("Inside PlayAnimations");
+            console.log(current_left);
+            console.log(current);
+            if(dir=="left") {
+            var player = document.getElementById('left_animation_mp4');
+                    //console.log(player);
+
+
+            var mp4Vid = document.getElementById('left_animation_mp4_src');
+                //console.log(mp4Vid);    
+
+                    player.pause();
+
+                  // Now simply set the 'src' property of the mp4Vid variable!!!!
+
+                    mp4Vid.src = downloadUrls[current];
+
+                    player.load();
+                    player.play();
+        } else {
+                var player = document.getElementById('right_animation_mp4');
+                    //console.log(player);
+
+
+                var mp4Vid = document.getElementById('right_animation_mp4_src');
+                //console.log(mp4Vid);    
+
+                player.pause();
+
+              // Now simply set the 'src' property of the mp4Vid variable!!!!
+
+                mp4Vid.src = downloadUrls[current];
+
+                player.load();
+                player.play();
+        }
+    }
+
+
+        function UnityLoadFinished() {
+            var url1 = document.getElementById('left_anim_name').value;
+            var url2 = document.getElementById('right_anim_name').value;
+            gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', url1 + "|" + url2);
+        }
+
+        function ApplyLeftAnim() {
+            console.log("Inside ApplyLeftAnim");
+            console.log(animations_library);
+        console.log(downloadUrls);
+            var url = document.getElementById('left_anim_name').value;
+            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url + "|" + "0");
+        }
+
+        function ApplyRightAnim() {
+            var url = document.getElementById('right_anim_name').value;
+            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', url + "|" + "1");
+        }
+
+        function downloadAnim() {
+            var txt = document.getElementById("animation_name");
+            var animName = txt.value;
+            gameInstance.SendMessage('ControllerHelper', 'ExportFromOutside', animName);
+        }
+
+        function handleClick(cb) {
+            var name = cb.getAttribute('name');
+            if (name == 'Loop')
+                gameInstance.SendMessage('ControllerHelper', 'SetLoop', cb.checked.toString());
+            if (name == 'TimeStretch')
+                gameInstance.SendMessage('ControllerHelper', 'SetTimeStretch', cb.checked.toString());
+        }
+
+        var rangeSlider = function() {
+            var slider = $('.range-slider'),
+                range = $('.range-slider__range'),
+                value = $('.range-slider__value');
+
+            slider.each(function() {
+
+                value.each(function() {
+                    var value = $(this).prev().attr('value');
+                    console.log(value);
+                    $(this).html(value);
+                });
+
+                range.on('input', function() {
+                    var name = $(this).attr('name');
+                    gameInstance.SendMessage('ControllerHelper', 'SetSliderValue', name + '|' + this.value);
+                    $(this).next(value).html(this.value);
+                });
+            });
+        };
+
+        rangeSlider();
+
+    } else {
+        console.log("Not logged in");
+        $('#myModal').modal({
+            backdrop: "static",
+            keyboard: false,
+            show: true
+        });
+    }
+}
+
+
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
