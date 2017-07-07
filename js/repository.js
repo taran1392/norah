@@ -32,8 +32,9 @@ function matchTags() {
             }
         });
     } else {
-        return animationsArray;
         console.log("Returning original");
+        return animationsArray;
+
     }
     return anim_final;
 }
@@ -91,9 +92,11 @@ function getVideos(page, th) {
                                     if (!exists) {
                                         var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
                                         newObjRef.set(animName);
-                                        alert("Added to library");
+                                        // alert("Added to library");
+                                        toastr.info('Added to library')
                                     } else {
-                                        alert("Already in library");
+                                        //  alert("Already in library");
+                                        toastr.info('Already in library')
                                     }
                                 })
                             } else {
