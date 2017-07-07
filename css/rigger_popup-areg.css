@@ -8447,9 +8447,7 @@ a.text-gray-dark:hover {
     }
 }
 
-
-/*
-html {
+/*html {
     background-color: #1A74C6;
 }*/
 
@@ -8613,9 +8611,11 @@ body {
     background: #1a1a1a;
 }
 
-.footerLogo {
-    margin-top: 4%;
-}
-
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+.footerLogo{
+    margin-top: 4%;
+}
