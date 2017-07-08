@@ -177,6 +177,14 @@
             top: 0;
             width: 100%;
         }
+        
+        p1 {
+            font-size: 35px;
+        }
+        
+        p2 {
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -424,6 +432,7 @@
     <script src="js/jquery.min.js"></script>
 
     <script>
+        var animationArray = [];
         var current_left;
         var current_right;
         window.yamllibrary = [];
@@ -436,15 +445,67 @@
         mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
         // Engine loading is finished, we can call animations loading method...
         function UnityLoadFinished() {
-            var url1 = yamlUrls_left[current_left];
-            var url2 = yamlUrls_right[current_right];
-            document.getElementById('left_anim_name').value = url1;
-            document.getElementById('right_anim_name').value = url2;
-            console.log("Initial left: ", url1);
-            console.log("Initial right: ", url2);
-            //PlayAnimations();
-            gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', url1 + "|" + url2);
-            PlayAnimations();
+
+            var userId = firebase.auth().currentUser.uid;
+            firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(ss) {
+                console.log("HERE");
+                var animations = ss.val();
+                if (!animations) {
+                    alert("No items in library");
+                    $.unblockUI();
+                }
+                console.log(animations);
+                //animationArray = animations;
+
+                var first;
+                for (var i in animations) {
+                    if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
+                        animationArray.push(animations[i]);
+
+                    }
+                }
+                console.log(animationArray);
+                firebase.storage().ref("yamlFiles").child(animationArray[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                    firebase.storage().ref("mp4Files").child(animationArray[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                        console.log(animDownloadUrl);
+                        console.log(downloadUrl);
+                        gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
+                        document.getElementById('left_anim_name').value = animDownloadUrl;
+                        document.getElementById('right_anim_name').value = animDownloadUrl;
+                        PlayLeftAnimation(downloadUrl);
+                        PlayRightAnimation(downloadUrl);
+
+
+
+                    })
+                });
+
+
+            });
+
+
+
+        }
+
+        function PlayLeftAnimation(url) {
+            var player = document.getElementById('left_animation_mp4');
+            var mp4Vid = document.getElementById('left_animation_mp4_src');
+            player.pause();
+            mp4Vid.src = url;
+
+            player.load();
+            player.play();
+
+
+        }
+
+        function PlayRightAnimation(url) {
+            var player = document.getElementById('right_animation_mp4');
+            var mp4Vid = document.getElementById('right_animation_mp4_src');
+            player.pause();
+            mp4Vid.src = url;
+            player.load();
+            player.play();
         }
 
         function PlayAnimations() {
@@ -473,9 +534,11 @@
         }
 
         function ApplyLeftAnim(direction) {
+            console.log(animationArray);
+
             console.log(current_left);
             console.log(direction);
-            var len = yamlUrls_left.length;
+            var len = animationArray.length;
             current_left = current_left + direction;
             if (current_left >= len) {
                 current_left = 0;
@@ -483,18 +546,36 @@
             if (current_left < 0) {
                 current_left = len - 1;
             }
-            console.log(yamlUrls_left[current_left]);
+            console.log(animationArray[current_left]);
+
+
+            firebase.storage().ref("yamlFiles").child(animationArray[current_left] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(animationArray[current_left] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "0");
+                    document.getElementById('left_anim_name').value = animDownloadUrl;
+                    document.getElementById('right_anim_name').value = animDownloadUrl;
+                    PlayLeftAnimation(downloadUrl);
+
+
+
+                })
+            });
+
+
             //PlayAnimations();
-            document.getElementById('left_anim_name').value = yamlUrls_left[current_left];
-            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', yamlUrls_left[current_left] + "|" + "0");
-            PlayAnimations();
+            document.getElementById('left_anim_name').value = animationArray[current_left];
+
+            //PlayAnimations();
         }
 
         function ApplyRightAnim(direction) {
+            console.log(animationArray);
             console.log(current_right);
             console.log(direction);
 
-            var len = yamlUrls_right.length;
+            var len = animationArray.length;
             current_right = current_right + direction;
             if (current_right >= len) {
                 current_right = 0;
@@ -502,11 +583,28 @@
             if (current_right < 0) {
                 current_right = len - 1;
             }
-            console.log(yamlUrls_right[current_right]);
+            console.log(animationArray[current_right]);
+
+            firebase.storage().ref("yamlFiles").child(animationArray[current_right] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(animationArray[current_right] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "1");
+                    document.getElementById('left_anim_name').value = animDownloadUrl;
+                    document.getElementById('right_anim_name').value = animDownloadUrl;
+                    PlayRightAnimation(downloadUrl);
+
+
+
+                })
+            });
+
+
             //PlayAnimations();
-            document.getElementById('right_anim_name').value = yamlUrls_right[current_right];
-            gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', yamlUrls_right[current_right] + "|" + "1");
-            PlayAnimations();
+            document.getElementById('right_anim_name').value = animationArray[current_right];
+
+            //PlayAnimations();
+
         }
 
         function downloadAnim() {

@@ -64,7 +64,7 @@ function getVideos(page, th) {
                     blocks += '<div class="box box' + k + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
                     blocks += '<div style="z-index: 111;">';
                     blocks += '<a class="newwwww" href="javascript:;" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                    blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" download href="'+animDownloadUrl+'"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+                    blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks += '<div class="animation-name">' + anim.name + '</div>';
                     blocks += '</div>';
                     blocks += '<video autoplay loop  muted>';
@@ -79,6 +79,7 @@ function getVideos(page, th) {
                         $('.newwwww').click(function() {
                             if (firebase.auth().currentUser) {
                                 var animName = $(this).data("name");
+                                var duration = $(this).data("duration");
                                 var userId = firebase.auth().currentUser.uid;
                                 firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(snap) {
                                     var libraryItems = snap.val();
@@ -89,12 +90,13 @@ function getVideos(page, th) {
                                     });
                                     if (!exists) {
                                         var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
-                                        newObjRef.set(animName);
-                                        toastr.info('Added to library')
-                                            //alert("Added to library");
+                                        newObjRef.set({ name: animName, duration: duration });
+
+                                        toastr.info('Added to your library')
+
                                     } else {
-                                        toastr.info('Already in library')
-                                            // alert("Already in library");
+                                        toastr.info('Already in your library')
+
                                     }
                                 })
                             } else {
