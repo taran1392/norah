@@ -89,7 +89,7 @@ function getVideos(page, th) {
                                         exists = exists || (libraryItems[itemKey] == animName);
                                     });
                                     if (!exists) {
-                                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
+                                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
                                         newObjRef.set({ name: animName, duration: duration });
 
                                         toastr.info('Added to your library')
