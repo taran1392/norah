@@ -19,18 +19,28 @@ function loadPage() {
                 firebase.storage().ref("animFiles").child(animations[animKey] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                     firebase.storage().ref("mp4Files").child(animations[animKey] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                         blocks += '<div class="box box' + k + ' fadeInUp clust" data-wow-delay="0.3s" data-page="#">';
+                        blocks += '<div style="z-index: 111;">';
+                        blocks += '<div class="animation-name" style="text-align:center;margin-top:40px;display:block">' + animations[animKey] + '</div>';
+                        blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + animations[animKey] + '.anim" download href="' + animDownloadUrl + '" style="float:none !important;text-align:center;display:block;margin-top:0px"><br/><i class="fa fa-download fa-2x" aria-hidden="true"></i></a></center>';
+                        blocks += '<label class="fancy-checkbox">';
+                        blocks += '<input type="checkbox" name="demo_' + animKey + '" onclick="if(this.checked){ document.getElementById(' + k + ').checked = true;} else {document.getElementById(' + k + ').checked = false;}"/>';
+                        blocks += '<span></span>';
+                        blocks += '</label>';
+                        blocks += '</div>';
+                        blocks += '<label class="fancy-checkbox">';
+                        blocks += '<input type="checkbox" name="' + animKey + '" id="' + k + '"/>';
+                        blocks += '<span></span>';
+                        blocks += '</label>';
                         blocks += '<video autoplay loop muted>';
                         blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
                         blocks += '</video>';
-                        blocks += '<label class="fancy-checkbox">';
-                        blocks += '<input type="checkbox" name="' + animKey + '"/>';
-                        blocks += '<span></span>';
-                        blocks += '</label>';
-                        blocks += '<a class="downloadbutton" data-url="' + animDownloadUrl + '" data-name="' + animations[animKey] + '.anim" onclick="downloadFile(this)"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                         blocks += '</div>';
                         k++;
                         if (k === completed) {
                             $('.zodiacCont').html(blocks);
+                            $(".box").show();
+                            $(".zodiacCont").show();
+                            $(".temp_margin").hide();
                             $.unblockUI();
                         }
                     })
@@ -45,6 +55,8 @@ function loadPage() {
             keyboard: false,
             show: true
         });
+        $(".zodiacCont").show();
+        $(".temp_margin").hide();
     }
 }
 

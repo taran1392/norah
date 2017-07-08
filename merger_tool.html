@@ -433,6 +433,8 @@
 
     <script>
         var animationArray = [];
+        var left_array = [];
+        var right_array = [];
         var current_left;
         var current_right;
         window.yamllibrary = [];
@@ -457,14 +459,20 @@
                 console.log(animations);
                 //animationArray = animations;
 
-                var first;
+
                 for (var i in animations) {
                     if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
                         animationArray.push(animations[i]);
+                        left_array.push(animations[i]);
+                        right_array.push(animations[i]);
 
                     }
                 }
                 console.log(animationArray);
+                console.log("left_array: ");
+                console.log(left_array);
+                console.log("right_array: ");
+                console.log(right_array);
                 firebase.storage().ref("yamlFiles").child(animationArray[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                     firebase.storage().ref("mp4Files").child(animationArray[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                         console.log(animDownloadUrl);
@@ -535,10 +543,12 @@
 
         function ApplyLeftAnim(direction) {
             console.log(animationArray);
+            console.log("left_array: ");
+            console.log(left_array);
 
             console.log(current_left);
             console.log(direction);
-            var len = animationArray.length;
+            var len = left_array.length;
             current_left = current_left + direction;
             if (current_left >= len) {
                 current_left = 0;
@@ -546,11 +556,11 @@
             if (current_left < 0) {
                 current_left = len - 1;
             }
-            console.log(animationArray[current_left]);
+            console.log(left_array[current_left]);
 
 
-            firebase.storage().ref("yamlFiles").child(animationArray[current_left] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                firebase.storage().ref("mp4Files").child(animationArray[current_left] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+            firebase.storage().ref("yamlFiles").child(left_array[current_left] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(left_array[current_left] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
                     console.log(downloadUrl);
                     gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "0");
@@ -565,7 +575,7 @@
 
 
             //PlayAnimations();
-            document.getElementById('left_anim_name').value = animationArray[current_left];
+            document.getElementById('left_anim_name').value = left_array[current_left];
 
             //PlayAnimations();
         }
@@ -575,7 +585,10 @@
             console.log(current_right);
             console.log(direction);
 
-            var len = animationArray.length;
+            console.log("right_array: ");
+            console.log(right_array);
+
+            var len = right_array.length;
             current_right = current_right + direction;
             if (current_right >= len) {
                 current_right = 0;
@@ -583,10 +596,10 @@
             if (current_right < 0) {
                 current_right = len - 1;
             }
-            console.log(animationArray[current_right]);
+            console.log(right_array[current_right]);
 
-            firebase.storage().ref("yamlFiles").child(animationArray[current_right] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                firebase.storage().ref("mp4Files").child(animationArray[current_right] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+            firebase.storage().ref("yamlFiles").child(right_array[current_right] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(right_array[current_right] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
                     console.log(downloadUrl);
                     gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "1");
@@ -601,7 +614,7 @@
 
 
             //PlayAnimations();
-            document.getElementById('right_anim_name').value = animationArray[current_right];
+            document.getElementById('right_anim_name').value = right_array[current_right];
 
             //PlayAnimations();
 

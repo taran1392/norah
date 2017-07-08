@@ -163,7 +163,7 @@ body {
 
 .zodiacCont .box {
     width: 23%;
-    margin-right: 7px;
+	margin-right:7px;
 }
 
 .zodiacCont {
@@ -172,17 +172,21 @@ body {
 
 .zodiacCont::-webkit-scrollbar {
     background-color: #4B2F66;
-    width: 8px;
+	width:8px;
+    
 }
 
 .zodiacCont::-webkit-scrollbar-track {
-    border: 1px solid #a095ac;
+   
+	border:1px solid #a095ac;
+    
 }
 
 .zodiacCont::-webkit-scrollbar-thumb {
-    background: #a095ac;
-    border-left: 1px solid #a095ac;
-    border-right: 1px solid #a095ac;
+	background:#a095ac;
+	border-left:1px solid #a095ac;
+	border-right:1px solid #a095ac;
+	
 }
 
 .pagination>.active>span,
