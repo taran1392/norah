@@ -63,7 +63,7 @@ function getVideos(page, th) {
                 firebase.storage().ref("mp4Files").child(anim.name + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     blocks += '<div class="box box' + k + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
                     blocks += '<div style="z-index: 111;">';
-                    blocks += '<a class="newwwww" href="javascript:;" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+                    blocks += '<a class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
                     blocks += '<a data-url="' + animDownloadUrl + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks += '<div class="animation-name">' + anim.name + '</div>';
                     blocks += '</div>';
@@ -78,9 +78,11 @@ function getVideos(page, th) {
 
                         $('.newwwww').click(function() {
                             if (firebase.auth().currentUser) {
+                                console.log($(this).data("name"));
                                 var animName = $(this).data("name");
                                 var duration = $(this).data("duration");
                                 var userId = firebase.auth().currentUser.uid;
+                                console.log("UID" + userId);
                                 firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(snap) {
                                     var libraryItems = snap.val();
                                     var exists = false;
@@ -90,6 +92,7 @@ function getVideos(page, th) {
                                     });
                                     if (!exists) {
                                         var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
+                                        console.log("Duration" + duration);
                                         newObjRef.set({ name: animName, duration: duration });
 
                                         toastr.info('Added to your library')
