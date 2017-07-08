@@ -173,18 +173,7 @@ var UnityLoader = UnityLoader || {
                 r.indexOf("DISABLE_EXCEPTION_CATCHING") != -1 ? r = "An exception has occured, but exception handling has been disabled in this build. If you are the developer of this content, enable exceptions in your project WebGL player settings to be able to catch the exception or see the stack trace." : r.indexOf("Cannot enlarge memory arrays") != -1 ? r = "Out of memory. If you are the developer of this content, try allocating more memory to your WebGL build in the WebGL player settings." : r.indexOf("Invalid array buffer length") == -1 && r.indexOf("Invalid typed array length") == -1 && r.indexOf("out of memory") == -1 || (r = "The browser could not allocate enough memory for the WebGL content. If you are the developer of this content, try allocating less memory to your WebGL build in the WebGL player settings."), console.log(r), this.didShowErrorMessage = !0
             }
         },
-        popup: function(e, t, r) {
-            r = r || [{ text: "OK" }];
-            var n = document.createElement("div");
-            n.style.cssText = "position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); text-align: center; border: 1px solid black; padding: 5px; background: #E8E8E8";
-            var o = document.createElement("span");
-            o.textContent = t, n.appendChild(o), n.appendChild(document.createElement("br"));
-            for (var i = 0; i < r.length; i++) {
-                var a = document.createElement("button");
-                r[i].text && (a.textContent = r[i].text), r[i].callback && (a.onclick = r[i].callback), a.style.margin = "5px", a.addEventListener("click", function() { e.container.removeChild(n) }), n.appendChild(a)
-            }
-            e.container.appendChild(n)
-        }
+        popup: function(e, t, r) {}
     },
     Job: {
         schedule: function(e, t, r, n, o) {
