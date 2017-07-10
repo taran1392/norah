@@ -457,9 +457,9 @@
                     $.unblockUI();
                 }
                 console.log(animations);
-                //animationArray = animations;
 
-
+                var half_length = Math.ceil(Object.keys(animations).length / 2)
+                console.log("Mod " + half_length);
                 for (var i in animations) {
                     if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
                         animationArray.push(animations[i]);
@@ -468,7 +468,7 @@
 
                     }
                 }
-                console.log(animationArray);
+                console.log("animationArray");
                 console.log("left_array: ");
                 console.log(left_array);
                 console.log("right_array: ");
