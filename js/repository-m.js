@@ -91,7 +91,7 @@ function getVideos(page, th) {
                                         exists = exists || (libraryItems[itemKey].name == animName);
                                     });
                                     if (!exists) {
-                                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
+                                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary").push();
                                         console.log("Duration" + duration);
                                         newObjRef.set({ name: animName, duration: duration });
 

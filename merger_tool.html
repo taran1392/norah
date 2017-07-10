@@ -462,15 +462,18 @@
 
                 var half_length = Math.ceil(Object.keys(animations).length / 2);
                 console.log("Mod " + half_length);
-                var count;
+                var count = 1;
                 for (var i in animations) {
                     ++count;
                     if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
-                        animationArray.push(animations[i]);
-                        left_array.push(animations[i]);
-                        right_array.push(animations[i]);
-
+                        animationArray.push(animations[i].name);
+                        if (count <= half_length) {
+                            left_array.push(animations[i].name);
+                        } else {
+                            right_array.push(animations[i].name);
+                        }
                     }
+
                 }
                 console.log("animationArray");
                 console.log("left_array: ");
