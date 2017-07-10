@@ -26,6 +26,8 @@
     <!-- Google font (If Use) -->
 
     <link rel="canonical" href="https://codepen.io/jeffaudio/pen/gaVmyX">
+
+    <script src="js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="Build/FileSave.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
@@ -430,7 +432,6 @@
 
 
 
-    <script src="js/jquery.min.js"></script>
 
     <script>
         var animationArray = [];
@@ -448,34 +449,43 @@
         mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
 
         // Engine loading is finished, we can call animations loading method...
-        function sorter(ss) {
-            console.log(ss);
-            var animations = ss;
+        function sorter(inputNames, inputDurations) {
+            var names = inputNames;
+            var durations = inputDurations;
+            // console.log(inputNames);
+            for (var i in names) {
+                console.log(names[i] + " " + durations[i]);
+
+            }
+
+            var ss;
+
+            var animations = names;
             if (!animations) {
                 alert("No items in library");
                 // $.unblockUI();
             }
-            console.log("Length of Animations");
-            console.log(Object.keys(animations).length);
-            // Object.keys(animations)
-            var half_length = Math.ceil((Object.keys(animations).length) / 2);
+            console.log("Length of Animations" + names.length);
+            var half_length = Math.ceil(names.length) / 2;
             console.log("Mod " + half_length);
-            var count = 0;
-            for (var i in animations) {
+            var count = 1;
+            for (var i in names) {
                 ++count;
                 if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
-                    animationArray.push(animations[i].name);
-                    if (count < half_length) {
-                        right_array.push(animations[i].name);
-                        console.log("gone right " + animations[i].name);
-                        console.log("right duration " + animations[i].duration);
+                    animationArray.push(names[i]);
+                    if (count <= half_length) {
+                        right_array.push(names[i]);
+                        console.log("gone right " + names[i]);
+                        console.log("right duration " + durations[i]);
                     } else {
-                        left_array.push(animations[i].name);
-                        console.log("gone left " + animations[i].name);
-                        console.log("left duration " + animations[i].duration);
+                        left_array.push(names[i]);
+                        console.log("gone left " + names[i]);
+                        console.log("left duration " + durations[i]);
                     }
                 }
             }
+
+
             console.log("animationArray");
             console.log("left_array: ");
             console.log(left_array);
@@ -492,18 +502,51 @@
                     PlayRightAnimation(downloadUrl);
                 })
             });
+
         }
+        var childrenCount;
+        var semaphore = false;
 
         function UnityLoadFinished() {
-            var snapshotCopy;
-            var semaphore = false;
+
+
             var userId = firebase.auth().currentUser.uid;
+
+
+
             var ss = [];
-            var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").once('value').then(function(snapshot) {
+            var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").once("value").then(function(snapshot) {
                 ss = snapshot.val();
-                console.log(snapshot.val());
-                sorter(ss);
+                console.log("Number of children " + snapshot.numChildren());
+                childrenCount = snapshot.numChildren();
+                semaphore = true;
+                getList();
             });
+        }
+
+        function getList() {
+            var count = 0;
+            var userId = firebase.auth().currentUser.uid;
+            var names = [];
+            var durations = [];
+            var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").on("child_added", function(snapshot) {
+                ++count;
+                console.log(snapshot.val());
+                console.log("Anim was " + snapshot.val().duration + " seconds long");
+                durations.push(snapshot.val().duration);
+                names.push(snapshot.val().name);
+                if (count == childrenCount) {
+
+                    for (var i in names) {
+                        console.log(names[i] + " " + durations[i]);
+
+                    }
+                    sorter(names, durations);
+
+
+                }
+            });
+
         }
 
         function PlayLeftAnimation(url) {
