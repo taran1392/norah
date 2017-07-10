@@ -461,7 +461,7 @@
             var ss;
 
             var animations = names;
-            if (!animations) {
+            if (names.length == 0) {
                 alert("No items in library");
                 // $.unblockUI();
             }
@@ -520,7 +520,11 @@
                 console.log("Number of children " + snapshot.numChildren());
                 childrenCount = snapshot.numChildren();
                 semaphore = true;
-                getList();
+                if (childrenCount < 2) {
+                    alert("Add atleast 2 animations from the Repository");
+                } else {
+                    getList();
+                }
             });
         }
 
