@@ -217,10 +217,10 @@
                         //$.unblockUI();
                     }
                     animations && Object.keys(animations).forEach(function(animKey) {
-                        console.log(animations[animKey]);
-                        animations_library.push(animations[animKey]);
+                        console.log(animations[animKey].name);
+                        animations_library.push(animations[animKey].name);
 
-                        firebase.storage().ref("jsonFiles").child(animations[animKey] + ".json").getDownloadURL().then(function(downloadUrl) {
+                        firebase.storage().ref("jsonFiles").child(animations[animKey].name + ".json").getDownloadURL().then(function(downloadUrl) {
                             console.log(downloadUrl);
                             //downloadUrls.push(downloadUrl);
                             console.log(typeof(downloadUrl));

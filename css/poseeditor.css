@@ -2,6 +2,10 @@
     margin: -5;
 }
 
+.webgl-content {
+    margin-top: 30px;
+}
+
 html,
 body {
     height: 100%;
