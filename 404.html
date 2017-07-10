@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>404</title>
+    <title>404'd</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
@@ -16,6 +17,9 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/contact-form.css">
     <link rel="stylesheet" href="fonts/font-awesome.css">
+    <link rel="stylesheet" href="css/reg_form.css">
+    <link rel="stylesheet" href="fonts/font-awesome.css">
+    <link rel="stylesheet" href="css/rigger_popup.css">
     <!--JS-->
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -53,48 +57,66 @@
 
 <body>
     <!--header-->
-    <div class="main indent">
+    <div class="main">
         <!--header-->
         <div class="container">
             <header class="clearfix">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu clearfix">
-                        <li><a href="index">home</a></li>
-                        <li class="sub-menu"><a href="index-1">about</a><span class="fa fa-angle-down"></span>
-                            <ul class="submenu">
-                                <li><a href="#">columns 01</a></li>
-                                <li><a href="#">columns 02</a></li>
-                                <li><a href="#">columns 03</a><span class="fa fa-angle-down"></span>
-                                    <ul class="submenu">
-                                        <li><a href="#">columns 04</a></li>
-                                        <li><a href="#">columns 05</a></li>
+                    <ul class="nav sf-menu  clearfix ">
+
+                        <li class="sub-menu"><a href="index">Home</a><span class="fa fa-angle-down"></span>
+                            <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
+                                <li><a href="#">Animation</a>
+                                    <ul class="bodysub">
+                                        <li><a href="ARigger" style="cursor:pointer;">Auto Rigger</a></li>
+                                        <li><a href="repository">Repository</a></li>
+                                        <li><a href="merger_tool">Style Transfer Tool</a></li>
+                                        <li><a href="pose_editor">Motion Editor</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="#">3D Modelling</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Game maker</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+
                             </ul>
                         </li>
-                        <li><a href="index-2">articles</a></li>
-                        <li><a href="index-3">books</a></li>
-                        <li><a href="index-4">contacts</a></li>
+
+                        <li class="sub-menu"><a href="about">About</a>
+
+                        </li>
+
+                        <li> <a href="my_library">My Library</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+
+
                     </ul>
                 </nav>
-                <ul class="follow_icon">
-                    <li>
-                        <a href="#"><img src="img/follow_icon1.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="img/follow_icon2.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="img/follow_icon3.png" alt=""></a>
-                    </li>
-                </ul>
+                <div class="follow_icon reposFollowIcon">
+                    <div class="user-mail pull-right"></div>
+                    <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                    <div class="sign-in">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i><p3>Sign-in</p3></button>
+                    </div>
+                </div>
             </header>
-            <div class="logo_box indent">
+            <div class="logo_box">
                 <h1 class="navbar-brand navbar-brand_">
-                    <a href="index"><img src="img/logo.png" alt="logo"></a>
+                    <a href="index"><img src="img/norah.png" alt="logo" class="img responsive"></a>
                 </h1>
             </div>
         </div>
+    </div>
     </div>
     <div class="content indent">
         <div class="errorBox">

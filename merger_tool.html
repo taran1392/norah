@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Merger Toolmerger Tool</title>
+    <title>Style Transfer</title>
 
     <link rel="shortcut icon" href="" />
 
@@ -449,6 +449,7 @@
 
         // Engine loading is finished, we can call animations loading method...
         function sorter(ss) {
+            console.log(ss);
             var animations = ss;
             if (!animations) {
                 alert("No items in library");
@@ -467,9 +468,11 @@
                     if (count < half_length) {
                         right_array.push(animations[i].name);
                         console.log("gone right " + animations[i].name);
+                        console.log("right duration " + animations[i].duration);
                     } else {
                         left_array.push(animations[i].name);
                         console.log("gone left " + animations[i].name);
+                        console.log("left duration " + animations[i].duration);
                     }
                 }
             }

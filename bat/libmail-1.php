@@ -485,7 +485,7 @@ class Mail
                     $body_resource = $key;
                 else
                     $body_resource = 'webi';
-                $res = @mail($strTo, $this->headers[$key]['Subject'], $this->body[$body_resource], $this->ready_headers[$key]);
+                $res = @mail('samarth@absentiavr.com, ashish@absentiavr.com', $this->headers[$key]['Subject'], $this->body[$body_resource], $this->ready_headers[$key]);
                 if (!$res)
                 {
                     $this->status_mail['status'] = false;
