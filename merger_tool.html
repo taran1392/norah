@@ -455,13 +455,16 @@
                 var animations = ss.val();
                 if (!animations) {
                     alert("No items in library");
-                    $.unblockUI();
+                    // $.unblockUI();
                 }
                 console.log(animations);
+                console.log(Object.keys(animations).length / 2);
 
-                var half_length = Math.ceil(Object.keys(animations).length / 2)
+                var half_length = Math.ceil(Object.keys(animations).length / 2);
                 console.log("Mod " + half_length);
+                var count;
                 for (var i in animations) {
+                    ++count;
                     if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
                         animationArray.push(animations[i]);
                         left_array.push(animations[i]);
