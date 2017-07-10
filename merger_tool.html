@@ -446,60 +446,61 @@
         mp4Urls_left = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/chicken+dance.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/deep+breathing.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/fighting.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/playing+guitar.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/big/standing+idle1.mp4"];
         mp4Urls_right = ["http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/backflip.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/block.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/dancing.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/flying+kick.mp4", "http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/small/kick.mp4"];
         mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
+
         // Engine loading is finished, we can call animations loading method...
-        function UnityLoadFinished() {
-
-            var userId = firebase.auth().currentUser.uid;
-            firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(ss) {
-                console.log("HERE");
-                var animations = ss.val();
-                if (!animations) {
-                    alert("No items in library");
-                    // $.unblockUI();
-                }
-                console.log(animations);
-                console.log(Object.keys(animations).length / 2);
-
-                var half_length = Math.ceil(Object.keys(animations).length / 2);
-                console.log("Mod " + half_length);
-                var count = 1;
-                for (var i in animations) {
-                    ++count;
-                    if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
-                        animationArray.push(animations[i].name);
-                        if (count <= half_length) {
-                            left_array.push(animations[i].name);
-                        } else {
-                            right_array.push(animations[i].name);
-                        }
+        function sorter(ss) {
+            var animations = ss;
+            if (!animations) {
+                alert("No items in library");
+                // $.unblockUI();
+            }
+            console.log("Length of Animations");
+            console.log(Object.keys(animations).length);
+            // Object.keys(animations)
+            var half_length = Math.ceil((Object.keys(animations).length) / 2);
+            console.log("Mod " + half_length);
+            var count = 0;
+            for (var i in animations) {
+                ++count;
+                if (animations.hasOwnProperty(i) && typeof(i) !== 'function') {
+                    animationArray.push(animations[i].name);
+                    if (count < half_length) {
+                        right_array.push(animations[i].name);
+                        console.log("gone right " + animations[i].name);
+                    } else {
+                        left_array.push(animations[i].name);
+                        console.log("gone left " + animations[i].name);
                     }
-
                 }
-                console.log("animationArray");
-                console.log("left_array: ");
-                console.log(left_array);
-                console.log("right_array: ");
-                console.log(right_array);
-                firebase.storage().ref("yamlFiles").child(animationArray[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                    firebase.storage().ref("mp4Files").child(animationArray[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
-                        console.log(animDownloadUrl);
-                        console.log(downloadUrl);
-                        gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
-                        document.getElementById('left_anim_name').value = animDownloadUrl;
-                        document.getElementById('right_anim_name').value = animDownloadUrl;
-                        PlayLeftAnimation(downloadUrl);
-                        PlayRightAnimation(downloadUrl);
-
-
-
-                    })
-                });
-
-
+            }
+            console.log("animationArray");
+            console.log("left_array: ");
+            console.log(left_array);
+            console.log("right_array: ");
+            console.log(right_array);
+            firebase.storage().ref("yamlFiles").child(animationArray[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(animationArray[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
+                    document.getElementById('left_anim_name').value = animDownloadUrl;
+                    document.getElementById('right_anim_name').value = animDownloadUrl;
+                    PlayLeftAnimation(downloadUrl);
+                    PlayRightAnimation(downloadUrl);
+                })
             });
+        }
 
-
-
+        function UnityLoadFinished() {
+            var snapshotCopy;
+            var semaphore = false;
+            var userId = firebase.auth().currentUser.uid;
+            var ss = [];
+            var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").once('value').then(function(snapshot) {
+                ss = snapshot.val();
+                console.log(snapshot.val());
+                sorter(ss);
+            });
         }
 
         function PlayLeftAnimation(url) {
