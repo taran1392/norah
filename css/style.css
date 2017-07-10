@@ -3192,6 +3192,9 @@ nav.tm_navbar li:hover>a {
     cursor: pointer;
 }
 
+
+/*index text hover*/
+
 .hover_div h3 {
     color: #a17dbc;
 }
