@@ -189,6 +189,34 @@
             font-size: 20px;
         }
     </style>
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = "//piwik.norah.ai/";
+            _paq.push(['setTrackerUrl', u + 'piwik.php']);
+            if (window.location.href.indexOf("norah.ai") > -1) {
+                console.log("You are at norah.ai");
+                _paq.push(['setSiteId', '1']);
+            } else {
+                _paq.push(['setSiteId', '2']);
+            }
+
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = u + 'piwik.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript><p><img src="//piwik.norah.ai/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
 </head>
 
 <body>
