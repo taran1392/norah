@@ -509,11 +509,7 @@
 
         function UnityLoadFinished() {
 
-
             var userId = firebase.auth().currentUser.uid;
-
-
-
             var ss = [];
             var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").once("value").then(function(snapshot) {
                 ss = snapshot.val();
@@ -540,14 +536,10 @@
                 durations.push(snapshot.val().duration);
                 names.push(snapshot.val().name);
                 if (count == childrenCount) {
-
                     for (var i in names) {
                         console.log(names[i] + " " + durations[i]);
-
                     }
                     sorter(names, durations);
-
-
                 }
             });
 
@@ -558,11 +550,8 @@
             var mp4Vid = document.getElementById('left_animation_mp4_src');
             player.pause();
             mp4Vid.src = url;
-
             player.load();
             player.play();
-
-
         }
 
         function PlayRightAnimation(url) {
@@ -596,14 +585,12 @@
             mp4Vid.src = mp4Urls_right[current_right];
             player.load();
             player.play();
-
         }
 
         function ApplyLeftAnim(direction) {
             console.log(animationArray);
             console.log("left_array: ");
             console.log(left_array);
-
             console.log(current_left);
             console.log(direction);
             var len = left_array.length;
@@ -615,8 +602,6 @@
                 current_left = len - 1;
             }
             console.log(left_array[current_left]);
-
-
             firebase.storage().ref("yamlFiles").child(left_array[current_left] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                 firebase.storage().ref("mp4Files").child(left_array[current_left] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
@@ -625,29 +610,21 @@
                     document.getElementById('left_anim_name').value = animDownloadUrl;
                     document.getElementById('right_anim_name').value = animDownloadUrl;
                     PlayLeftAnimation(downloadUrl);
-
-
-
                 })
             });
-
-
             //PlayAnimations();
             document.getElementById('left_anim_name').value = left_array[current_left];
-
-            //PlayAnimations();
         }
 
         function ApplyRightAnim(direction) {
             console.log(animationArray);
             console.log(current_right);
             console.log(direction);
-
             console.log("right_array: ");
             console.log(right_array);
-
             var len = right_array.length;
             current_right = current_right + direction;
+
             if (current_right >= len) {
                 current_right = 0;
             }
@@ -665,17 +642,10 @@
                     document.getElementById('right_anim_name').value = animDownloadUrl;
                     PlayRightAnimation(downloadUrl);
 
-
-
                 })
             });
-
-
             //PlayAnimations();
             document.getElementById('right_anim_name').value = right_array[current_right];
-
-            //PlayAnimations();
-
         }
 
         function downloadAnim() {
@@ -722,16 +692,10 @@
             setTimeout(loadPage, 1500);
         });
 
-        /*var downloadUrls = [];
-        var animations_library = [];
-        var current_left = "";
-        var current_right = "";*/
         function loadPage() {
 
             if (firebase.auth().currentUser) {
                 console.log("Auth");
-
-
             } else {
                 console.log("Not logged in");
                 $('#myModal').modal({
@@ -741,15 +705,10 @@
                 });
             }
         }
-
-
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
-
     <script src="js/bootstrap.min.js"></script>
-
     <script src="js/script.js"></script>
-
 </body>
 
 </html>
