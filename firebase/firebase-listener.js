@@ -15,6 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         $('.sign-in').css('display', 'none');
         $('.log-Out').css('display', 'block');
+
     } else {
         $('.regB').css('display', 'block');
     }

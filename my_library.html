@@ -14,12 +14,13 @@
     <meta name="format-detection" content="telephone=no" />
     <!-- firebase -->
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <!--<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />-->
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <script src="firebase/config.js"></script>
     <script src="firebase/providers.js"></script>
     <!-- end firebase -->
     <!--CSS-->
+    <link rel="stylesheet" href="css/firebaseui.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/repository.css">
@@ -38,6 +39,27 @@
     <script src="js/blockUI.js"></script>
 
     <style>
+        .mdl-shadow--2dp {
+            box-shadow: none;
+        }
+        
+        .firebaseui-info-bar {
+            margin-top: 20px;
+        }
+        
+        div.mdl-progress::after {
+            display: block;
+            color: black;
+            content: "Authenticating";
+            margin: 20px auto;
+            text-align: center;
+            height: 12px;
+        }
+        
+        .mdl-progress {
+            height: 5px;
+        }
+        
         .fancy-checkbox {
             position: absolute;
             top: 12px;
@@ -364,7 +386,9 @@
 
                     <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
                     <div id="firebaseui-auth-container"></div>
-                    <p class="new-`ake" style="text-align:center;font-size:17px;">
+                    <br>
+                    <br>
+                    <p class="new-animake" style="text-align:center;font-size:17px;">
                         <a href="index">&larr; Back to Home</a>
                     </p>
                     <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
@@ -405,6 +429,7 @@
             if ($('html').hasClass('desktop')) {
                 new WOW().init();
             }
+
         });
     </script>
 

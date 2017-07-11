@@ -10,7 +10,7 @@ btnLogIn.addEventListener('click', function(e) {
 
     var auth = firebase.auth();
 
-    var promise = auth.signInWithEmailAndPassword(email, pass).then(function () {
+    var promise = auth.signInWithEmailAndPassword(email, pass).then(function() {
         window.location.reload();
     });
 
@@ -33,6 +33,7 @@ btnLogOut.addEventListener('click', function(e) {
 firebase.auth().onAuthStateChanged(function(firebaseUser) {
 
     if (firebaseUser) {
+
         /*window.location = "home.html";*/
 
     } else {
