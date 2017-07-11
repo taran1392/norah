@@ -17,6 +17,13 @@
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/sForm.js"></script>
     <script src="js/active.js"></script>
+    <!-- firebase -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="firebase/config.js"></script>
+    <script src="firebase/providers.js"></script>
+    <!-- end firebase -->
     <!--[if (gt IE 9)|!(IE)]><!-->
     <script src="js/wow/wow.js"></script>
     <script src="js/wow/device.min.js"></script>
@@ -145,466 +152,506 @@
                     </div>
 
                 </div>
-
-                <div id="js-modal">
-                    <div class="modal__overlay">
-                        <div class="modal__inner">
-                            <div class="modal__header">
-                                AutoRigger
-                            </div>
-
-                            <div class="row no-gutters">
-                                <div id="js-viewer" class="col-sm-7 col-md-8 col-xs-12 viewer">
-                                    <canvas id="js-canvas"></canvas>
-                                </div>
-                                <div class="col-sm-5 col-md-4 hidden-xs-down bg-faded sidebar">
-                                    <div id="js-controls">
-                                        <div style="position:absolute;width:100%;bottom:0;text-align:center;padding:10px;color:#fff;font-size:14px;"><span style="font:18px Lucida Grande,sans-serif;line-height:20px;">NOTE:</span> <br/><span style="font: 12px Lucida Grande,sans-serif;line-height:20px;">Model might not be upto scale please zoom in using scroll.<br/> Models uploaded needs to be in T-Pose.</span></a>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
 
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/tm-scripts.js"></script>
+            <div id="js-modal">
+                <div class="modal__overlay">
+                    <div class="modal__inner">
+                        <div class="modal__header">
+                            AutoRigger
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div id="js-viewer" class="col-sm-7 col-md-8 col-xs-12 viewer">
+                                <canvas id="js-canvas"></canvas>
+                            </div>
+                            <div class="col-sm-5 col-md-4 hidden-xs-down bg-faded sidebar">
+                                <div id="js-controls">
+                                    <div style="position:absolute;width:100%;bottom:0;text-align:center;padding:10px;color:#fff;font-size:14px;"><span style="font:18px Lucida Grande,sans-serif;line-height:20px;">NOTE:</span> <br/><span style="font: 12px Lucida Grande,sans-serif;line-height:20px;">Model might not be upto scale please zoom in using scroll.<br/> Models uploaded needs to be in T-Pose.</span></a>
+                                    </div>
 
 
-            <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
-
-            <script src="js/grid/Detector.js"></script>
-            <script src="js/grid/three.js"></script>
-            <script src="js/grid/TrackballControls.js"></script>
-            <script src="js/grid/MTLLoader.js"></script>
-            <script src="js/grid/dat.gui.min.js"></script>
-            <script src="js/grid/OBJLoader2.js"></script>
-            <script src="js/grid/WWOBJLoader2.js"></script>
-            <script>
-                window.onload = function() {
-
-                    var socket = io.connect('https://absentiaautorig.com:443');
+                                </div>
+                            </div>
 
 
+                        </div>
+                    </div>
 
-                    /*
-                     setTimeout(loaderPause, 15000);
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
-                     function loaderPause() {
-                         document.getElementById("loader").style.display = "none";
-                     }
-                     */
+                <!-- Modal content-->
+                <div class="reg">
+                    <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                        </div>
 
-                    var webLoader = function() {
-                        console.log('WebLoader');
-                        var Validator = THREE.OBJLoader2.prototype._getValidator();
+                        <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                        <div id="firebaseui-auth-container"></div>
+                        <br>
+                        <p align="center" class="new-animake">Sign-up</p>
+                        <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                    </div>
+                    <form class="reg-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                        </div>
+                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                        <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                        <p class="already-reg">already registered?</p>
+                    </form>
+                </div>
 
-                        function webLoader(elementToBindTo) {
-                            this.renderer = null;
-                            this.canvas = elementToBindTo;
-                            this.aspectRatio = 1;
-                            this.recalcAspectRatio();
+            </div>
+        </div>
 
-                            this.scene = null;
-                            this.cameraDefaults = {
-                                posCamera: new THREE.Vector3(0.0, 175.0, 500.0),
-                                posCameraTarget: new THREE.Vector3(0, 0, 0),
-                                near: 0.1,
-                                far: 10000,
-                                fov: 45
-                            };
-                            this.camera = null;
-                            this.cameraTarget = this.cameraDefaults.posCameraTarget;
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/tm-scripts.js"></script>
 
-                            this.controls = null;
 
-                            this.smoothShading = true;
-                            this.doubleSide = false;
-                            this.streamMeshes = true;
+        <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
 
-                            this.cube = null;
-                            this.pivot = null;
+        <script src="js/grid/Detector.js"></script>
+        <script src="js/grid/three.js"></script>
+        <script src="js/grid/TrackballControls.js"></script>
+        <script src="js/grid/MTLLoader.js"></script>
+        <script src="js/grid/dat.gui.min.js"></script>
+        <script src="js/grid/OBJLoader2.js"></script>
+        <script src="js/grid/WWOBJLoader2.js"></script>
+        <script>
+            window.onload = function() {
 
-                            this.wwObjLoader2 = new THREE.OBJLoader2.WWOBJLoader2();
-                            this.wwObjLoader2.setCrossOrigin('anonymous');
+                var socket = io.connect('https://absentiaautorig.com:443');
 
-                            // File Input
-                            this.inputFileElem = document.getElementById('js-upload');
 
-                            // webModal
-                            this.webModal = document.getElementById('js-modal');
-                            this.webModalClose = document.getElementById('js-close-modal');
-                            this.elemUploadButton = document.getElementById('js-upload-button');
 
-                            this.elemUploadButton.addEventListener('click', this.openModal.bind(this), false);
+                /*
+                 setTimeout(loaderPause, 15000);
 
-                            // Check for the various File API support.
-                            this.fileApiAvailable = true;
-                            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                 function loaderPause() {
+                     document.getElementById("loader").style.display = "none";
+                 }
+                 */
 
-                                console.log('File API is supported! Enabling all features.');
-                            } else {
+                var webLoader = function() {
+                    console.log('WebLoader');
+                    var Validator = THREE.OBJLoader2.prototype._getValidator();
 
-                                this.fileApiAvailable = false;
-                                console.warn('File API is not supported! Disabling file loading.');
+                    function webLoader(elementToBindTo) {
+                        this.renderer = null;
+                        this.canvas = elementToBindTo;
+                        this.aspectRatio = 1;
+                        this.recalcAspectRatio();
+
+                        this.scene = null;
+                        this.cameraDefaults = {
+                            posCamera: new THREE.Vector3(0.0, 175.0, 500.0),
+                            posCameraTarget: new THREE.Vector3(0, 0, 0),
+                            near: 0.1,
+                            far: 10000,
+                            fov: 45
+                        };
+                        this.camera = null;
+                        this.cameraTarget = this.cameraDefaults.posCameraTarget;
+
+                        this.controls = null;
+
+                        this.smoothShading = true;
+                        this.doubleSide = false;
+                        this.streamMeshes = true;
+
+                        this.cube = null;
+                        this.pivot = null;
+
+                        this.wwObjLoader2 = new THREE.OBJLoader2.WWOBJLoader2();
+                        this.wwObjLoader2.setCrossOrigin('anonymous');
+
+                        // File Input
+                        this.inputFileElem = document.getElementById('js-upload');
+
+                        // webModal
+                        this.webModal = document.getElementById('js-modal');
+                        this.webModalClose = document.getElementById('js-close-modal');
+                        this.elemUploadButton = document.getElementById('js-upload-button');
+
+                        this.elemUploadButton.addEventListener('click', this.openModal.bind(this), false);
+
+                        // Check for the various File API support.
+                        this.fileApiAvailable = true;
+                        if (window.File && window.FileReader && window.FileList && window.Blob) {
+
+                            console.log('File API is supported! Enabling all features.');
+                        } else {
+
+                            this.fileApiAvailable = false;
+                            console.warn('File API is not supported! Disabling file loading.');
+                        }
+                    }
+
+                    webLoader.prototype.initGL = function() {
+                        this.renderer = new THREE.WebGLRenderer({
+                            canvas: this.canvas,
+                            antialias: true,
+                            autoClear: true
+                        });
+                        this.renderer.setClearColor(0x1d1d1d);
+
+                        this.scene = new THREE.Scene();
+
+                        this.camera = new THREE.PerspectiveCamera(this.cameraDefaults.fov, this.aspectRatio,
+                            this.cameraDefaults.near,
+                            this.cameraDefaults.far);
+                        this.resetCamera();
+                        this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement);
+
+                        var ambientLight = new THREE.AmbientLight(0x404040);
+                        var directionalLight1 = new THREE.DirectionalLight(0xC0C090);
+                        var directionalLight2 = new THREE.DirectionalLight(0xC0C090);
+
+                        directionalLight1.position.set(-100, -50, 100);
+                        directionalLight2.position.set(100, 50, -100);
+
+                        this.scene.add(directionalLight1);
+                        this.scene.add(directionalLight2);
+                        this.scene.add(ambientLight);
+
+                        var helper = new THREE.GridHelper(1200, 60, 0x222222, 0x272727);
+                        this.scene.add(helper);
+
+                        this.createPivot();
+                    };
+
+                    webLoader.prototype.createPivot = function() {
+                        this.pivot = new THREE.Object3D();
+                        this.pivot.name = 'Pivot';
+                        this.scene.add(this.pivot);
+                    };
+
+                    webLoader.prototype.initPostGL = function() {
+                        var self = this;
+                        var reportProgress = function reportProgress(content) {
+                            console.log('Progress: ' + content);
+                        };
+                        var materialsLoaded = function materialsLoaded(materials) {
+                            var count = Validator.isValid(materials) ? materials.length : 0;
+                            console.log('Loaded #' + count + ' materials.');
+                        };
+                        var meshLoaded = function meshLoaded(name, bufferGeometry, material) {
+                            console.log('Loaded mesh: ' + name + ' Material name: ' + material.name);
+                        };
+                        var completedLoading = function completedLoading() {
+                            self.openModal();
+                            console.log('Loading complete!');
+                        };
+                        this.wwObjLoader2.registerCallbackProgress(reportProgress);
+                        this.wwObjLoader2.registerCallbackCompletedLoading(completedLoading);
+                        this.wwObjLoader2.registerCallbackMaterialsLoaded(materialsLoaded);
+                        this.wwObjLoader2.registerCallbackMeshLoaded(meshLoaded);
+
+                        return true;
+                    };
+
+                    webLoader.prototype.loadFiles = function(prepData) {
+                        prepData.setSceneGraphBaseNode(this.pivot);
+                        prepData.setStreamMeshes(this.streamMeshes);
+                        this.wwObjLoader2.prepareRun(prepData);
+                        this.wwObjLoader2.run();
+                    };
+
+                    webLoader.prototype._handleFileSelect = function(event, pathTexture) {
+                        var fileObj = null;
+                        var fileMtl = null;
+                        var files = event.target.files;
+
+                        for (var i = 0, file; file = files[i]; i++) {
+
+                            if (file.name.indexOf('\.obj') > 0 && fileObj === null) {
+                                fileObj = file;
+                            }
+
+                            if (file.name.indexOf('\.mtl') > 0 && fileMtl === null) {
+                                fileMtl = file;
                             }
                         }
 
-                        webLoader.prototype.initGL = function() {
-                            this.renderer = new THREE.WebGLRenderer({
-                                canvas: this.canvas,
-                                antialias: true,
-                                autoClear: true
-                            });
-                            this.renderer.setClearColor(0x1d1d1d);
+                        if (!Validator.isValid(fileObj)) {
+                            alert('Unable to load OBJ file from given files.');
+                        }
 
-                            this.scene = new THREE.Scene();
+                        var fileReader = new FileReader();
+                        fileReader.onload = function(fileDataObj) {
 
-                            this.camera = new THREE.PerspectiveCamera(this.cameraDefaults.fov, this.aspectRatio,
-                                this.cameraDefaults.near,
-                                this.cameraDefaults.far);
-                            this.resetCamera();
-                            this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement);
+                            var uint8Array = new Uint8Array(fileDataObj.target.result);
+                            if (fileMtl === null) {
 
-                            var ambientLight = new THREE.AmbientLight(0x404040);
-                            var directionalLight1 = new THREE.DirectionalLight(0xC0C090);
-                            var directionalLight2 = new THREE.DirectionalLight(0xC0C090);
+                                app.loadFilesUser({
+                                    name: 'userObj',
+                                    objAsArrayBuffer: uint8Array,
+                                    pathTexture: pathTexture,
+                                    mtlAsString: null
+                                });
+                            } else {
 
-                            directionalLight1.position.set(-100, -50, 100);
-                            directionalLight2.position.set(100, 50, -100);
-
-                            this.scene.add(directionalLight1);
-                            this.scene.add(directionalLight2);
-                            this.scene.add(ambientLight);
-
-                            var helper = new THREE.GridHelper(1200, 60, 0x222222, 0x272727);
-                            this.scene.add(helper);
-
-                            this.createPivot();
-                        };
-
-                        webLoader.prototype.createPivot = function() {
-                            this.pivot = new THREE.Object3D();
-                            this.pivot.name = 'Pivot';
-                            this.scene.add(this.pivot);
-                        };
-
-                        webLoader.prototype.initPostGL = function() {
-                            var self = this;
-                            var reportProgress = function reportProgress(content) {
-                                console.log('Progress: ' + content);
-                            };
-                            var materialsLoaded = function materialsLoaded(materials) {
-                                var count = Validator.isValid(materials) ? materials.length : 0;
-                                console.log('Loaded #' + count + ' materials.');
-                            };
-                            var meshLoaded = function meshLoaded(name, bufferGeometry, material) {
-                                console.log('Loaded mesh: ' + name + ' Material name: ' + material.name);
-                            };
-                            var completedLoading = function completedLoading() {
-                                self.openModal();
-                                console.log('Loading complete!');
-                            };
-                            this.wwObjLoader2.registerCallbackProgress(reportProgress);
-                            this.wwObjLoader2.registerCallbackCompletedLoading(completedLoading);
-                            this.wwObjLoader2.registerCallbackMaterialsLoaded(materialsLoaded);
-                            this.wwObjLoader2.registerCallbackMeshLoaded(meshLoaded);
-
-                            return true;
-                        };
-
-                        webLoader.prototype.loadFiles = function(prepData) {
-                            prepData.setSceneGraphBaseNode(this.pivot);
-                            prepData.setStreamMeshes(this.streamMeshes);
-                            this.wwObjLoader2.prepareRun(prepData);
-                            this.wwObjLoader2.run();
-                        };
-
-                        webLoader.prototype._handleFileSelect = function(event, pathTexture) {
-                            var fileObj = null;
-                            var fileMtl = null;
-                            var files = event.target.files;
-
-                            for (var i = 0, file; file = files[i]; i++) {
-
-                                if (file.name.indexOf('\.obj') > 0 && fileObj === null) {
-                                    fileObj = file;
-                                }
-
-                                if (file.name.indexOf('\.mtl') > 0 && fileMtl === null) {
-                                    fileMtl = file;
-                                }
-                            }
-
-                            if (!Validator.isValid(fileObj)) {
-                                alert('Unable to load OBJ file from given files.');
-                            }
-
-                            var fileReader = new FileReader();
-                            fileReader.onload = function(fileDataObj) {
-
-                                var uint8Array = new Uint8Array(fileDataObj.target.result);
-                                if (fileMtl === null) {
+                                fileReader.onload = function(fileDataMtl) {
 
                                     app.loadFilesUser({
                                         name: 'userObj',
                                         objAsArrayBuffer: uint8Array,
                                         pathTexture: pathTexture,
-                                        mtlAsString: null
+                                        mtlAsString: fileDataMtl.target.result
                                     });
-                                } else {
+                                };
+                                fileReader.readAsText(fileMtl);
+                            }
+                        };
+                        fileReader.readAsArrayBuffer(fileObj);
+                    };
 
-                                    fileReader.onload = function(fileDataMtl) {
+                    webLoader.prototype.loadFilesUser = function(objDef) {
+                        var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataArrayBuffer(objDef.name,
+                            objDef.objAsArrayBuffer,
+                            objDef.pathTexture, objDef.mtlAsString);
+                        prepData.setSceneGraphBaseNode(this.pivot);
+                        prepData.setStreamMeshes(this.streamMeshes);
+                        this.wwObjLoader2.prepareRun(prepData);
+                        this.wwObjLoader2.run();
+                    };
 
-                                        app.loadFilesUser({
-                                            name: 'userObj',
-                                            objAsArrayBuffer: uint8Array,
-                                            pathTexture: pathTexture,
-                                            mtlAsString: fileDataMtl.target.result
-                                        });
-                                    };
-                                    fileReader.readAsText(fileMtl);
+                    webLoader.prototype.resizeDisplayGL = function() {
+
+                        this.recalcAspectRatio();
+                        this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight, false);
+                        console.log('RDGL');
+                        this.updateCamera();
+                    };
+
+                    webLoader.prototype.recalcAspectRatio = function() {
+                        this.aspectRatio = this.canvas.offsetHeight === 0 ? 1 : this.canvas.offsetWidth / this.canvas
+                            .offsetHeight;
+                    };
+
+                    webLoader.prototype.resetCamera = function() {
+                        this.camera.position.copy(this.cameraDefaults.posCamera);
+                        this.cameraTarget.copy(this.cameraDefaults.posCameraTarget);
+
+                        this.updateCamera();
+                    };
+
+                    webLoader.prototype.updateCamera = function() {
+                        this.camera.aspect = this.aspectRatio;
+                        this.camera.lookAt(this.cameraTarget);
+                        this.camera.updateProjectionMatrix();
+                    };
+
+                    webLoader.prototype.render = function() {
+                        if (!this.renderer.autoClear) this.renderer.clear();
+
+                        this.controls.update();
+                        this.renderer.render(this.scene, this.camera);
+                    };
+
+                    webLoader.prototype.alterSmoothShading = function() {
+
+                        var scope = this;
+                        scope.smoothShading = !scope.smoothShading;
+                        console.log(scope.smoothShading ? 'Enabling SmoothShading' : 'Enabling FlatShading');
+
+                        scope.traversalFunction = function(material) {
+                            material.shading = scope.smoothShading ? THREE.SmoothShading : THREE.FlatShading;
+                            material.needsUpdate = true;
+                        };
+                        var scopeTraverse = function scopeTraverse(object3d) {
+                            scope.traverseScene(object3d);
+                        };
+                        scope.pivot.traverse(scopeTraverse);
+                    };
+
+                    webLoader.prototype.alterDouble = function() {
+
+                        var scope = this;
+                        scope.doubleSide = !scope.doubleSide;
+                        console.log(scope.doubleSide ? 'Enabling DoubleSide materials' :
+                            'Enabling FrontSide materials');
+
+                        scope.traversalFunction = function(material) {
+                            material.side = scope.doubleSide ? THREE.DoubleSide : THREE.FrontSide;
+                        };
+
+                        var scopeTraverse = function scopeTraverse(object3d) {
+                            scope.traverseScene(object3d);
+                        };
+                        scope.pivot.traverse(scopeTraverse);
+                    };
+
+                    webLoader.prototype.traverseScene = function(object3d) {
+
+                        if (object3d.material instanceof THREE.MultiMaterial) {
+
+                            var materials = object3d.material.materials;
+                            for (var name in materials) {
+
+                                if (materials.hasOwnProperty(name)) this.traversalFunction(materials[name]);
+                            }
+                        } else if (object3d.material) {
+
+                            this.traversalFunction(object3d.material);
+                        }
+                    };
+
+                    webLoader.prototype.clearAllAssests = function() {
+                        var scope = this;
+                        var remover = function remover(object3d) {
+
+                            if (object3d === scope.pivot) {
+                                return;
+                            }
+                            console.log('Removing: ' + object3d.name);
+                            scope.scene.remove(object3d);
+
+                            if (object3d.hasOwnProperty('geometry')) {
+                                object3d.geometry.dispose();
+                            }
+                            if (object3d.hasOwnProperty('material')) {
+
+                                var mat = object3d.material;
+                                if (mat.hasOwnProperty('materials')) {
+
+                                    var materials = mat.materials;
+                                    for (var name in materials) {
+
+                                        if (materials.hasOwnProperty(name)) materials[name].dispose();
+                                    }
                                 }
-                            };
-                            fileReader.readAsArrayBuffer(fileObj);
-                        };
-
-                        webLoader.prototype.loadFilesUser = function(objDef) {
-                            var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataArrayBuffer(objDef.name,
-                                objDef.objAsArrayBuffer,
-                                objDef.pathTexture, objDef.mtlAsString);
-                            prepData.setSceneGraphBaseNode(this.pivot);
-                            prepData.setStreamMeshes(this.streamMeshes);
-                            this.wwObjLoader2.prepareRun(prepData);
-                            this.wwObjLoader2.run();
-                        };
-
-                        webLoader.prototype.resizeDisplayGL = function() {
-
-                            this.recalcAspectRatio();
-                            this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight, false);
-                            console.log('RDGL');
-                            this.updateCamera();
-                        };
-
-                        webLoader.prototype.recalcAspectRatio = function() {
-                            this.aspectRatio = this.canvas.offsetHeight === 0 ? 1 : this.canvas.offsetWidth / this.canvas
-                                .offsetHeight;
-                        };
-
-                        webLoader.prototype.resetCamera = function() {
-                            this.camera.position.copy(this.cameraDefaults.posCamera);
-                            this.cameraTarget.copy(this.cameraDefaults.posCameraTarget);
-
-                            this.updateCamera();
-                        };
-
-                        webLoader.prototype.updateCamera = function() {
-                            this.camera.aspect = this.aspectRatio;
-                            this.camera.lookAt(this.cameraTarget);
-                            this.camera.updateProjectionMatrix();
-                        };
-
-                        webLoader.prototype.render = function() {
-                            if (!this.renderer.autoClear) this.renderer.clear();
-
-                            this.controls.update();
-                            this.renderer.render(this.scene, this.camera);
-                        };
-
-                        webLoader.prototype.alterSmoothShading = function() {
-
-                            var scope = this;
-                            scope.smoothShading = !scope.smoothShading;
-                            console.log(scope.smoothShading ? 'Enabling SmoothShading' : 'Enabling FlatShading');
-
-                            scope.traversalFunction = function(material) {
-                                material.shading = scope.smoothShading ? THREE.SmoothShading : THREE.FlatShading;
-                                material.needsUpdate = true;
-                            };
-                            var scopeTraverse = function scopeTraverse(object3d) {
-                                scope.traverseScene(object3d);
-                            };
-                            scope.pivot.traverse(scopeTraverse);
-                        };
-
-                        webLoader.prototype.alterDouble = function() {
-
-                            var scope = this;
-                            scope.doubleSide = !scope.doubleSide;
-                            console.log(scope.doubleSide ? 'Enabling DoubleSide materials' :
-                                'Enabling FrontSide materials');
-
-                            scope.traversalFunction = function(material) {
-                                material.side = scope.doubleSide ? THREE.DoubleSide : THREE.FrontSide;
-                            };
-
-                            var scopeTraverse = function scopeTraverse(object3d) {
-                                scope.traverseScene(object3d);
-                            };
-                            scope.pivot.traverse(scopeTraverse);
-                        };
-
-                        webLoader.prototype.traverseScene = function(object3d) {
-
-                            if (object3d.material instanceof THREE.MultiMaterial) {
-
-                                var materials = object3d.material.materials;
-                                for (var name in materials) {
-
-                                    if (materials.hasOwnProperty(name)) this.traversalFunction(materials[name]);
-                                }
-                            } else if (object3d.material) {
-
-                                this.traversalFunction(object3d.material);
+                            }
+                            if (object3d.hasOwnProperty('texture')) {
+                                object3d.texture.dispose();
                             }
                         };
 
-                        webLoader.prototype.clearAllAssests = function() {
-                            var scope = this;
-                            var remover = function remover(object3d) {
-
-                                if (object3d === scope.pivot) {
-                                    return;
-                                }
-                                console.log('Removing: ' + object3d.name);
-                                scope.scene.remove(object3d);
-
-                                if (object3d.hasOwnProperty('geometry')) {
-                                    object3d.geometry.dispose();
-                                }
-                                if (object3d.hasOwnProperty('material')) {
-
-                                    var mat = object3d.material;
-                                    if (mat.hasOwnProperty('materials')) {
-
-                                        var materials = mat.materials;
-                                        for (var name in materials) {
-
-                                            if (materials.hasOwnProperty(name)) materials[name].dispose();
-                                        }
-                                    }
-                                }
-                                if (object3d.hasOwnProperty('texture')) {
-                                    object3d.texture.dispose();
-                                }
-                            };
-
-                            scope.scene.remove(scope.pivot);
-                            scope.pivot.traverse(remover);
-                            scope.createPivot();
-                            scope.inputFileElem.value = null;
-                            console.log();
-                        };
-
-                        webLoader.prototype.openModal = function() {
-                            var self = this;
-                            console.log(self.webModal);
-                            this.webModal.classList.add('is-open');
-                            this.webModalClose.addEventListener("click", this.closeModal.bind(this), false);
-                            console.log('Modal Opened');
-                        }
-                        webLoader.prototype.closeModal = function() {
-                            var self = this;
-                            this.webModal.classList.remove('is-open');
-                            this.webModalClose.removeEventListener("click", this.closeModal, true);
-                            app.clearAllAssests();
-                            console.log('Modal Closed');
-
-                        }
-
-                        return webLoader;
-                    }();
-
-                    var app = new webLoader(document.getElementById('js-canvas'));
-
-                    // Init dat.gui and controls
-                    var elemFileInput = document.getElementById('js-upload');
-
-
-                    var WWOBJLoader2Control = function WWOBJLoader2Control() {
-                        this.smoothShading = app.smoothShading;
-                        this.doubleSide = app.doubleSide;
-                        this.streamMeshes = app.streamMeshes;
+                        scope.scene.remove(scope.pivot);
+                        scope.pivot.traverse(remover);
+                        scope.createPivot();
+                        scope.inputFileElem.value = null;
+                        console.log();
                     };
-                    var wwObjLoader2Control = new WWOBJLoader2Control();
 
-                    var gui = new dat.GUI({
-                        autoPlace: false,
-                        width: '100%'
-                    });
-
-                    var menuDiv = document.getElementById('js-controls');
-                    menuDiv.appendChild(gui.domElement);
-                    var folderOptions = gui;
-                    // var controlSmooth = folderOptions.add( wwObjLoader2Control, 'smoothShading' ).name( 'Smooth Shading' );
-
-                    if (app.fileApiAvailable) {
-
-                        wwObjLoader2Control.pathTexture = 'obj/female02/';
-                        // var controlPathTexture = folderOptions.add( wwObjLoader2Control, 'pathTexture' ).name( 'Relative path to textures' );
-                        // controlPathTexture.onChange( function( value ) {
-                        // 	console.log( 'Setting pathTexture to: ' + value );
-                        // 	app.pathTexture = value + '/';
-                        // });
-
-                        wwObjLoader2Control.loadObjFile = function() {
-                            elemFileInput.click();
-                        };
-                        folderOptions.add(wwObjLoader2Control, 'loadObjFile').name('Upload 3D Model (.obj)');
-
-                        var loadObjFile = function() {
-                            elemFileInput.click();
-                        }
-                        var handleFileSelect = function handleFileSelect(object3d) {
-                            app._handleFileSelect(object3d, wwObjLoader2Control.pathTexture);
-                        };
-
-                        elemFileInput.addEventListener('change', handleFileSelect, false);
-
-                        wwObjLoader2Control.clearAllAssests = function() {
-                            app.clearAllAssests();
-                        };
-                        wwObjLoader2Control.uploadServer = function() {
-                            console.log('Uploading');
-
-                            uploadFiles();
-
-                        };
-
-
-                        folderOptions.add(wwObjLoader2Control, 'clearAllAssests').name('Clear Scene');
-                        folderOptions.add(wwObjLoader2Control, 'uploadServer').name('Rig It');
+                    webLoader.prototype.openModal = function() {
+                        var self = this;
+                        console.log(self.webModal);
+                        this.webModal.classList.add('is-open');
+                        this.webModalClose.addEventListener("click", this.closeModal.bind(this), false);
+                        console.log('Modal Opened');
+                    }
+                    webLoader.prototype.closeModal = function() {
+                        var self = this;
+                        this.webModal.classList.remove('is-open');
+                        this.webModalClose.removeEventListener("click", this.closeModal, true);
+                        app.clearAllAssests();
+                        console.log('Modal Closed');
 
                     }
 
-                    var resizeWindow = function resizeWindow() {
-                        app.resizeDisplayGL();
-                        console.log('rz');
+                    return webLoader;
+                }();
+
+                var app = new webLoader(document.getElementById('js-canvas'));
+
+                // Init dat.gui and controls
+                var elemFileInput = document.getElementById('js-upload');
+
+
+                var WWOBJLoader2Control = function WWOBJLoader2Control() {
+                    this.smoothShading = app.smoothShading;
+                    this.doubleSide = app.doubleSide;
+                    this.streamMeshes = app.streamMeshes;
+                };
+                var wwObjLoader2Control = new WWOBJLoader2Control();
+
+                var gui = new dat.GUI({
+                    autoPlace: false,
+                    width: '100%'
+                });
+
+                var menuDiv = document.getElementById('js-controls');
+                menuDiv.appendChild(gui.domElement);
+                var folderOptions = gui;
+                // var controlSmooth = folderOptions.add( wwObjLoader2Control, 'smoothShading' ).name( 'Smooth Shading' );
+
+                if (app.fileApiAvailable) {
+
+                    wwObjLoader2Control.pathTexture = 'obj/female02/';
+                    // var controlPathTexture = folderOptions.add( wwObjLoader2Control, 'pathTexture' ).name( 'Relative path to textures' );
+                    // controlPathTexture.onChange( function( value ) {
+                    // 	console.log( 'Setting pathTexture to: ' + value );
+                    // 	app.pathTexture = value + '/';
+                    // });
+
+                    wwObjLoader2Control.loadObjFile = function() {
+                        elemFileInput.click();
+                    };
+                    folderOptions.add(wwObjLoader2Control, 'loadObjFile').name('Upload 3D Model (.obj)');
+
+                    var loadObjFile = function() {
+                        elemFileInput.click();
+                    }
+                    var handleFileSelect = function handleFileSelect(object3d) {
+                        app._handleFileSelect(object3d, wwObjLoader2Control.pathTexture);
                     };
 
-                    var render = function render() {
-                        requestAnimationFrame(render);
-                        app.render();
+                    elemFileInput.addEventListener('change', handleFileSelect, false);
+
+                    wwObjLoader2Control.clearAllAssests = function() {
+                        app.clearAllAssests();
+                    };
+                    wwObjLoader2Control.uploadServer = function() {
+                        console.log('Uploading');
+
+                        uploadFiles();
+
                     };
 
-                    function uploadFiles(event) {
-                        // event.stopPropagation(); // Stop stuff happening
-                        // event.preventDefault(); // Totally stop stuff happening
 
-                        // START A LOADING SPINNER HERE
-                        //  document.getElementById("loader").style.display = "";
-                        document.getElementById("uploadForm").submit();
+                    folderOptions.add(wwObjLoader2Control, 'clearAllAssests').name('Clear Scene');
+                    folderOptions.add(wwObjLoader2Control, 'uploadServer').name('Rig It');
 
-                        socket.emit('pause');
-                        /*
+                }
+
+                var resizeWindow = function resizeWindow() {
+                    app.resizeDisplayGL();
+                    console.log('rz');
+                };
+
+                var render = function render() {
+                    requestAnimationFrame(render);
+                    app.render();
+                };
+
+                function uploadFiles(event) {
+                    // event.stopPropagation(); // Stop stuff happening
+                    // event.preventDefault(); // Totally stop stuff happening
+
+                    // START A LOADING SPINNER HERE
+                    //  document.getElementById("loader").style.display = "";
+                    document.getElementById("uploadForm").submit();
+
+                    socket.emit('pause');
+                    /*
                 // Create a formdata object and add the files
                 var data = new FormData();
                 $.each(document.getElementById('js-upload').files, function(key, value) {
@@ -634,21 +681,23 @@
                     }
                 });
 				*/
-                    }
-                    window.addEventListener('resize', resizeWindow, false);
+                }
+                window.addEventListener('resize', resizeWindow, false);
 
-                    console.log('Starting initialisation phase...');
-                    app.initGL();
-                    app.resizeDisplayGL();
-                    app.initPostGL();
+                console.log('Starting initialisation phase...');
+                app.initGL();
+                app.resizeDisplayGL();
+                app.initPostGL();
 
 
 
-                    render();
-                    //document.getElementById('js-upload-button').click();
+                render();
+                //document.getElementById('js-upload-button').click();
 
-                };
-            </script>
+            };
+        </script>
+        <script src="js/firebaseAuth.js"></script>
+        <script src="firebase/firebase-listener.js"></script>
 
     </body>
 

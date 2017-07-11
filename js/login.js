@@ -1,17 +1,17 @@
-
 var textEmail = document.getElementById("inputEmail");
-var textPass  = document.getElementById("inputPassword");
-var btnLogIn  = document.getElementById("loginBtn");
+var textPass = document.getElementById("inputPassword");
+var btnLogIn = document.getElementById("loginBtn");
 var btnLogOut = document.getElementById("logOutBtn");
 var signUpBtn = document.getElementById("signUpBtn");
 
 var loginModalElement = $('#myModal')
-loginModalElement.on('show.bs.modal', function (event) {
+loginModalElement.on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
     var modal = $(this)
     console.log(modal)
 })
+
 function closeLoginModal() {
     loginModalElement.modal('hide');
 }
@@ -25,9 +25,9 @@ btnLogIn.addEventListener('click', e => {
     var promise = auth.signInWithEmailAndPassword(email, pass);
 
     promise.catch(function(error) {
-    	var errorCode = error.code;
-    	var errorMessage = error.message;
-    	alert(errorMessage + " Code: " + errorCode);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage + " Code: " + errorCode);
     });
 });
 
@@ -41,8 +41,8 @@ signUpBtn.addEventListener('click', e => {
 });
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
-	if(!firebaseUser){
+    if (!firebaseUser) {
         window.location.href = "home.html";
-        closeLoginModal()
+        closeLoginModal();
     }
 })
