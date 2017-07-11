@@ -4,5 +4,7 @@
 ```
   cd into/this/directory
   npm install -g http-server
-  http-server
+  http-serverjvsepovmse
+  a
+  {}
 ```
