@@ -63,8 +63,8 @@ function getVideos(page, th) {
                 firebase.storage().ref("mp4Files").child(anim.name + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     blocks += '<div class="box box' + k + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
                     blocks += '<div style="z-index: 111;">';
-                    blocks += '<a class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                    blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Download', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+                    blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '" class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+                    blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
                     blocks += '<div class="animation-name">' + anim.name + '</div>';
                     blocks += '</div>';
                     blocks += '<video autoplay loop  muted>';
