@@ -39,20 +39,6 @@
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
     <script src="js/toastr.js"></script>
-    <!-- <script src="js/firebaseAuth.js"></script> -->
-    <script src="firebase/firebase-listener.js"></script>
-    <script src="js/active.js"></script>
-    <script src="js/wow/wow.js"></script>
-    <script src="js/wow/device.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            if ($('html').hasClass('desktop')) {
-                new WOW().init();
-            }
-        });
-    </script>
-    <script src="firebase/login.js"></script>
-    <script src="firebase/register.js"></script>
     <style>
         .zodiac_box .box>div {
             background: #412A58;
@@ -68,11 +54,6 @@
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['addDownloadExtensions', "anim"]);
         _paq.push(['setLinkTrackingTimer', 1000]);
-        var userId = firebase.auth().currentUser.uid;
-        console.log(userId);
-        if (firebase.auth().currentUser) {
-            _paq.push(['setUserId', `'${userId}'`]);
-        }
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         _paq.push(['trackAllContentImpressions']);
@@ -250,10 +231,22 @@
     <script src="js/tm-scripts.js"></script>
 
 
-
+    <script src="js/firebaseAuth.js"></script>
+    <script src="firebase/firebase-listener.js"></script>
     <script src="js/repository.js"></script>
-
-    <!-- <script type="text/javascript" src="firebase/firebase-listener.js"></script> -->
+    <script src="js/active.js"></script>
+    <script src="js/wow/wow.js"></script>
+    <script src="js/wow/device.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <script src="firebase/login.js"></script>
+    <script src="firebase/register.js"></script>
+    <script type="text/javascript" src="firebase/firebase-listener.js"></script>
     <script type="text/javascript" src="js/downloadFile.js"></script>
 </body>
 
