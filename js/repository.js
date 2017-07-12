@@ -78,37 +78,6 @@ function getVideos(page, th) {
 
                         $('.newwwww').click(function() {
                             if (firebase.auth().currentUser) {
-                                console.log("inside the firebsae auth function");
-                                //Piwik code 
-                                var _paq = _paq || [];
-                                /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-                                _paq.push(['addDownloadExtensions', "anim"]);
-                                _paq.push(['setLinkTrackingTimer', 1000]);
-                                _paq.push(['setUserId', `'${userId}'`]);
-                                console.log(userId);
-                                _paq.push(['trackPageView']);
-                                _paq.push(['enableLinkTracking']);
-                                _paq.push(['trackAllContentImpressions']);
-                                (function() {
-                                    var u = "//piwik.norah.ai/";
-                                    _paq.push(['setTrackerUrl', u + 'piwik.php']);
-                                    if (window.location.href.indexOf("norah.ai") > -1) {
-                                        console.log("You are at norah.ai");
-                                        _paq.push(['setSiteId', '1']);
-                                    } else {
-                                        _paq.push(['setSiteId', '2']);
-                                    }
-
-                                    var d = document,
-                                        g = d.createElement('script'),
-                                        s = d.getElementsByTagName('script')[0];
-                                    g.type = 'text/javascript';
-                                    g.async = true;
-                                    g.defer = true;
-                                    g.src = u + 'piwik.js';
-                                    s.parentNode.insertBefore(g, s);
-                                })();
-
                                 console.log($(this).data("name"));
                                 var animName = $(this).data("name");
                                 var duration = $(this).data("duration");
