@@ -189,6 +189,34 @@
             font-size: 20px;
         }
     </style>
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = "//piwik.norah.ai/";
+            _paq.push(['setTrackerUrl', u + 'piwik.php']);
+            if (window.location.href.indexOf("norah.ai") > -1) {
+                console.log("You are at norah.ai");
+                _paq.push(['setSiteId', '1']);
+            } else {
+                _paq.push(['setSiteId', '2']);
+            }
+
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = u + 'piwik.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript><p><img src="//piwik.norah.ai/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
 </head>
 
 <body>
@@ -491,14 +519,23 @@
             console.log(left_array);
             console.log("right_array: ");
             console.log(right_array);
-            firebase.storage().ref("yamlFiles").child(animationArray[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                firebase.storage().ref("mp4Files").child(animationArray[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+            // Left
+            firebase.storage().ref("yamlFiles").child(left_array[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(left_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
                     console.log(downloadUrl);
                     gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
                     document.getElementById('left_anim_name').value = animDownloadUrl;
-                    document.getElementById('right_anim_name').value = animDownloadUrl;
                     PlayLeftAnimation(downloadUrl);
+                })
+            });
+            // Right
+            firebase.storage().ref("yamlFiles").child(right_array[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(right_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
+                    document.getElementById('right_anim_name').value = animDownloadUrl;
                     PlayRightAnimation(downloadUrl);
                 })
             });
@@ -508,20 +545,7 @@
         var semaphore = false;
 
         function UnityLoadFinished() {
-
-            var userId = firebase.auth().currentUser.uid;
-            var ss = [];
-            var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").once("value").then(function(snapshot) {
-                ss = snapshot.val();
-                console.log("Number of children " + snapshot.numChildren());
-                childrenCount = snapshot.numChildren();
-                semaphore = true;
-                if (childrenCount < 2) {
-                    alert("Add atleast 2 animations from the Repository");
-                } else {
-                    getList();
-                }
-            });
+            getList();
         }
 
         function getList() {
@@ -682,7 +706,6 @@
                 });
             });
         };
-
         rangeSlider();
 
         $(document).ready(function() {
@@ -693,9 +716,21 @@
         });
 
         function loadPage() {
-
             if (firebase.auth().currentUser) {
                 console.log("Auth");
+                var userId = firebase.auth().currentUser.uid;
+                var ss = [];
+                var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").once("value").then(function(snapshot) {
+                    ss = snapshot.val();
+                    console.log("Number of children " + snapshot.numChildren());
+                    childrenCount = snapshot.numChildren();
+                    semaphore = true;
+                    if (childrenCount < 2) {
+                        alert("Add atleast 2 animations from the Repository");
+                    } else {
+                        gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
+                    }
+                });
             } else {
                 console.log("Not logged in");
                 $('#myModal').modal({
@@ -704,8 +739,10 @@
                     show: true
                 });
             }
+
         }
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
+        var gameInstance;
+        // var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
