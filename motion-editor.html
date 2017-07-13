@@ -51,10 +51,11 @@
     <link rel="stylesheet" href="css/poseeditor.css">
 
 
-    <style> 
-    body{
-        background-color: #412A58;
-    }
+    <style>
+        body {
+            background-color: #412A58;
+        }
+        
         p1 {
             font-size: 35px;
         }
@@ -202,9 +203,6 @@
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
     <script type="text/javascript">
-        function UnityLoadFinished() {
-            console.log("Gotcha");
-        }
         var gameInstance;
 
         function logout() {
@@ -229,41 +227,43 @@
             gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', url);
         }
 
+        function LoadFinished() {
+            console.log("Unity Loading Finished");
+            var blocks = '';
+            var k = 1;
+            var completed = 1;
+            var userId = firebase.auth().currentUser.uid;
+            firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(ss) {
+                var animations = ss.val();
+                if (!animations) {
+                    alert("No items in library");
+                    //$.unblockUI();
+                }
+                animations && Object.keys(animations).forEach(function(animKey) {
+                    console.log(animations[animKey].name);
+                    animations_library.push(animations[animKey].name);
+
+                    firebase.storage().ref("jsonFiles").child(animations[animKey].name + ".json").getDownloadURL().then(function(downloadUrl) {
+                        console.log(downloadUrl);
+                        //downloadUrls.push(downloadUrl);
+                        console.log(typeof(downloadUrl));
+                        $("#anim_url").attr("value", downloadUrl);
+                        gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', downloadUrl);
+                        //loadAnimFromUrl(downloadUrl);
+                    });
+                });
+                // $.unblockUI();
+            });
+        }
+
         function loadPage() {
             if (firebase.auth().currentUser) {
-                gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build 20 (Fixed).json", {
+                gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build22(With External Call to [LoadFinished]).json", {
                     onProgress: UnityProgress
                 });
                 console.log("Auth");
                 //$.blockUI();
-                var blocks = '';
-                var k = 1;
-                var completed = 1;
-                var userId = firebase.auth().currentUser.uid;
-                firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(ss) {
-                    var animations = ss.val();
-                    if (!animations) {
-                        alert("No items in library");
-                        //$.unblockUI();
-                    }
-                    animations && Object.keys(animations).forEach(function(animKey) {
-                        console.log(animations[animKey].name);
-                        animations_library.push(animations[animKey].name);
 
-                        firebase.storage().ref("jsonFiles").child(animations[animKey].name + ".json").getDownloadURL().then(function(downloadUrl) {
-                            console.log(downloadUrl);
-                            //downloadUrls.push(downloadUrl);
-                            console.log(typeof(downloadUrl));
-                            $("#anim_url").attr("value", downloadUrl);
-                            //document.getElementById('anim_url').value = downloadUrl;
-                            console.log(downloadUrl);
-                            console.log(document.getElementById('anim_url').value);
-                            gameInstance.SendMessage('RTClipEditor', 'LoadAnimFromUrl', downloadUrl);
-                            //loadAnimFromUrl(downloadUrl);
-                        });
-                    });
-                    // $.unblockUI();
-                })
             } else {
                 console.log("Not Auth");
                 $('#myModal').modal({
