@@ -147,7 +147,7 @@ h4 {
 
 .content.indent {
     padding: 53px 0 0 0;
-    background: #ffffff;
+    background-image: url("../img/contactus.jpg");
 }
 
 .center {
@@ -355,6 +355,18 @@ nav.tm_navbar .sub-menu>ul {
     border: 1px solid #412a58;
 }
 
+ul.homeSub.sub-menu li {
+    padding: 10px 0 !important;
+}
+
+nav.tm_navbar .sub-menu ul ul li {
+    padding: 0 !important;
+}
+
+nav.tm_navbar .sub-menu ul ul li a:hover {
+    color: #e36480 !important;
+}
+
 nav.tm_navbar .sub-menu>ul li {
     position: relative;
     background: none !important;
@@ -362,7 +374,7 @@ nav.tm_navbar .sub-menu>ul li {
     width: auto;
     float: none;
     margin: 0;
-    padding: 10px 0;
+    padding: 0px 0;
     display: block;
     border-bottom: 1px solid #432B5A;
 }
@@ -442,7 +454,7 @@ nav.tm_navbar .sub-menu ul ul {
     list-style: none !important;
     zoom: 1;
     z-index: 11;
-    background: #e36480;
+    background: #2f2041;
     padding: 0;
     margin: 0;
     text-align: left;
@@ -451,7 +463,7 @@ nav.tm_navbar .sub-menu ul ul {
 nav.tm_navbar .sub-menu ul ul li a {
     display: block;
     background: transparent;
-    padding: 0 0 0 0px;
+    padding: 10px 0 10px 0px;
     margin: 0;
     font: 18px/28px 'Questrial';
     color: #ffffff;
@@ -463,7 +475,7 @@ nav.tm_navbar .sub-menu ul ul li a {
 
 nav.tm_navbar .sub-menu ul ul li a:hover {
     text-decoration: none;
-    color: #ffffff !important;
+    color: #e36480 !important;
     /* background: #e98399 !important; */
     -webkit-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
