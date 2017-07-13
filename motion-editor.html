@@ -8,7 +8,8 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-    <meta name="description" content="Your description">
+    <meta name="description" content="Norah AI is a revolutionary, A.I. empowered workflow for generating games. The A.I. enables quick creation and incorporation of all different game elements ranging from creation of 3D models and their animation to story
+                                    weaving and texturing.">
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
     <meta name="format-detection" content="telephone=no" />
@@ -102,10 +103,10 @@
                             <ul class="homeSub">
                                 <li><a href="#">Animation</a>
                                     <ul class="bodysub">
-                                        <li><a href="ARigger">Auto Rigger</a></li>
+                                        <li><a href="auto-rigger">Auto Rigger</a></li>
                                         <li><a href="repository">Repository</a></li>
-                                        <li><a href="merger_tool">Style Transfer</a></li>
-                                        <li><a href="pose_editor">Motion Editor</a></li>
+                                        <li><a href="style-transfer-tool">Style Transfer</a></li>
+                                        <li><a href="motion-editor">Motion Editor</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">3D Modelling</a>
@@ -121,7 +122,7 @@
                             </ul>
                         </li>
                         <li class="sub-menu"><a href="about">About</a></li>
-                        <li> <a href="my_library">My Library</a></li>
+                        <li> <a href="my-library">My Library</a></li>
                         <li><a href="contact">Contact Us</a></li>
                     </ul>
                 </nav>
@@ -172,7 +173,7 @@
 
             <!-- Modal content-->
             <div class="reg">
-                <img src="img/fotterLogo.png" alt="logo" class="img-logo img responsive">
+                <img src="img/fotterLogo.png" alt="Norah.ai" class="img-logo img responsive">
                 <hr>
 
                 <div align="center">
@@ -199,9 +200,10 @@
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
     <script type="text/javascript">
-        var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build 20 (Fixed).json", {
-            onProgress: UnityProgress
-        });
+        function UnityLoadFinished() {
+            console.log("Gotcha");
+        }
+        var gameInstance;
 
         function logout() {
             firebase.auth().signOut().then(function() {
@@ -227,11 +229,9 @@
 
         function loadPage() {
             if (firebase.auth().currentUser) {
-                // document.write('<script src="TemplateData/UnityProgress.js">\x3C/script>');
-                // document.write('<script src="BuildPose/UnityLoader.js">\x3C/script>');
-                // var gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build 17 (Production Release).json", {
-                //     onProgress: UnityProgress
-                // });
+                gameInstance = UnityLoader.instantiate("gameContainer", "BuildPose/Build 20 (Fixed).json", {
+                    onProgress: UnityProgress
+                });
                 console.log("Auth");
                 //$.blockUI();
                 var blocks = '';

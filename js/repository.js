@@ -136,7 +136,7 @@ jQuery(document).ready(function() {
         for (var key in fireObject) {
             var sabUl = "<ul class='nav nav-pills nav-stacked subMenuS'>";
             for (var b in fireObject[key]) {
-                sabUl += "<li  class='subManuLi' data-name='" + fireObject[key][b] + "' role='presentation'><a href='javascript:;'>" + fireObject[key][b] + "</a></li>";
+                sabUl += "<li  class='subManuLi' data-name='" + fireObject[key][b] + "' role='presentation'><a onclick=" + `"javascript:_paq.push(['trackEvent', 'Tag clicked', '${fireObject[key][b]}']);"` + '>' + fireObject[key][b] + "</a></li>";
             }
             sabUl += "</ul>";
             var active = (t == 0) ? " class='active'" : '';
