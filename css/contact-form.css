@@ -123,9 +123,10 @@
     background: none;
     font: 16px/18px 'Roboto';
     height: 48px;
-    color: #cbcbcb;
+    color: black;
     padding: 13px 15px;
     border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.5)
 }
 
 .contactForm2 #contact-form input[type='text'] {
@@ -276,6 +277,7 @@
     color: #cbcbcb;
     padding: 13px 15px;
     border-radius: 25px;
+    color: black;
 }
 
 #contact-form .form-div-1,
@@ -290,7 +292,7 @@
 #contact-form .form-div-2 strong,
 #contact-form .form-div-3 strong {
     font: 16px/18px 'Roboto';
-    color: #cbcbcb;
+    color: black;
     margin-bottom: 7px;
     display: block;
 }
@@ -306,11 +308,12 @@
 #contact-form .form-div-4 textarea {
     line-height: 20px;
     padding: 12px 14px;
+    background-color: rgba(255, 255, 255, 0.5)
 }
 
 #contact-form .form-div-4 strong {
     font: 16px/18px 'Roboto';
-    color: #cbcbcb;
+    color: black;
     margin-bottom: 7px;
     display: block;
 }
