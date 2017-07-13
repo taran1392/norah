@@ -19,7 +19,7 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <script src="firebase/config.js"></script>
+
     <script src="firebase/providers.js"></script>
 
     <!--CSS-->
@@ -30,17 +30,22 @@
     <link rel="stylesheet" href="css/reg_form.css">
     <link rel="stylesheet" href="fonts/font-awesome.css">
     <link rel="stylesheet" href="css/rigger_popup.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <!--JS-->
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/jquery.mobilemenu.js"></script>
-    <script src="js/jquery.equalheights.js"></script>
+
     <script src="js/sForm.js"></script>
     <script src="js/active.js"></script>
     <!--[if (gt IE 9)|!(IE)]><!-->
     <script src="js/wow/wow.js"></script>
     <script src="js/wow/device.min.js"></script>
+
+
 
     <script>
         $(document).ready(function() {
@@ -50,12 +55,138 @@
         });
     </script>
     <style>
+        a {
+            color: inherit;
+        }
+        
+        p.text {
+            font-size: 20px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: white;
+        }
+        
+        p.link {
+            font-size: 20px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.big {
+            font-size: 30px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.linkred {
+            font-size: 20px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.linkblackcenter {
+            font-size: 20px;
+            font-family: Helvetica;
+            margin-left: 32%;
+            color: black;
+        }
+        
+        p.bigred {
+            font-size: 40px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.bigblack {
+            font-size: 30px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 0%;
+            color: black;
+        }
+        
+        p.biggerblack {
+            font-size: 40px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 0%;
+            color: black;
+        }
+        
+        p.textblack {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: -19px;
+        }
+        
+        header {
+            top: -15px;
+            left: 11%;
+            width: 74%;
+        }
+        
         p3 {
             font-size: 19px;
         }
         
         p4 {
             font-size: 12px;
+        }
+        
+        .back-link a {
+            color: #4ca340;
+            text-decoration: none;
+            border-bottom: 1px #4ca340 solid;
+        }
+        
+        .back-link a:hover,
+        .back-link a:focus {
+            color: #408536;
+            text-decoration: none;
+            border-bottom: 1px #408536 solid;
+        }
+        
+        h1 {
+            height: 100%;
+            /* The html and body elements cannot have any padding or margin. */
+            margin: 0;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            color: orange;
+            font-size: 32px;
+            margin-bottom: 3px;
+        }
+        
+        h2 {
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: normal;
+            padding-left: 80px;
+        }
+        
+        .entry-header .inner {
+            text-align: left;
+            margin: 0 auto 20px auto;
+            width: 800px;
+        }
+        
+        .entry-header {
+            padding-top: 20px;
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px #ebebeb solid;
         }
     </style>
     <!-- Piwik -->
@@ -89,12 +220,19 @@
 </head>
 
 <body>
+
+    <!-- <div class="inner"> -->
+
+
+
+
     <div class="main">
+
         <!--header-->
-        <div class="container">
-            <header class="clearfix">
+        <section id="fadeInAnim">
+            <header class="clearfix" left="93px">
                 <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-                    <ul class="nav sf-menu  clearfix ">
+                    <ul class="nav sf-menu  clearfix">
 
                         <li class="sub-menu"><a href="index">Home</a><span class="fa fa-angle-down"></span>
                             <ul class="homeSub">
@@ -142,148 +280,61 @@
                     </div>
                 </div>
             </header>
-            <div class="logo_box">
-                <h1 class="navbar-brand navbar-brand_">
-                    <a href="index"><img src="img/norah.png" alt="Norah.ai" class="img responsive"></a>
-                </h1>
+            <div class="section-content">
+                <div class="copy-container">
+
+
+                </div>
+                <img src="img/1.jpg" alt="iPhone" />
             </div>
-        </div>
+        </section>
+        <section id="fadeInAnim2">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="big">ANIMATIONS</p>
+                    <p class="text">Experiment with NORAH AI<br>on endless possibilities<br>of animations</p>
+                    <p class="link">
+                        Read more | Try Now</p>
+
+                </div>
+                <img src="img/2.png" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim3">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="bigblack">3D MODELLING</p>
+                    <p class="text-black">Expand the horizons of art creation by <strong>NORAH AI</strong></p><br> Read more | Coming soon
+                </div>
+                <img src="img/3.png" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim4">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="bigred">T E X T U R I N G</p>
+                    <p class="text">Bring your creations to life</p>
+                    <p class="linkred">
+                        Read more | Coming soon</p>
+                </div>
+                <img src="img/4.png" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim5">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="biggerblack">M O B I L E&nbsp; G A M E&nbsp; F O R G E R</p>
+                    <p class="textblack">Partner with NORAH AI to develop Premium mobile games using its comprehensive AI driven workflow.</p>
+                    <p class="linkblackcenter">
+                        Read more | Coming soon</p>
+
+                </div>
+                <img src="img/5.png" alt="iPhone" />
+            </div>
+        </section>
     </div>
-    <div class="zodiac_box">
-        <div class="container" style="position:relative;">
-            <!-- <div class="tp3" id="tp3" onclick="javascript: placeH1();" data-page="index">
-                <p><span class="t1" id="t1" onclick="javascript: placeH1();">ANIMATION TOOL</span></p>
-                <p><a class="t2" id="t2" onclick="placeH1();">3D MODELLING TOOL <br> (yet to launch)</a></p>
-                <p><a class="t3" id="t3" onclick="placeH1();">GAME MAKER <br> (yet to launch)</a></p>
-            </div>
-
-            <div class="tp2" id="tp2">
-            </div> -->
-
-            <div class="box box1 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="hover_div" onclick="location.href='auto-rigger';">
-
-                    <h3>Auto Rigger</h3>
-                    <p> AutoRig tool uses deep learning to produce a full skeleton and a wide variety of movements without any manual effort in matter of seconds.
-                    </p>
-                </div>
 
 
-                <figure>
-                    <!-- <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
-                        <input class="btn btn-success" type="file" id="js-upload" name="foo" accept=".obj" />
-                    </form>-->
-                    <a href="auto-rigger"><img src="img/rigger.png" alt=""></a>
-                </figure>
-                <strong><br>AUTO RIGGER</strong>
-            </div>
-            <div class="box box2 wow fadeInUp" data-wow-delay="0.2s" data-href="repository">
-
-
-                <div class="hover_div" onclick="location.href='repository';">
-
-                    <h3>Repository</h3>
-                    <p>Powered by the ML algorithms, the animation repository contains a huge library of locomotion, detailed and complex dance forms, and combat animations that cater to a multitude of requirements
-                    </p>
-
-                </div>
-                <figure>
-                    <img src="img/repository.png" alt="">
-                </figure>
-                <strong><br>ANIMATION REPOSITORY</strong>
-
-            </div>
-            <div class="box box3 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="hover_div" onclick="location.href='style-transfer-tool';">
-
-                    <h3>Style Transfer Tool</h3>
-                    <p>AI-powered animation merger tool endows creators with the ability to combine aesthetics of two different animation to produce unexpected and stunning results.
-                    </p>
-                </div>
-                <figure>
-                    <a href="style-transfer-tool"><img src="img/merge.png" alt=""></a>
-                </figure>
-                <strong><br>STYLE TRANSFER TOOL</strong>
-            </div>
-            <div class="box box4 wow fadeInUp">
-                <div class="hover_div" onclick="location.href='motion-editor';">
-
-                    <h3>Motion Editor</h3>
-                    <p>Utilize the power of Body Animation Motion Editor tool for smart customizability create stunning new animations to suite the multitudes of requirements of a creator.
-                    </p>
-                </div>
-                <figure>
-                    <a href="motion-editor"><img src="img/pose.png" alt=""></a>
-                </figure>
-                <strong><br>MOTION EDITOR</strong>
-            </div>
-
-            <!-- <div class="box box5 wow fadeInUp" data-wow-delay="0.3s">
-                <div>
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                    <a href="#" class="btn-default btn5">read more</a>
-                </div>
-
-                <strong></strong>
-            </div>
-            <div class="box box6 wow fadeInUp" data-wow-delay="0.2s">
-                <div>
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                    <a href="#" class="btn-default btn5">read more</a>
-                </div>
-
-                <strong> <br> </strong>
-            </div>
-            <div class="box box7 wow fadeInUp" data-wow-delay="0.1s">
-                <div>
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                    <a href="#" class="btn-default btn5">read more</a>
-                </div>
-
-                <strong></strong>
-            </div>
-            <div class="box box8 wow fadeInUp">
-                <div>
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                    <a href="#" class="btn-default btn5">read more</a>
-                </div>
-
-                <strong></strong>
-            </div>
-
-            <div class="box box9C wow fadeInUp" data-wow-delay="0.1s">
-                <div>
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                    <a href="#" class="btn-default btn5">read more</a>
-                </div>
-
-                <strong></strong>
-
-
-            </div>
-            <div class="box box11C wow fadeInUp">
-                <div>
-                    <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus a lorem.</p>
-                    <a href="#" class="btn-default btn5">read more</a>
-                </div>
-
-                <strong></strong>
-
-
-            </div>
- -->
-        </div>
-    </div>
-    <!--content-->
-    <div class="content">
-    </div>
-    <!--footer-->
-    <footer>
-        <div class="container">
-            <figure><img src="img/fotterLogo.jpg" alt="" class="footerLogo"></figure>
-        </div>
-
-    </footer>
 
 
     <!-- Modal -->
@@ -338,6 +389,25 @@
         function placeH1() {
             document.getElementById('tp3').style.display = 'none';
         }
+    </script>
+
+
+    <script type="text/javascript" src="js/onepagescroll/jquery.onepage-scroll.js"></script>
+    <link href='js/onepagescroll/onepage-scroll.css' rel='stylesheet' type='text/css'>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        var _gaq = [
+            ['_setAccount', ''],
+            ['_trackPageview']
+        ];
+        (function(d, t) {
+            var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            g.src = '//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
     </script>
 
 </body>
