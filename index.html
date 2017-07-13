@@ -55,6 +55,17 @@
         });
     </script>
     <style>
+        #content {
+            overflow: hidden;
+            height: 0.6em;
+            line-height: 1em;
+            width: 915px;
+        }
+        
+        #more:checked+div {
+            height: auto;
+        }
+        
         a.orange {
             color: orange;
         }
@@ -296,7 +307,15 @@
                     <p class="big">ANIMATIONS</p>
                     <p class="text">Experiment with NORAH AI<br>on endless possibilities<br>of animations</p>
                     <p class="link">
-                        Read more | <a class="orange" href="home">Try Now</a></p>
+                        <a class="orange" href="home">Try Now</a> | <a class="orange" onclick="readme2()"> Read more</a> </p>
+
+
+                    <div id="content">
+                        <p class="text">
+                            · AutoRig – See your 3D characters come to life as our tool automatically adds a skeleton to the character <br>· Endless repository – Explore and choose from our ever-growing animation library <br>· Style Transfer – Create
+                            new and unique animations by mixing two together <br>· Motion editor – Customize and fine tune your creation with our frame-by-frame tweaker</p>
+                    </div>
+
 
                 </div>
                 <img src="img/2.png" alt="iPhone" />
@@ -390,6 +409,11 @@
     <script>
         function placeH1() {
             document.getElementById('tp3').style.display = 'none';
+        }
+
+        function readme2() {
+            document.querySelector('#content').style.height = 'auto';
+            this.style.display = 'none';
         }
     </script>
 
