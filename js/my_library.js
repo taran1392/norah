@@ -24,7 +24,7 @@ function loadPage() {
                         // console.log(animations[animKey].val());
                         blocks += '<div class="box box' + k + ' fadeInUp clust" data-wow-delay="0.3s" data-page="#">';
                         blocks += '<div style="z-index: 111;">';
-                        blocks += '<div class="animation-name" style="text-align:center;margin-top:40px;display:block">' + animations[animKey].name + '</div>';
+                        blocks += '<div class="animation-name" style="text-align:center;margin-top:40px;display:block">' + animations[animKey].displayName + '</div>';
                         blocks += '<a data-url="' + animDownloadUrl + ' data-duration=' + animations[animKey].duration + '" data-name="' + animations[animKey].name + '.anim" download href="' + animDownloadUrl + '" style="float:none !important;text-align:center;display:block;margin-top:0px"><br/><i class="fa fa-download fa-2x" aria-hidden="true"></i></a></center>';
                         blocks += '<label class="fancy-checkbox">';
                         blocks += '<input type="checkbox" name="demo_' + animKey + '" onclick="if(this.checked){ document.getElementById(' + k + ').checked = true;} else {document.getElementById(' + k + ').checked = false;}"/>';

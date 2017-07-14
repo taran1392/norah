@@ -65,7 +65,7 @@ function getVideos(page, th) {
                     blocks += '<div style="z-index: 111;">';
                     blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '" class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
                     blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
-                    blocks += '<div class="animation-name">' + anim.name + '</div>';
+                    blocks += '<div class="animation-name">' + anim.displayName + '</div>';
                     blocks += '</div>';
                     blocks += '<video autoplay loop  muted>';
                     blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
