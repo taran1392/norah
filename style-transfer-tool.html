@@ -527,7 +527,7 @@
                 firebase.storage().ref("mp4Files").child(left_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
                     console.log(downloadUrl);
-                    gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "0");
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
 
                     document.getElementById('left_anim_name').value = animDownloadUrl;
                     document.getElementById('left_anim_title').innerHTML = left_array[0];
@@ -540,7 +540,7 @@
                 firebase.storage().ref("mp4Files").child(right_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
                     console.log(downloadUrl);
-                    gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "1");
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
 
                     document.getElementById('right_anim_name').value = animDownloadUrl;
                     document.getElementById('right_anim_title').innerHTML = right_array[0];
