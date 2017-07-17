@@ -522,19 +522,7 @@
             console.log("right_array: ");
             console.log(right_array);
             console.log(right_duration_array);
-            // Left
-            firebase.storage().ref("yamlFiles").child(left_array[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                firebase.storage().ref("mp4Files").child(left_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
-                    console.log(animDownloadUrl);
-                    console.log(downloadUrl);
-                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
 
-                    document.getElementById('left_anim_name').value = animDownloadUrl;
-                    document.getElementById('left_anim_title').innerHTML = left_array[0];
-
-                    PlayLeftAnimation(downloadUrl, left_array[0], left_duration_array[0]);
-                })
-            });
             // Right
             firebase.storage().ref("yamlFiles").child(right_array[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                 firebase.storage().ref("mp4Files").child(right_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
@@ -547,6 +535,19 @@
 
 
                     PlayRightAnimation(downloadUrl, right_array[0], right_duration_array[0]);
+                })
+            });
+            // Left
+            firebase.storage().ref("yamlFiles").child(left_array[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(left_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
+
+                    document.getElementById('left_anim_name').value = animDownloadUrl;
+                    document.getElementById('left_anim_title').innerHTML = left_array[0];
+
+                    PlayLeftAnimation(downloadUrl, left_array[0], left_duration_array[0]);
                 })
             });
 
