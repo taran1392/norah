@@ -21,7 +21,7 @@ function loadPage() {
                 console.log(animKey);
                 firebase.storage().ref("animFiles").child(animations[animKey].name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                     firebase.storage().ref("mp4Files").child(animations[animKey].name + ".mp4").getDownloadURL().then(function(downloadUrl) {
-                        // console.log(animations[animKey].val());
+                        console.log(animations[animKey]);
                         blocks += '<div class="box box' + k + ' fadeInUp clust" data-wow-delay="0.3s" data-page="#">';
                         blocks += '<div style="z-index: 111;">';
                         blocks += '<div class="animation-name" style="text-align:center;margin-top:40px;display:block">' + animations[animKey].displayName + '</div>';
