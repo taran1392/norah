@@ -49,7 +49,7 @@ function getVideos(page, th) {
     var k = 1;
     var completed = 1;
     var anim_final = matchTags();
-    console.log(anim_final);
+    //console.log(anim_final);
     var data = anim_final.slice(offset, (page * resultsPerPage));
     if (!data.length) {
         // Add toast code to blocks variable
@@ -79,26 +79,28 @@ function getVideos(page, th) {
                         $('.newwwww').click(function() {
                             if (firebase.auth().currentUser) {
                                 console.log($(this).data("name"));
+                                console.log($(this).data());
                                 var animName = $(this).data("name");
                                 var duration = $(this).data("duration");
+                                var displayName = $(this).data("displayName");
                                 var userId = firebase.auth().currentUser.uid;
                                 console.log("UID" + userId);
                                 firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(snap) {
                                     var libraryItems = snap.val();
                                     var exists = false;
-                                    console.log(libraryItems);
+                                    //console.log(libraryItems);
                                     libraryItems && Object.keys(libraryItems).forEach(function(itemKey) {
                                         exists = exists || (libraryItems[itemKey].name == animName);
                                     });
                                     if (!exists) {
                                         var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
                                         console.log("Duration" + duration);
-                                        newObjRef.set({ name: animName, duration: duration });
+                                        newObjRef.set({ name: animName, duration: duration, displayName: displayName });
 
-                                        toastr.info('Added to your library')
+                                        toastr.info('Added to your library');
 
                                     } else {
-                                        toastr.error('Already in your library')
+                                        toastr.error('Already in your library');
 
                                     }
                                 })
