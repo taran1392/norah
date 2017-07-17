@@ -462,6 +462,8 @@
         var animationArray = [];
         var left_array = [];
         var right_array = [];
+        var left_displaynames_array = [];
+        var right_displaynames_array = [];
         var left_duration_array = [];
         var right_duration_array = [];
         var current_left;
@@ -476,8 +478,9 @@
         mp4Urls = ['http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/aggressive+look.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/backflip.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/block.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/casual+conversation.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/chicken+dance.mp4', 'http://s3-ap-southeast-1.amazonaws.com/norah.absentia/mp4/dancing.mp4'];
 
         // Engine loading is finished, we can call animations loading method...
-        function sorter(inputNames, inputDurations) {
+        function sorter(inputNames, inputDurations, inputDisplayNames) {
             var names = inputNames;
+            var displayNames = inputDisplayNames;
             var durations = inputDurations;
             // console.log(inputNames);
             for (var i in names) {
@@ -502,11 +505,13 @@
                     animationArray.push(names[i]);
                     if (count <= half_length) {
                         right_array.push(names[i]);
+                        right_displaynames_array.push(displayNames[i]);
                         console.log("gone right " + names[i]);
                         right_duration_array.push(durations[i]);
                         console.log("right duration " + durations[i]);
                     } else {
                         left_array.push(names[i]);
+                        left_displaynames_array.push(displayNames[i]);
                         console.log("gone left " + names[i]);
                         left_duration_array.push(durations[i]);
                         console.log("left duration " + durations[i]);
@@ -531,10 +536,10 @@
                     gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
 
                     document.getElementById('right_anim_name').value = animDownloadUrl;
-                    document.getElementById('right_anim_title').innerHTML = right_array[0];
+                    document.getElementById('right_anim_title').innerHTML = right_displaynames_array[0];
 
 
-                    PlayRightAnimation(downloadUrl, right_array[0], right_duration_array[0]);
+                    PlayRightAnimation(downloadUrl, right_displaynames_array[0], right_duration_array[0]);
                 })
             });
             // Left
@@ -545,9 +550,9 @@
                     gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
 
                     document.getElementById('left_anim_name').value = animDownloadUrl;
-                    document.getElementById('left_anim_title').innerHTML = left_array[0];
+                    document.getElementById('left_anim_title').innerHTML = left_displaynames_array[0];
 
-                    PlayLeftAnimation(downloadUrl, left_array[0], left_duration_array[0]);
+                    PlayLeftAnimation(downloadUrl, left_displaynames_array[0], left_duration_array[0]);
                 })
             });
 
@@ -563,6 +568,7 @@
             var count = 0;
             var userId = firebase.auth().currentUser.uid;
             var names = [];
+            var displayNames = [];
             var durations = [];
             var ref = firebase.database().ref("usernames").child(userId).child("mylibrary").orderByChild("duration").on("child_added", function(snapshot) {
                 ++count;
@@ -570,11 +576,12 @@
                 console.log("Anim was " + snapshot.val().duration + " seconds long");
                 durations.push(snapshot.val().duration);
                 names.push(snapshot.val().name);
+                displayNames.push(snapshot.val().displayName);
                 if (count == childrenCount) {
                     for (var i in names) {
                         console.log(names[i] + " " + durations[i]);
                     }
-                    sorter(names, durations);
+                    sorter(names, durations, displayNames);
                 }
             });
 
@@ -648,7 +655,7 @@
                     gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "0");
                     document.getElementById('left_anim_name').value = animDownloadUrl;
                     document.getElementById('right_anim_name').value = animDownloadUrl;
-                    PlayLeftAnimation(downloadUrl, left_array[current_left], left_duration_array[current_left])
+                    PlayLeftAnimation(downloadUrl, left_displaynames_array[current_left], left_duration_array[current_left])
                 })
             });
             //PlayAnimations();
@@ -680,7 +687,7 @@
                     gameInstance.SendMessage('ControllerHelper', 'LoadAnimFromManager', animDownloadUrl + "|" + "1");
                     document.getElementById('left_anim_name').value = animDownloadUrl;
                     document.getElementById('right_anim_name').value = animDownloadUrl;
-                    PlayRightAnimation(downloadUrl, right_array[current_right], right_duration_array[current_right]);
+                    PlayRightAnimation(downloadUrl, right_displaynames_array[current_right], right_duration_array[current_right]);
 
                 })
             });
