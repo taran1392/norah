@@ -38,7 +38,6 @@
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/sForm.js"></script>
     <script src="js/blockUI.js"></script>
-    <script src="js/download.js"></script>
 
     <style>
         .mdl-shadow--2dp {
@@ -102,10 +101,19 @@
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-            var u = "//piwik.norah.ai/";
+            if (window.location.href.indexOf("norah.ai") > -1) {
+                console.log("You are at norah.ai");
+                var u = "//piwik.norah.ai/";
+            } else {
+                var u = "http://35.185.180.253/";
+            }
+
+
             _paq.push(['setTrackerUrl', u + 'piwik.php']);
             if (window.location.href.indexOf("norah.ai") > -1) {
                 console.log("You are at norah.ai");
+                _paq.push(['setSiteId', '1']);
+            } else if (window.location.href.indexOf("norahabsentia") > -1) {
                 _paq.push(['setSiteId', '1']);
             } else {
                 _paq.push(['setSiteId', '2']);
@@ -117,7 +125,7 @@
             g.type = 'text/javascript';
             g.async = true;
             g.defer = true;
-            g.src = u + 'piwik.js';
+            g.src = 'https://cdnjs.cloudflare.com/ajax/libs/piwik/3.0.4/piwik.js'
             s.parentNode.insertBefore(g, s);
         })();
     </script>
@@ -417,10 +425,11 @@
     <script src="js/tm-scripts.js"></script>
     <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
 
-    <!--<script src="js/firebaseAuth.js"></script>-->
+    <script src="js/firebaseAuth.js"></script>
     <script src="firebase/firebase-listener.js"></script>
     <script src="firebase/login.js"></script>
     <script src="firebase/register.js"></script>
+    <script type="text/javascript" src="js/downloadFile.js"></script>
     <script src="js/my_library.js"></script>
     <script src="js/active.js"></script>
     <script src="js/wow/wow.js"></script>

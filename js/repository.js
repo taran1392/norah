@@ -1,16 +1,68 @@
+/**
+ * Updated: 17/07/2017
+ * Updated By: Mayur
+ * Changes: Improved performance, perfect pagination, urls with page numbers.
+ */
+
+// DO NOT DELETE
+function animationsUpdated() {
+    firebase.database().ref("animations").once("value", function (ss) {
+        var allAnimations = ss.val();
+        var updates = {};
+        var storageBucket = firebase.app().options.storageBucket;
+        Object.keys(allAnimations).forEach(function (animKey) {
+            var animMp4Name = "mp4Files/" + allAnimations[animKey]['name'] + ".mp4";
+            var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
+            updates['animations/' + animKey + "/mp4Url"] = mp4Url;
+
+            var animFileName = "animFiles/" + allAnimations[animKey]['name'] + ".anim";
+            var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
+            updates['animations/' + animKey + "/animUrl"] = animFileUrl;
+        });
+        firebase.database().ref().update(updates);
+        console.log("completed");
+    });
+}
+
+//IMPORTANT: WHENEVER YOU ADD A NEW VIDEO, RUN THIS IN THE BROWSER CONSOLE:
+// animationsUpdated();
+
 var resultsPerPage = 12;
 var pages = 0;
 tags = [];
+var hrefTextPrefix = "#page=";
+var paginationInitialized = false;
+
+var initialPage = 1;
+if (window.location.hash != "") {
+    initialPage = window.location.hash.substr(hrefTextPrefix.length)
+}
 
 var animationsArray = []
 $.blockUI();
-firebase.database().ref("animations").orderByChild("name").once("value", function(ss) {
+firebase.database().ref("animations").once("value", function(ss) {
     var allAnimations = ss.val();
-    Object.keys(allAnimations).forEach(function(animKey) {
-        animationsArray.push(allAnimations[animKey]);
+    animationsArray = Object.keys(allAnimations).map(function(k) {
+        var anim = allAnimations[k];
+
+        anim.firebaseKey = k;
+
+        var storageBucket = firebase.app().options.storageBucket;
+        var animMp4Name = "mp4Files/" + anim.name + ".mp4";
+        var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
+
+        var animFileName = "animFiles/" + anim.name + ".anim";
+        var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
+
+        anim.mp4Url = mp4Url;
+        anim.animUrl = animFileUrl;
+
+        return anim;
+    }).sort(function (anim1, anim2) {
+        return (anim1['displayName']).localeCompare(anim2['displayName']);
     });
 
-    getVideos(1);
+    getVideos(initialPage);
 });
 
 function matchTags() {
@@ -38,95 +90,117 @@ function matchTags() {
     return anim_final;
 }
 
-function getVideos(page, th) {
+function getVideos(page) {
     $.blockUI();
-    if (th != undefined) {
-        $(th).parent().parent().find(".active").toggleClass("active");
-        $(th).parent().toggleClass("active");
-    }
     var offset = (page - 1) * resultsPerPage;
     var blocks = '';
-    var k = 1;
-    var completed = 1;
     var anim_final = matchTags();
-    //console.log(anim_final);
+    updatePagination(anim_final);
     var data = anim_final.slice(offset, (page * resultsPerPage));
+
     if (!data.length) {
         // Add toast code to blocks variable
         $('.zodiacCont').html(blocks);
         $.unblockUI();
         console.log("No data");
     } else {
-        data.forEach(function(anim) {
+        var blocks = "";
+        var k = 1;
+        data.forEach(function (anim) {
+            blocks += '<div class="box box' + (k++) + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
+            blocks += '<div style="z-index: 111;">';
+            blocks += '<a class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '" data-displayName="' + anim.displayName + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+            blocks += '<a class="download-anim" data-name="'+ anim.name +'.anim" data-url="' + anim.animUrl + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
+            blocks += '<div class="animation-name">' + anim.displayName + '</div>';
+            blocks += '</div>';
+            blocks += '<video autoplay loop  muted>';
+            blocks += '<source src="' + anim.mp4Url + '" type="video/mp4" />';
+            blocks += '</video>';
+            blocks += '</div>';
+        })
 
-            firebase.storage().ref("animFiles").child(anim.name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
-                firebase.storage().ref("mp4Files").child(anim.name + ".mp4").getDownloadURL().then(function(downloadUrl) {
-                    blocks += '<div class="box box' + k + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
-                    blocks += '<div style="z-index: 111;">';
-                    blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '" class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '" data-displayname="' + anim.displayName + '"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
-                    blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
-                    blocks += '<div class="animation-name">' + anim.displayName + '</div>';
-                    blocks += '</div>';
-                    blocks += '<video autoplay loop  muted>';
-                    blocks += '<source src="' + downloadUrl + '" type="video/mp4" />';
-                    blocks += '</video>';
-                    blocks += '</div>';
+        $('.zodiacCont video').each(function(){
+            if($(this) instanceof HTMLVideoElement) {
+                this.pause(); // can't hurt
+                delete this; // @sparkey reports that this did the trick (even though it makes no sense!)
+                $(this).remove(); // this is probably what actually does the trick
+            }
+        });
 
-                    k++;
-                    if (k === completed) {
-                        $('.zodiacCont').html(blocks);
+        $('.zodiacCont').html(blocks);
 
-                        $('.newwwww').click(function() {
-                            if (firebase.auth().currentUser) {
-                                console.log($(this).data("name"));
-                                console.log($(this).data());
-                                var animName = $(this).data("name");
-                                var duration = $(this).data("duration");
-                                var displayName = $(this).data("displayname");
-                                var userId = firebase.auth().currentUser.uid;
-                                console.log("UID" + userId);
-                                firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(snap) {
-                                    var libraryItems = snap.val();
-                                    var exists = false;
-                                    //console.log(libraryItems);
-                                    libraryItems && Object.keys(libraryItems).forEach(function(itemKey) {
-                                        exists = exists || (libraryItems[itemKey].name == animName);
-                                    });
-                                    if (!exists) {
-                                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
-                                        console.log("Duration" + duration);
-                                        newObjRef.set({ name: animName, duration: duration, displayName: displayName });
+        $('.newwwww').click(function () {
+            if (firebase.auth().currentUser) {
+                var animName = $(this).data("name");
+                var duration = $(this).data("duration");
+                var displayName = $(this).data("displayName");
+                var userId = firebase.auth().currentUser.uid;
+                console.log("UID" + userId);
+                firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function (snap) {
+                    var libraryItems = snap.val();
+                    var exists = false;
+                    console.log(libraryItems);
+                    libraryItems && Object.keys(libraryItems).forEach(function (itemKey) {
+                        exists = exists || (libraryItems[itemKey]['name'] == animName);
+                    });
+                    if (!exists) {
+                        var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
 
-                                        toastr.info('Added to your library');
+                        var storageBucket = firebase.app().options.storageBucket;
+                        var animMp4Name = "mp4Files/" + animName + ".mp4";
+                        var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
 
-                                    } else {
-                                        toastr.error('Already in your library');
+                        var animFileName = "animFiles/" + animName + ".anim";
+                        var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
 
-                                    }
-                                })
-                            } else {
-                                $('#myModal').modal('show');
-                            }
-                        })
-
-                        $.unblockUI();
+                        newObjRef.set({
+                            displayName: displayName,
+                            name: animName,
+                            duration: duration
+                        });
+                        toastr.info('Added to your library')
+                    } else {
+                        toastr.error('Already in your library')
                     }
                 })
-            })
-            completed++;
-        });
+            } else {
+                $('#myModal').modal('show');
+            }
+        })
+
+        $('.download-anim').click(function () {
+            var animDownloadUrl = $(this).data("url");
+            var animName = $(this).data("name");
+            $.ajax({
+                url: animDownloadUrl,
+                success: download.bind(true, "text/plain", animName)
+            });
+        })
+
+        $.unblockUI();
+
     }
 }
 
-firebase.database().ref("animations").orderByChild("name").once("value", function(ss) {
-    ss = ss.val();
-    pages = ss && Math.ceil(Object.keys(ss).length / resultsPerPage);
-    var pageHTML = '<li class="active"><a href="javascript:;" onclick="getVideos(1, this);">1 <span class="sr-only">(current)</span></a></li>';
-    for (var page = 2; page <= pages; page++) {
-        pageHTML += '<li class=""><a href="javascript:;" onclick="getVideos(' + page + ', this);">' + page + ' <span class="sr-only">(current)</span></a></li>';
+function updatePagination(items) {
+    var prevLength = 0;
+    if(!paginationInitialized) {
+        paginationInitialized = true;
+        prevLength = items.length;
+        jQuery('.repo-pages').pagination({
+            items: items.length,
+            itemsOnPage: resultsPerPage,
+            onPageClick: function (pageNumber) {
+                getVideos(pageNumber)
+            },
+            currentPage: initialPage,
+            hrefTextPrefix: hrefTextPrefix
+        });
+    } else if(prevLength != items.length) {
+        prevLength = items.length;
+        jQuery('.repo-pages').pagination('updateItems', items.length);
     }
-    $('.repo-pages').html(pageHTML);
-});
+}
 
 jQuery(document).ready(function() {
 
@@ -138,7 +212,7 @@ jQuery(document).ready(function() {
         for (var key in fireObject) {
             var sabUl = "<ul class='nav nav-pills nav-stacked subMenuS'>";
             for (var b in fireObject[key]) {
-                sabUl += "<li  class='subManuLi' data-name='" + fireObject[key][b] + "' role='presentation'><a onclick=" + `"javascript:_paq.push(['trackEvent', 'Tag clicked', '${fireObject[key][b]}']);"` + '>' + fireObject[key][b] + "</a></li>";
+                sabUl += "<li  class='subManuLi' data-name='" + fireObject[key][b] + "' role='presentation'><a onclick=" + `"javascript:_paq.push(['trackEvent', 'Tag clicked', '${fireObject[key][b]}']);"` + ">" + fireObject[key][b] + "</a></li>";
             }
             sabUl += "</ul>";
             var active = (t == 0) ? " class='active'" : '';
@@ -159,7 +233,7 @@ jQuery(document).ready(function() {
                 console.log($(this).text());
                 tags.push($(this).text());
                 selected = true;
-                getVideos(1);
+                $(".repo-pages").pagination('selectPage', 1);
 
             }
             $(".closeBtn").off('click').on('click', function() {
@@ -174,7 +248,7 @@ jQuery(document).ready(function() {
                 var name = $(this).attr('data-name');
                 $(this).parent().remove();
                 $('.subMenuS li[data-name="' + name + '"]').removeClass('active activeTag');
-                getVideos(1);
+                $(".repo-pages").pagination('selectPage', 1);
             });
 
         });
