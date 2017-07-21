@@ -29,7 +29,7 @@
     <script src="js/wow/device.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             if ($('html').hasClass('desktop')) {
                 new WOW().init();
             }
@@ -42,7 +42,7 @@
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
-        (function () {
+        (function() {
             if (window.location.href.indexOf("norah.ai") > -1) {
                 console.log("You are at norah.ai");
                 var u = "//piwik.norah.ai/";
@@ -92,7 +92,7 @@
                                     <!--<li><a href="#" id="body">body</a>
                                     
                                 </li>-->
-                                    <li><a href="home">Animation</a>
+                                    <li>Animation
                                         <ul class="bodysub">
                                             <li><a href="auto-rigger" style="cursor:pointer;">Auto Rigger</a></li>
                                             <li><a href="repository">Repository</a></li>
@@ -179,10 +179,9 @@
                             <div class="col-sm-5 col-md-4 hidden-xs-down bg-faded sidebar">
                                 <div id="js-controls">
                                     <div style="position:absolute;width:100%;bottom:0;text-align:center;padding:10px;color:#fff;font-size:14px;"><span style="font:18px Lucida Grande,sans-serif;line-height:20px;">NOTE:</span> <br/>
-                                        <span
-                                            style="font: 12px Lucida Grande,sans-serif;line-height:20px;">Model might not be upto scale please zoom in using scroll.<br/> Models uploaded needs
+                                        <span style="font: 12px Lucida Grande,sans-serif;line-height:20px;">Model might not be upto scale please zoom in using scroll.<br/> Models uploaded needs
                                             to be in T-Pose.</span>
-                                            </a>
+                                        </a>
                                     </div>
 
 
@@ -250,7 +249,7 @@
         <script src="js/grid/OBJLoader2.js"></script>
         <script src="js/grid/WWOBJLoader2.js"></script>
         <script>
-            window.onload = function () {
+            window.onload = function() {
 
                 var socket = io.connect('https://absentiaautorig.com:443');
 
@@ -264,7 +263,7 @@
                  }
                  */
 
-                var webLoader = function () {
+                var webLoader = function() {
                     console.log('WebLoader');
                     var Validator = THREE.OBJLoader2.prototype._getValidator();
 
@@ -319,7 +318,7 @@
                         }
                     }
 
-                    webLoader.prototype.initGL = function () {
+                    webLoader.prototype.initGL = function() {
                         this.renderer = new THREE.WebGLRenderer({
                             canvas: this.canvas,
                             antialias: true,
@@ -352,13 +351,13 @@
                         this.createPivot();
                     };
 
-                    webLoader.prototype.createPivot = function () {
+                    webLoader.prototype.createPivot = function() {
                         this.pivot = new THREE.Object3D();
                         this.pivot.name = 'Pivot';
                         this.scene.add(this.pivot);
                     };
 
-                    webLoader.prototype.initPostGL = function () {
+                    webLoader.prototype.initPostGL = function() {
                         var self = this;
                         var reportProgress = function reportProgress(content) {
                             console.log('Progress: ' + content);
@@ -386,14 +385,14 @@
                         return true;
                     };
 
-                    webLoader.prototype.loadFiles = function (prepData) {
+                    webLoader.prototype.loadFiles = function(prepData) {
                         prepData.setSceneGraphBaseNode(this.pivot);
                         prepData.setStreamMeshes(this.streamMeshes);
                         this.wwObjLoader2.prepareRun(prepData);
                         this.wwObjLoader2.run();
                     };
 
-                    webLoader.prototype._handleFileSelect = function (event, pathTexture) {
+                    webLoader.prototype._handleFileSelect = function(event, pathTexture) {
                         var fileObj = null;
                         var fileMtl = null;
                         var files = event.target.files;
@@ -414,7 +413,7 @@
                         }
 
                         var fileReader = new FileReader();
-                        fileReader.onload = function (fileDataObj) {
+                        fileReader.onload = function(fileDataObj) {
 
                             var uint8Array = new Uint8Array(fileDataObj.target.result);
                             if (fileMtl === null) {
@@ -427,7 +426,7 @@
                                 });
                             } else {
 
-                                fileReader.onload = function (fileDataMtl) {
+                                fileReader.onload = function(fileDataMtl) {
 
                                     app.loadFilesUser({
                                         name: 'userObj',
@@ -442,7 +441,7 @@
                         fileReader.readAsArrayBuffer(fileObj);
                     };
 
-                    webLoader.prototype.loadFilesUser = function (objDef) {
+                    webLoader.prototype.loadFilesUser = function(objDef) {
                         var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataArrayBuffer(objDef.name,
                             objDef.objAsArrayBuffer,
                             objDef.pathTexture, objDef.mtlAsString);
@@ -452,7 +451,7 @@
                         this.wwObjLoader2.run();
                     };
 
-                    webLoader.prototype.resizeDisplayGL = function () {
+                    webLoader.prototype.resizeDisplayGL = function() {
 
                         this.recalcAspectRatio();
                         this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight, false);
@@ -460,13 +459,13 @@
                         this.updateCamera();
                     };
 
-                    webLoader.prototype.recalcAspectRatio = function () {
+                    webLoader.prototype.recalcAspectRatio = function() {
                         this.aspectRatio = this.canvas.offsetHeight === 0 ? 1 : this.canvas.offsetWidth /
                             this.canvas
                             .offsetHeight;
                     };
 
-                    webLoader.prototype.resetCamera = function () {
+                    webLoader.prototype.resetCamera = function() {
 
                         this.camera.position.copy(this.cameraDefaults.posCamera);
                         this.cameraTarget.copy(this.cameraDefaults.posCameraTarget);
@@ -474,7 +473,7 @@
                         this.updateCamera();
                     };
 
-                    webLoader.prototype.updateCamera = function () {
+                    webLoader.prototype.updateCamera = function() {
                         this.camera.aspect = this.aspectRatio;
                         this.camera.lookAt(this.cameraTarget);
 
@@ -482,20 +481,20 @@
 
                     };
 
-                    webLoader.prototype.render = function () {
+                    webLoader.prototype.render = function() {
                         if (!this.renderer.autoClear) this.renderer.clear();
 
                         this.controls.update();
                         this.renderer.render(this.scene, this.camera);
                     };
 
-                    webLoader.prototype.alterSmoothShading = function () {
+                    webLoader.prototype.alterSmoothShading = function() {
 
                         var scope = this;
                         scope.smoothShading = !scope.smoothShading;
                         console.log(scope.smoothShading ? 'Enabling SmoothShading' : 'Enabling FlatShading');
 
-                        scope.traversalFunction = function (material) {
+                        scope.traversalFunction = function(material) {
                             material.shading = scope.smoothShading ? THREE.SmoothShading : THREE.FlatShading;
                             material.needsUpdate = true;
                         };
@@ -505,14 +504,14 @@
                         scope.pivot.traverse(scopeTraverse);
                     };
 
-                    webLoader.prototype.alterDouble = function () {
+                    webLoader.prototype.alterDouble = function() {
 
                         var scope = this;
                         scope.doubleSide = !scope.doubleSide;
                         console.log(scope.doubleSide ? 'Enabling DoubleSide materials' :
                             'Enabling FrontSide materials');
 
-                        scope.traversalFunction = function (material) {
+                        scope.traversalFunction = function(material) {
                             material.side = scope.doubleSide ? THREE.DoubleSide : THREE.FrontSide;
                         };
 
@@ -522,7 +521,7 @@
                         scope.pivot.traverse(scopeTraverse);
                     };
 
-                    webLoader.prototype.traverseScene = function (object3d) {
+                    webLoader.prototype.traverseScene = function(object3d) {
 
                         if (object3d.material instanceof THREE.MultiMaterial) {
 
@@ -537,7 +536,7 @@
                         }
                     };
 
-                    webLoader.prototype.clearAllAssests = function () {
+                    webLoader.prototype.clearAllAssests = function() {
                         var scope = this;
                         var remover = function remover(object3d) {
 
@@ -574,7 +573,7 @@
                         console.log();
                     };
 
-                    webLoader.prototype.fitToObject = function () {
+                    webLoader.prototype.fitToObject = function() {
                         var self = this,
                             bbox = new THREE.Box3().setFromObject(self.pivot),
                             distance = Math.max(bbox.max.z, bbox.max.y, bbox.max.x) / 2 / self.aspectRatio /
@@ -584,14 +583,14 @@
                         self.camera.position.z = distance * 3;
                     }
 
-                    webLoader.prototype.openModal = function () {
+                    webLoader.prototype.openModal = function() {
                         var self = this;
                         console.log(self.webModal);
                         this.webModal.classList.add('is-open');
                         this.webModalClose.addEventListener("click", this.closeModal.bind(this), false);
                         console.log('Modal Opened');
                     }
-                    webLoader.prototype.closeModal = function () {
+                    webLoader.prototype.closeModal = function() {
                         var self = this;
                         this.webModal.classList.remove('is-open');
                         this.webModalClose.removeEventListener("click", this.closeModal, true);
@@ -635,12 +634,12 @@
                     // 	app.pathTexture = value + '/';
                     // });
 
-                    wwObjLoader2Control.loadObjFile = function () {
+                    wwObjLoader2Control.loadObjFile = function() {
                         elemFileInput.click();
                     };
                     folderOptions.add(wwObjLoader2Control, 'loadObjFile').name('Upload 3D Model (.obj)');
 
-                    var loadObjFile = function () {
+                    var loadObjFile = function() {
                         elemFileInput.click();
                     }
                     var handleFileSelect = function handleFileSelect(object3d) {
@@ -649,10 +648,10 @@
 
                     elemFileInput.addEventListener('change', handleFileSelect, false);
 
-                    wwObjLoader2Control.clearAllAssests = function () {
+                    wwObjLoader2Control.clearAllAssests = function() {
                         app.clearAllAssests();
                     };
-                    wwObjLoader2Control.uploadServer = function () {
+                    wwObjLoader2Control.uploadServer = function() {
                         console.log('Uploading');
 
                         uploadFiles();
