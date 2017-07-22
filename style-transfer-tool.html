@@ -761,7 +761,7 @@
                         name:user.displayName 
                     },
                  animUrl:"Not available",   
-                styletranfertool:{    
+                 styletranfertool:{    
                                     name: $("#animation_name").val(),
                                     blending_options: {
                                         loop: jQuery("input[name='Loop']").is(":checked"),
@@ -777,8 +777,21 @@
                                     legR: jQuery("input[name='LegR']").val(),
                                     fing: jQuery("input[name='Fing']").val(),
                                     root: jQuery("input[name='Root']").val()
-                                    }   
-                }
+                                    },   
+                               leftAnimation:{
+                                name:left_displaynames_array[current_left],
+                                duration:left_duration_array[current_left],   
+                                file:left_array[current_left]
+                            },
+                               rightAnimation:{
+
+                                    name:right_displaynames_array[current_right],
+                                duration:right_duration_array[current_right],   
+                                file:right_array[current_right]
+                            
+                               }     
+                                },
+                 created:new Date().toLocaleDateString()           
             };
 
             // Get the current user id.
