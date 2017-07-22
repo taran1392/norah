@@ -318,6 +318,8 @@
                                             </div>
                                             <div class="col-md-2" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
                                                 <a href="javascript:downloadAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.jpg') no-repeat -0px 5px;border:0px solid #fff"></span></a>
+                                                 <a href="javascript:saveAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.jpg') no-repeat -0px 5px;border:0px solid #fff"></span></a>
+                                          
                                             </div>
                                         </div>
 
@@ -746,6 +748,52 @@
             var txt = document.getElementById("animation_name");
             var animName = txt.value;
             gameInstance.SendMessage('ControllerHelper', 'ExportFromOutside', animName);
+       
+        }
+
+        function saveAnim(){
+              
+            var user=firebase.auth().currentUser;
+            // Collect the values from form.
+            var objectToSave = {
+                user:{  mail:user.email,
+                        uid:user.uid,
+                        name:user.displayName 
+                    },
+                 animUrl:"Not available",   
+                styletranfertool:{    
+                                    name: $("#animation_name").val(),
+                                    blending_options: {
+                                        loop: jQuery("input[name='Loop']").is(":checked"),
+                                        timeStretch: jQuery("input[name='TimeStretch']").is(":checked"),
+                                        startOffs: jQuery("input[name='StartOffs']").val()
+                                },
+                                    blending_tools: {
+                                    head: jQuery("input[name='Head']").val(),
+                                    trso: jQuery("input[name='Trso']").val(),
+                                    armL: jQuery("input[name='ArmL']").val(),
+                                    armR: jQuery("input[name='ArmR']").val(),
+                                    legL: jQuery("input[name='LegL']").val(),
+                                    legR: jQuery("input[name='LegR']").val(),
+                                    fing: jQuery("input[name='Fing']").val(),
+                                    root: jQuery("input[name='Root']").val()
+                                    }   
+                }
+            };
+
+            // Get the current user id.
+            var userId = firebase.auth().currentUser.uid;
+             console.log(objectToSave);   
+            // Get the reference to new object in firebase.
+            var ref = firebase
+                .database()
+                .ref("contests")
+                .push();
+
+            // Set the value for the newly created reference.
+            ref.set(objectToSave);
+      
+                
         }
 
         function handleClick(cb) {
@@ -811,6 +859,7 @@
             }
 
         }
+       
         var gameInstance;
         // var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
